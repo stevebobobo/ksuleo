@@ -124,7 +124,27 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </script>
 		
 		
-	</head>
+	<style>
+.code-block {
+	background: #1e1e2e;
+	color: #d4d4d4;
+	font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+	font-size: 14px;
+	line-height: 1.6;
+	padding: 18px 22px;
+	border-radius: 8px;
+	overflow-x: auto;
+	white-space: pre;
+	margin: 14px 0 24px 0;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.code-block code {
+	font-family: inherit;
+	background: none;
+	color: inherit;
+}
+</style>
+</head>
 	<body class="header-page  wsite-page-3124324335206332453637636  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
     <div class="birdseye-header">
       <div class="nav-wrap">
@@ -390,15 +410,94 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			<div class="wsite-section-elements">
 				<h2 class="wsite-content-title"><span style="color:rgb(98, 98, 98)">&#21076;&#38500;&#37325;&#35079;&#20803;&#32032;Distinct&nbsp;</span>&#8203;</h2>
 
-<div class="paragraph">&#8203;&#21482;&#35201;&#29992;select&#35486;&#27861;&#20013;&#30340;Select Distinct * From myTable Where xxxx&#23601;&#19981;&#26371;&#26377;&#37325;&#35206;&#30340;Record.<br />// Linq&#27169;&#31946;&#26597;&#35426;<br />IEnumerable&lt;DataGridViewRow&gt; enumerableList = this.dataGridView.Rows.Cast&lt;DataGridViewRow&gt;();&nbsp;&nbsp;<br />List&lt;DataGridViewRow&gt; list = (from item in enumerableList&nbsp;&nbsp;<br />&nbsp; where item.Cells[0].Value.ToString().IndexOf(this.KeyWord.Text) &gt;= 0&nbsp;&nbsp;<br />&nbsp; select item).ToList();&nbsp;&nbsp;<br />&nbsp;&nbsp;<br />//&#21076;&#38500;FirstName&#27396;&#20301;&#20013;&#26377;&#37325;&#35079;&#30340;&#36039;&#26009;<br />var result = (from p in db.t_Personnel<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; select p.FirstName).Distinct();<br /><br />//Return a List of distinct values from DataGridView<span> </span>&nbsp;&nbsp;<br />var vv = dataGridView1.Rows.Cast&lt;DataGridViewRow&gt;()<br />&nbsp; &nbsp;.Where(x =&gt; !x.IsNewRow)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// either..<br />&nbsp; &nbsp;.Where(x =&gt; x.Cells[column].Value != null) //..or or both<br />&nbsp; &nbsp;.Select(x =&gt; x.Cells[column].Value.ToString())<br />&nbsp; &nbsp;.Distinct()<br />&nbsp; &nbsp;.ToList();<br /><br /><br /><br />//&#25628;&#23563;&#37325;&#35079;&#21443;&#25976;//////////////////////////////////////////////////////////////<br />listNodeMatched = NodeList.FindAll(x =&gt; x.Header.ToString().ToUpper().Contains(DeviceSeachBox1.Text.ToUpper()));//&#23559;&#25214;&#21040;&#30340;&#32080;&#26524;&#20132;&#32102;&#26032;&#30340;LIST<br /><br />//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;<br />//&#26377;&#37679;&#35492;--&gt;var LastRungButtonDev = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).OrderBy(x =&gt; x.Bounds.Height + x.Location.Y).Max();<br /><br />//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#24231;&#27161;<br />var offset = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).ToList&lt;Plot&gt;().Max(x =&gt; x.Bounds.Height + x.Location.Y);<br /><br />//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;<br />var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();<br /><br />//&#25214;&#20986;LIST&#20013;&#31526;&#21512;&#26781;&#20214;&#30340;&#25104;&#21729;&#22312;LIST&#20013;&#30340;INDEX&#32232;&#34399;<br />var index = EditProject.POUList.FindIndex(X =&gt; X.POUName == sectionName &amp;&amp; X.POUType == sectionType);&nbsp;<br />//&#34389;&#29702;&#26368;&#24460;&#19968;&#25903;&#33139;&#20197;&#22806;&#30340;&#31227;&#38500;&#25152;&#29986;&#29983;&#30340;&#30340;&#20559;&#31227;reassignment of inputs when shifting inputs<br />var modepin = source[0].Module.Outputs[source[0].Pin].Link.Targets.Find(module =&gt;module.Module ==this &amp;&amp;module.Pin == input);<br />//&#29992;&#36664;&#20837;&#33139;&#25214;&#36664;&#20986;&#33139;<br />var module = input.Link[0].Module.Outputs[1].Link.Targets.FirstOrDefault(tar =&gt; tar.Module == plt);<br />//&#25214;&#20986;ParentNode(POU)&#30340;&#35722;&#25976;&#27396;&#20839;&#26377;&#21628;&#21483;seachSource(POU&#21015;&#34920;)&#20013;&#30340;&#35722;&#25976;&#21517;&#31281;<br />var ChildrenName = ParentNode.genelParas.Where(x =&gt; seachSource.Any(b =&gt; b.POUName.ToUpper() == x.Type.ToUpper())).Select(y =&gt; y.Name).ToList();<br />//&#25214;&#20986;seachSource(POU&#21015;&#34920;)&#20013;&#26377;&#34987;ParentNode(POU)&#21628;&#21483;&#30340;&#25104;&#21729;(POU)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var ChildrenName = seachSource.Where(x =&gt; ParentNode.genelParas.Any(b =&gt; b.Type.ToUpper() == x.POUName.ToUpper())).ToList();<br /><br />//&#25214;&#20986;&#21508;POU&#20013;&#21517;&#31281;&#28858;a1&#30340;&#35722;&#25976;<br />var aa= EditProject.POUList.Select(x =&gt; x.genelParas.Where(y =&gt; y.Name == "a1").FirstOrDefault()).ToList()<br />//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU<br />var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();</div>
+<div class="paragraph"><pre class="code-block"><code>&#21482;&#35201;&#29992;select&#35486;&#27861;&#20013;&#30340;Select Distinct * From myTable Where xxxx&#23601;&#19981;&#26371;&#26377;&#37325;&#35206;&#30340;Record.
+// Linq&#27169;&#31946;&#26597;&#35426;
+IEnumerable&lt;DataGridViewRow&gt; enumerableList = this.dataGridView.Rows.Cast&lt;DataGridViewRow&gt;();  
+List&lt;DataGridViewRow&gt; list = (from item in enumerableList  
+  where item.Cells[0].Value.ToString().IndexOf(this.KeyWord.Text) &gt;= 0  
+  select item).ToList();  
+  
+//&#21076;&#38500;FirstName&#27396;&#20301;&#20013;&#26377;&#37325;&#35079;&#30340;&#36039;&#26009;
+var result = (from p in db.t_Personnel
+                  select p.FirstName).Distinct();
+
+//Return a List of distinct values from DataGridView<span> </span>  
+var vv = dataGridView1.Rows.Cast&lt;DataGridViewRow&gt;()
+   .Where(x =&gt; !x.IsNewRow)                   // either..
+   .Where(x =&gt; x.Cells[column].Value != null) //..or or both
+   .Select(x =&gt; x.Cells[column].Value.ToString())
+   .Distinct()
+   .ToList();
+
+//&#25628;&#23563;&#37325;&#35079;&#21443;&#25976;//////////////////////////////////////////////////////////////
+listNodeMatched = NodeList.FindAll(x =&gt; x.Header.ToString().ToUpper().Contains(DeviceSeachBox1.Text.ToUpper()));//&#23559;&#25214;&#21040;&#30340;&#32080;&#26524;&#20132;&#32102;&#26032;&#30340;LIST
+
+//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;
+//&#26377;&#37679;&#35492;--&gt;var LastRungButtonDev = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).OrderBy(x =&gt; x.Bounds.Height + x.Location.Y).Max();
+
+//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#24231;&#27161;
+var offset = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).ToList&lt;Plot&gt;().Max(x =&gt; x.Bounds.Height + x.Location.Y);
+
+//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;
+var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();
+
+//&#25214;&#20986;LIST&#20013;&#31526;&#21512;&#26781;&#20214;&#30340;&#25104;&#21729;&#22312;LIST&#20013;&#30340;INDEX&#32232;&#34399;
+var index = EditProject.POUList.FindIndex(X =&gt; X.POUName == sectionName &amp;&amp; X.POUType == sectionType); 
+//&#34389;&#29702;&#26368;&#24460;&#19968;&#25903;&#33139;&#20197;&#22806;&#30340;&#31227;&#38500;&#25152;&#29986;&#29983;&#30340;&#30340;&#20559;&#31227;reassignment of inputs when shifting inputs
+var modepin = source[0].Module.Outputs[source[0].Pin].Link.Targets.Find(module =&gt;module.Module ==this &amp;&amp;module.Pin == input);
+//&#29992;&#36664;&#20837;&#33139;&#25214;&#36664;&#20986;&#33139;
+var module = input.Link[0].Module.Outputs[1].Link.Targets.FirstOrDefault(tar =&gt; tar.Module == plt);
+//&#25214;&#20986;ParentNode(POU)&#30340;&#35722;&#25976;&#27396;&#20839;&#26377;&#21628;&#21483;seachSource(POU&#21015;&#34920;)&#20013;&#30340;&#35722;&#25976;&#21517;&#31281;
+var ChildrenName = ParentNode.genelParas.Where(x =&gt; seachSource.Any(b =&gt; b.POUName.ToUpper() == x.Type.ToUpper())).Select(y =&gt; y.Name).ToList();
+//&#25214;&#20986;seachSource(POU&#21015;&#34920;)&#20013;&#26377;&#34987;ParentNode(POU)&#21628;&#21483;&#30340;&#25104;&#21729;(POU)
+            var ChildrenName = seachSource.Where(x =&gt; ParentNode.genelParas.Any(b =&gt; b.Type.ToUpper() == x.POUName.ToUpper())).ToList();
+
+//&#25214;&#20986;&#21508;POU&#20013;&#21517;&#31281;&#28858;a1&#30340;&#35722;&#25976;
+var aa= EditProject.POUList.Select(x =&gt; x.genelParas.Where(y =&gt; y.Name == "a1").FirstOrDefault()).ToList()
+//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU
+var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();</code></pre></div>
 
 <h2 class="wsite-content-title">&#25490;&#24207;</h2>
 
-<div class="paragraph"><span style="color:rgb(98, 98, 98)">//LIST&#25490;&#24207;//////////////////////////////////////////</span><br /><span style="color:rgb(98, 98, 98)">var list = new List&lt;Plot&gt;();</span><br /><span style="color:rgb(98, 98, 98)">var query = from module in list//LINQ &#35486;&#27861;</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; orderby module.OrderNum</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; select module;</span><br /><span style="color:rgb(98, 98, 98)">_plotlist.Clear();</span><br /><span style="color:rgb(98, 98, 98)">_plotlist.AddRange(query);</span><br /><br /><span style="color:rgb(98, 98, 98)">//////////////////////////////////////</span><br /><span style="color:rgb(98, 98, 98)">//PopupMenut&#37325;&#26032;&#25490;&#24207;</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PopupMenu.Items.SortDescriptions.Clear();</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PopupMenu.Items.SortDescriptions.Add(</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; new System.ComponentModel.SortDescription("Name",</span><br /><span style="color:rgb(98, 98, 98)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.ComponentModel.ListSortDirection.Descending));<br />&#8203;<br />/</span>/ORDERBY&#25490;&#24207;(&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;)<br />var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();<br />/***************************************************************************/<span> </span><br />&nbsp;//&#20197;&#20803;&#20214;&#24231;&#27161;&#37325;&#25490;LIST&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />&nbsp;/***************************************************************************/<br />var CurrentDevlist = CurrPOU.PGplotlist.OrderBy(x =&gt; x.Location.Y).ThenBy(x =&gt; x.Location.X).ToList&lt;Plot&gt;();<span> <br /></span>//List&lt;String&gt;&#25353;&#23383;&#27597;&#25490;&#21015;1<br />/***************************************************************************/<span> </span><br />Displayparaments.Sort((x, y) =&gt; x.CompareTo(y));<br />EditProject.POUList.Sort((x, y) =&gt; x.POUName.CompareTo(y.POUName));//POU&#31680;&#40670;&#25353;&#23383;&#27597;&#25490;&#24207;<br />/***************************************************************************/<br />//List&lt;String&gt;&#25353;&#26178;&#38291;&#25490;&#21015;<br />/***************************************************************************/<span> </span><br />StrList.Sort((x, y) =&gt; DateTime.Compare(Convert.ToDateTime(x.Value), Convert.ToDateTime(y.Value)));<br />/***************************************************************************/<br />//Sourcelist&#25353;CompStr&#20986;&#29694;&#30340;&#20301;&#32622;&#25490;&#24207;<br />/***************************************************************************/<span> </span><br />Sourcelist.Where(x =&gt; x.ToUpper().IndexOf(CompStr)&gt;=0).OrderBy(x=&gt;x.ToUpper().IndexOf(CompStr)).ToList();&nbsp;&nbsp;&#8203;<span></span><br /></div>
+<div class="paragraph"><pre class="code-block"><code><span style="color:rgb(98, 98, 98)">//LIST&#25490;&#24207;//////////////////////////////////////////</span>
+<span style="color:rgb(98, 98, 98)">var list = new List&lt;Plot&gt;();</span>
+<span style="color:rgb(98, 98, 98)">var query = from module in list//LINQ &#35486;&#27861;</span>
+<span style="color:rgb(98, 98, 98)">                        orderby module.OrderNum</span>
+<span style="color:rgb(98, 98, 98)">                        select module;</span>
+<span style="color:rgb(98, 98, 98)">_plotlist.Clear();</span>
+<span style="color:rgb(98, 98, 98)">_plotlist.AddRange(query);</span>
+
+<span style="color:rgb(98, 98, 98)">//////////////////////////////////////</span>
+<span style="color:rgb(98, 98, 98)">//PopupMenut&#37325;&#26032;&#25490;&#24207;</span>
+<span style="color:rgb(98, 98, 98)">                        PopupMenu.Items.SortDescriptions.Clear();</span>
+<span style="color:rgb(98, 98, 98)">                        PopupMenu.Items.SortDescriptions.Add(</span>
+<span style="color:rgb(98, 98, 98)">                new System.ComponentModel.SortDescription("Name",</span>
+<span style="color:rgb(98, 98, 98)">                    System.ComponentModel.ListSortDirection.Descending));
+
+/</span>/ORDERBY&#25490;&#24207;(&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;)
+var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();
+/***************************************************************************/<span> </span>
+ //&#20197;&#20803;&#20214;&#24231;&#27161;&#37325;&#25490;LIST                      
+ /***************************************************************************/
+var CurrentDevlist = CurrPOU.PGplotlist.OrderBy(x =&gt; x.Location.Y).ThenBy(x =&gt; x.Location.X).ToList&lt;Plot&gt;();<span> 
+</span>//List&lt;String&gt;&#25353;&#23383;&#27597;&#25490;&#21015;1
+/***************************************************************************/<span> </span>
+Displayparaments.Sort((x, y) =&gt; x.CompareTo(y));
+EditProject.POUList.Sort((x, y) =&gt; x.POUName.CompareTo(y.POUName));//POU&#31680;&#40670;&#25353;&#23383;&#27597;&#25490;&#24207;
+/***************************************************************************/
+//List&lt;String&gt;&#25353;&#26178;&#38291;&#25490;&#21015;
+/***************************************************************************/<span> </span>
+StrList.Sort((x, y) =&gt; DateTime.Compare(Convert.ToDateTime(x.Value), Convert.ToDateTime(y.Value)));
+/***************************************************************************/
+//Sourcelist&#25353;CompStr&#20986;&#29694;&#30340;&#20301;&#32622;&#25490;&#24207;
+/***************************************************************************/<span> </span>
+Sourcelist.Where(x =&gt; x.ToUpper().IndexOf(CompStr)&gt;=0).OrderBy(x=&gt;x.ToUpper().IndexOf(CompStr)).ToList();  <span></span></code></pre></div>
 
 <h2 class="wsite-content-title">&#29992;select &#21462;&#20986;&#22810;&#20491;&#23660;&#24615;</h2>
 
-<div class="paragraph">var query = (from plt in _plotlist select new { plt.Name, plt.Location.X, plt.Location.Y }).ToList();<br />&#8203;//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU<br />var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();<br /></div>
+<div class="paragraph"><pre class="code-block"><code>var query = (from plt in _plotlist select new { plt.Name, plt.Location.X, plt.Location.Y }).ToList();
+//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU
+var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();</code></pre></div>
 
 <h2 class="wsite-content-title"><a href="https://blog.opasschang.com/understand-csharp-asyn/" target="_blank">&#27491;&#30906;&#29702;&#35299; C# Async &#33287;&#38750;&#21516;&#27493;</a></h2>
 
