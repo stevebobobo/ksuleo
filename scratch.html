@@ -9,6 +9,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="SCRATCH 程式設計學生作品集 | Austin Tang">
   <meta property="og:description" content="人人都會寫程式的時代，麻省理工學院 - SCRATCH 學生專題作品與教學展示。">
+  <meta property="og:image" content="uploads/8/0/3/9/80395834/811399073_orig.jpg">
   <meta property="og:type" content="website">
 
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
@@ -132,6 +133,19 @@
       border-bottom: 1px solid var(--border-light);
     }
 
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -147,7 +161,7 @@
     }
 
     .page-title {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 12px;
@@ -156,7 +170,7 @@
     .page-desc {
       font-size: 1.05rem;
       color: var(--text-secondary);
-      max-width: 720px;
+      max-width: 600px;
     }
 
     .mystuff-bar {
@@ -181,6 +195,25 @@
     .mystuff-btn:hover {
       background: #c2410c;
       transform: translateY(-1px);
+    }
+
+    .hero-image-box {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-banner-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border: 3px solid rgba(234, 88, 12, 0.2);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hero-banner-img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Section & Cards */
@@ -394,21 +427,29 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Cute Original Banner Image -->
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span>🧩 麻省理工學院 · SCRATCH 程式設計課程</span>
-      </div>
-      <h1 class="page-title">人人都會寫程式的時代 - SCRATCH</h1>
-      <p class="page-desc">
-        展示學生運用 MIT Scratch 視覺化積木進行創意遊戲、動畫與邏輯互動專案的成果集錦。
-      </p>
+    <div class="container hero-container">
+      <div class="hero-text-content">
+        <div class="hero-badge">
+          <span>🧩 麻省理工學院 · SCRATCH 程式設計課程</span>
+        </div>
+        <h1 class="page-title">人人人都會寫程式的時代 - SCRATCH</h1>
+        <p class="page-desc">
+          展示學生運用 MIT Scratch 視覺化積木進行創意遊戲、動畫與邏輯互動專案的成果集錦。
+        </p>
 
-      <div class="mystuff-bar">
-        <a href="https://scratch.mit.edu/mystuff/" target="_blank" rel="noopener noreferrer" class="mystuff-btn">
-          <span>🐱 前往 Leo's Scratch 個人工作室</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <div class="mystuff-bar">
+          <a href="https://scratch.mit.edu/mystuff/" target="_blank" rel="noopener noreferrer" class="mystuff-btn">
+            <span>🐱 前往 Leo's Scratch 個人工作室</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-box">
+        <a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer">
+          <img src="uploads/8/0/3/9/80395834/811399073_orig.jpg" alt="MIT Scratch 麻省理工學院 - SCRATCH" class="hero-banner-img">
         </a>
       </div>
     </div>
