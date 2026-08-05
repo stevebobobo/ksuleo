@@ -1,829 +1,1028 @@
 <!DOCTYPE html>
-<html lang="zh">
-	<head>
-		<title>&#33258;&#30001;&#36575;&#39636;&#33836;&#27506; - Home</title><meta property="og:site_name" content="&#33258;&#30001;&#36575;&#39636;&#33836;&#27506;" />
-<meta property="og:title" content="&#33258;&#30001;&#36575;&#39636;&#33836;&#27506;" />
-<meta property="og:description" content="Embedded System 嵌入式系統 Interface Design 介面設計 Automatic control 自動控制 Program Language 程式語言 Enterprise Resource Planning ​ Data Base 資料庫系統　　　　　　" />
-<meta property="og:image" content="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" />
-<meta property="og:url" content="index.html" />
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>唐英傑 Austin Tang | 自由軟體與嵌入式系統研發 · 個人作品集與技術門戶</title>
+  <meta name="description" content="唐英傑 (Austin Tang) 的個人網站與技術門戶。涵蓋嵌入式系統、介面設計、自動控制、AI翻車實錄與My100Ideas點子博物館。">
+  <meta name="keywords" content="唐英傑, Austin Tang, 自由軟體薈萃, 嵌入式系統, 自動控制, AiErrorLog, My100Ideas, 程式設計">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="唐英傑 Austin Tang | 個人作品集與技術門戶">
+  <meta property="og:description" content="扎實工程底蘊 · 嵌入式系統 · 介面設計 · 軟體架構 · AI 翻車實錄 · My100Ideas 靈感館">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stevebobobo.github.io/ksuleo/">
+  <meta property="og:image" content="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #26354a;
+      --border-color: #334155;
+      --border-accent: #3b82f6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-blue: #38bdf8;
+      --accent-indigo: #6366f1;
+      --accent-purple: #a855f7;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --accent-emerald: #10b981;
+      --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+    }
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-		
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/sites.css" />
-<link rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/old/fancybox.css" />
-<link rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/social-icons.css" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css" title="wsite-theme-css" />
-<link href='cdn2.editmysite.com/fonts/Montserrat/font.css' rel='stylesheet' type='text/css' />
+    html {
+      scroll-behavior: smooth;
+    }
 
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Droid_Serif/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Droid_Serif/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<style type='text/css'>
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Roboto" !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {color:#626262 !important;}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-family:"Droid Serif" !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {color:#2a2a2a !important;}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{font-family:"Roboto" !important;font-weight:700 !important;}
-#wsite-title {font-family:"Roboto" !important;color:#2a2a2a !important;text-transform:  uppercase !important;}
-.wsite-menu-default a {font-family:"Roboto" !important;font-weight:700 !important;}
-.wsite-menu a {font-family:"Roboto" !important;}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-family:"Droid Serif" !important;color:#2a2a2a !important;letter-spacing: 0px !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {font-family:"Roboto" !important;font-weight:700 !important;}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-size:16px !important;line-height:23px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:42px !important;line-height:54px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{font-size:10px !important;}
-#wsite-title {font-size:16px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-size:65px !important;line-height:70px !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}</style>
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
 
-		<script src='files/templateArtifacts.js'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn2.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-<script type="text/javascript" src="//cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
-<script src="cdn2.editmysite.com/js/site/main.js"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='ksuleo.weebly.com'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "TW";
-			_W.storeCurrency = "USD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "492471226876923722";
-			com_userID = "80395834";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="//cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1719515982&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	
-	
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"718338965729140747","title":"Home","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"578688892453584983","title":"&#21516;&#23416;&#20497;&#30340;&#20316;&#21697;&#38598;","url":"21516234162049730340203162169738598.html","target":"","nav_menu":false,"nonclickable":false},{"id":"779677151797262475","title":"&#31243;&#24335;&#20633;&#24536;&#37636;","url":"3124324335206332453637636.html","target":"","nav_menu":false,"nonclickable":false},{"id":"187307614580991560","title":"&#38364;&#26044;&#21776;&#20808;&#29983;","url":"3836426044217762080829983.html","target":"","nav_menu":false,"nonclickable":false},{"id":"389701259554127448","title":"&#28608;&#21237;&#35486;&#37636;","url":"28608212373548637636.html","target":"","nav_menu":false,"nonclickable":false},{"id":"831431531717958248","title":"&#24037;&#20855;&#25512;&#34214;","url":"24037208552551234214.html","target":"","nav_menu":false,"nonclickable":false},{"id":"920116728180717917","title":"&#20316;&#21697;&#38598;","url":"203162169738598.html","target":"","nav_menu":false,"nonclickable":false},{"id":"780988301805790510","title":"&#24037;&#20316;&#36889;&#27284;&#20107;","url":"2403720316368892728420107.html","target":"","nav_menu":false,"nonclickable":false}],
-			"718338965729140747",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
-		
-		
-	</head>
-	<body class="no-header-page  wsite-page-index  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
-    <div class="birdseye-header">
-      <div class="nav-wrap">
-        <div class="container">
-          <div class="logo"><span class="wsite-logo">
+    /* Header & Navigation */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
 
-	<a href="index.html">
-	
-	<span id="wsite-title">&#33258;&#30001;&#36575;&#39636;&#33836;&#27506;</span>
-	
-	</a>
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
 
-</span></div>
-          <div class="nav desktop-nav"><ul class="wsite-menu-default">
-		<li id="active" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				Home
-			</a>
-			
-		</li>
-		<li id="pg578688892453584983" class="wsite-menu-item-wrap">
-			<a
-						href="21516234162049730340203162169738598.html"
-				class="wsite-menu-item"
-				>
-				同學們的作品集
-			</a>
-			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-826658736466131980"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180c354863532831243243353537335336.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;C&#35486;&#35328;&#31243;&#24335;&#35373;&#35336;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-225768607550831855"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180aspnet.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;ASP.NET
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-725777791694854770"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			106&#24180;&#38651;&#23376;&#26360;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-627041105534408128"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce-590659.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			104&#24180;&#38651;&#23376;&#21830;&#21209;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-500101051499873344"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="scratch.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			SCRATCH
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-998848036458342947"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="skecthup.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			Skecthup
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-586240549168411379"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="21517292553506920316.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#21517;&#29255;&#35069;&#20316;
-		</span>
-	</a>
-	
-</li>
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
 
-	</ul>
-</div>
+    .brand-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
 
-		</li>
-		<li id="pg779677151797262475" class="wsite-menu-item-wrap">
-			<a
-						href="3124324335206332453637636.html"
-				class="wsite-menu-item"
-				>
-				程式備忘錄
-			</a>
-			
-		</li>
-		<li id="pg187307614580991560" class="wsite-menu-item-wrap">
-			<a
-						href="3836426044217762080829983.html"
-				class="wsite-menu-item"
-				>
-				關於唐先生
-			</a>
-			
-		</li>
-		<li id="pg389701259554127448" class="wsite-menu-item-wrap">
-			<a
-						href="28608212373548637636.html"
-				class="wsite-menu-item"
-				>
-				激勵語錄
-			</a>
-			
-		</li>
-		<li id="pg831431531717958248" class="wsite-menu-item-wrap">
-			<a
-						href="24037208552551234214.html"
-				class="wsite-menu-item"
-				>
-				工具推薦
-			</a>
-			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-592817536305581899"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290930828255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#30828;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-836674342461745894"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290936575255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#36575;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-282132276887905643"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="22909314492551234214.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#31449;&#25512;&#34214;
-		</span>
-	</a>
-	
-</li>
+    .brand-title {
+      background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-	</ul>
-</div>
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
 
-		</li>
-		<li id="pg920116728180717917" class="wsite-menu-item-wrap">
-			<a
-						href="203162169738598.html"
-				class="wsite-menu-item"
-				>
-				作品集
-			</a>
-			
-		</li>
-		<li id="pg780988301805790510" class="wsite-menu-item-wrap">
-			<a
-						href="2403720316368892728420107.html"
-				class="wsite-menu-item"
-				>
-				工作這檔事
-			</a>
-			
-		</li>
-</ul>
-</div>
-          <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-blue);
+      transition: width 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 80px 0 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-indigo) 50%, var(--accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .hero-card-preview {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      position: relative;
+      box-shadow: var(--shadow-glow);
+      overflow: hidden;
+    }
+
+    .hero-card-preview::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-indigo), var(--accent-purple));
+    }
+
+    .profile-img-container {
+      width: 100%;
+      height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .profile-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-card-preview:hover .profile-img-container img {
+      transform: scale(1.04);
+    }
+
+    .profile-meta-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .profile-meta-sub {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin: 80px 0 48px;
+    }
+
+    .section-tag {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* Featured Sites Cards Grid */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .masterpiece-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .masterpiece-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+    }
+
+    .card-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .card-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+    }
+
+    .card-icon-red {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--accent-red);
+    }
+
+    .card-icon-gold {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--accent-amber);
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-action-btn {
+      width: 100%;
+      padding: 12px 0;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-red-gradient {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.25);
+    }
+
+    .btn-red-gradient:hover {
+      box-shadow: 0 6px 22px rgba(220, 38, 38, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-amber-gradient {
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-amber-gradient:hover {
+      box-shadow: 0 6px 22px rgba(217, 119, 6, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .skill-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .skill-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Certifications Grid */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .cert-pill {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-color);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .cert-pill:hover {
+      background: var(--bg-card);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .cert-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: rgba(56, 189, 248, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .cert-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Quote / Philosophy Box */
+    .philosophy-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin: 40px 0;
+      position: relative;
+    }
+
+    .philosophy-quote {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #e2e8f0;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .philosophy-author {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-align: right;
+      font-style: normal;
+    }
+
+    /* Resources Grid (Preserving legacy links) */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .resource-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .resource-card:hover {
+      border-color: var(--accent-indigo);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .resource-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .resource-sublinks {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sublink-item {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s ease;
+    }
+
+    .sublink-item:hover {
+      color: #7dd3fc;
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 48px 32px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="app-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="唐英傑" class="brand-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Austin+Tang&background=38bdf8&color=fff'">
+          <span class="brand-title">Austin Tang | 唐英傑</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#featured" class="nav-link">精選代表作</a></li>
+          <li><a href="#skills" class="nav-link">專業領域</a></li>
+          <li><a href="#certs" class="nav-link">專業證照</a></li>
+          <li><a href="#philosophy" class="nav-link">工程理念</a></li>
+          <li><a href="#resources" class="nav-link">教學與作品資源</a></li>
+          <li><a href="https://github.com/stevebobobo" target="_blank" rel="noopener" class="nav-cta">GitHub 主頁</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div>
+        <div class="hero-badge">
+          <span>🚀 自由軟體與嵌入式系統研發 · Austin Tang</span>
+        </div>
+        <h1 class="hero-title">
+          扎實工程底蘊<br>
+          <span class="gradient-text">引領軟硬整合與技術實證</span>
+        </h1>
+        <p class="hero-subtitle">
+          歡迎來到唐英傑 (Austin Tang) 的個人門戶網站。專注於嵌入式系統開發、自動控制、介面設計與資料庫架構。秉持「苦功夫、累積實務經驗」的精神，分享實戰工程技術與創新靈感。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#featured" class="btn btn-primary">
+            <span>🔥 瀏覽精選代表作</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#resources" class="btn btn-secondary">
+            <span>📂 學生作品與備忘錄</span>
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="main-wrap">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-1"  >
-		<div class="wsite-section-content">
-          <div class="container">
-			<div class="wsite-section-elements">
-				<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -40px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:34.615384615385%; padding:0 40px;">
-					
-						
+      <div class="hero-card-preview">
+        <div class="profile-img-container">
+          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="唐英傑 (Austin Tang)" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'">
+        </div>
+        <div class="profile-meta-title">唐英傑 (Austin Tang)</div>
+        <div class="profile-meta-sub">Embedded Systems & Software Architect</div>
+      </div>
+    </section>
 
-<div><div class="wsite-image wsite-image-border-border-width:0 " style="padding-top:0px;padding-bottom:10px;margin-left:0px;margin-right:0px;text-align:center">
-
-<a>
-
-<img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="图片" style="width:auto;max-width:100%" />
-
-</a>
-
-<div style="display:block;font-size:90%">2018 Austin Tang</div>
-
-</div></div>
-
-<h2 class="wsite-content-title" style="text-align:center;">&#23560;&#26989;&#38936;&#22495;</h2>
-
-<div class="paragraph" style="text-align:left;">Embedded System &#23884;&#20837;&#24335;&#31995;&#32113;<br />Interface Design &#20171;&#38754;&#35373;&#35336;<br /><span>Automatic control &#33258;&#21205;&#25511;&#21046;</span><br />Program Language &#31243;&#24335;&#35486;&#35328;<br /><span style="font-weight:normal"><font size="3">Enterprise Resource Planning<br />&#8203;</font></span><span>Data Base &#36039;&#26009;&#24235;&#31995;&#32113;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;</span></div>
-
-<h2 class="wsite-content-title" style="text-align:center;">&#32879;&#32097;&#26041;&#24335;</h2>
-
-<div class="paragraph">Email:<a href="mailto:Yingjie-Tang@Hotmail.com">Yingjie-Tang@Hotmail.com</a><br />Phone:886 0917283622</div>
-
-
-					
-				</td>				<td class="wsite-multicol-col" style="width:65.384615384615%; padding:0 40px;">
-					
-						
-
-<h2 class="wsite-content-title" style="text-align:left;">&#28858;&#20309;&#36984;&#25799;&#23531;&#31243;&#24335;&#36889;&#26781;&#19981;&#27512;&#36335;?</h2>
-
-<div class="paragraph" style="text-align:left;">&#25110;&#35377;&#21629;&#36939;&#24118;&#33879;&#25105;&#20497;&#36208;&#20837;&#20102;&#35079;&#38620;&#30340;&#29983;&#21629;&#30340;&#31243;&#24335;&#30697;&#38499;<br /><br />&#21463;&#21040;&#20102;&#35377;&#22810;&#24037;&#31243;&#24107;&#20808;&#36914;&#30340;&#24433;&#38911;&#65292;&#24819;&#35201;&#35731;&#33258;&#24049;&#24605;&#32771;&#33021;&#21147;&#35722;&#24375;&#12289;&#35722;&#24471;&#26356;&#26377;&#23652;&#27425;&#12289;&#26356;&#26377;&#37007;&#36655;<br />&#26044;&#26159;&#36208;&#19978;&#20102;&#36889;&#26781;&#23429;&#30007;&#20043;&#36335;<br />&#22810;&#37325;&#30332;&#23637;&#30340;&#25105;&#65292;&#22240;&#28858;&#21892;&#29992;&#36575;&#39636;&#35731;&#25105;&#22312;&#20854;&#20182;&#38936;&#22495;&#30340;&#19978;&#36111;&#24471;&#20102;&#20449;&#20219;&#65292;<br />&#19981;&#36942;&#65292;&#25105;&#19981;&#26159;&#37027;&#31278;&#23531;&#31243;&#24335;&#36234;&#23531;&#36234;&#38283;&#24515;&#30340;&#22825;&#25165;&#65292;<br />&#24120;&#24120;&#23531;&#21040;&#38957;&#26127;&#30524;&#33457;&#65292;&#24120;&#24120;&#24536;&#35352;&#33258;&#24049;&#23531;&#36942;&#20160;&#40636;&#65292;&#36234;&#26159;&#27794;&#26377;&#22825;&#36070;&#30340;&#22320;&#26041;&#25105;&#33021;&#36984;&#25799;&#30340;&#21482;&#26377;&#21162;&#21147;&#65292;<br />&#19968;&#20999;&#37117;&#26159;&#33510;&#21151;&#22827;&#65292;&#19968;&#40670;&#19968;&#28404;&#32047;&#31309;&#19979;&#20358;&#30340;&#32147;&#39511;&#33287;&#36939;&#27683;&#65307;<br /><br />&#19968;&#20491;&#20154;&#30340;&#21147;&#37327;&#26377;&#38480;&#65292;&#22312;&#27492;&#25552;&#19968;&#20123;&#20379;&#36039;&#28304;&#33287;&#22823;&#23478;&#19968;&#36215;&#20998;&#20139;&#65292;<br />&#24076;&#26395;&#26377;&#27231;&#26371;&#33021;&#36319;&#22823;&#23478;&#19968;&#36215;&#20132;&#27969;<br />&#33287;&#21516;&#23416;&#20497;&#19968;&#36215;&#25104;&#38263;&#30340;&#26085;&#23376;&#24118;&#32102;&#25105;&#28961;&#38480;&#30340;&#24863;&#21205;&#65292;&#35613;&#35613;&#20320;(&#22963;)&#20497;&#30340;&#35469;&#21516;&#33287;&#25903;&#25345;!&#8203;</div>
-
-<h2 class="wsite-content-title" style="text-align:left;">&#23560;&#26989;&#35657;&#29031;</h2>
-
-<div class="paragraph" style="text-align:left;">ORACLE JAVA SE&#31243;&#24335;&#35373;&#35336;&#24107;<span>&#35657;&#29031;</span><br /><span>MCTS</span>&#24494;&#36575;&#36039;&#26009;&#24235;&#35469;&#35657;<br />ACE&#26230;&#24515;&#20057;&#32026;&#24037;&#31243;&#24107;&#35469;&#35657;&#12288;<br /><span>&#19993;&#32026;&#30828;&#39636;&#35037;&#20462;&#35657;&#29031;</span><br />&#20057;&#32026;&#22825;&#36554;&#22519;&#29031;<br />&#30002;&#32026;&#20316;&#26989;&#20027;&#31649;<br />&#8203;<br /></div>
-
-
-					
-				</td>			</tr>
-		</tbody>
-	</table>
-</div></div></div>
-			</div>
-		</div>
+    <!-- Featured Masterpiece Projects (連到這兩個網頁的核心區塊) -->
+    <section id="featured">
+      <div class="section-header">
+        <span class="section-tag">Flagship Projects</span>
+        <h2 class="section-title">精選旗艦代表作</h2>
+        <p class="section-desc">結合實務除錯經驗與創新思維所打造的兩個重點 GitHub Pages 專案。</p>
       </div>
 
-	</div>
-</div>
+      <div class="featured-grid">
+        <!-- AiErrorLog Card -->
+        <div class="masterpiece-card">
+          <div>
+            <div class="card-top-bar">
+              <div class="card-icon-wrap card-icon-red">⚠️</div>
+              <div class="live-badge">
+                <span class="live-dot"></span>
+                <span>Live Site</span>
+              </div>
+            </div>
 
-</div>
+            <h3 class="card-title">AI 翻車與盲點實錄</h3>
+            <p class="card-text">
+              「AI 不是萬能神，用真實案例警惕 AI 盲點與幻覺。」記錄資深工程師與 AI 對話寫 Code 時，AI 犯下的幻覺杜撰、路徑混淆、過度自信與邏輯漏洞案例與排查解析。
+            </p>
 
+            <div class="card-tags">
+              <span class="tag">#AI錯誤紀錄</span>
+              <span class="tag">#路徑混淆</span>
+              <span class="tag">#Build來源誤判</span>
+              <span class="tag">#工程避坑指南</span>
+            </div>
+          </div>
+
+          <a href="https://stevebobobo.github.io/AiErrorLog/" target="_blank" rel="noopener noreferrer" class="card-action-btn btn-red-gradient">
+            <span>前往 AiErrorLog 網站</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <!-- My100Ideas Card -->
+        <div class="masterpiece-card">
+          <div>
+            <div class="card-top-bar">
+              <div class="card-icon-wrap card-icon-gold">💡</div>
+              <div class="live-badge">
+                <span class="live-dot"></span>
+                <span>Live Site</span>
+              </div>
+            </div>
+
+            <h3 class="card-title">My100Ideas 靈感博物館</h3>
+            <p class="card-text">
+              「讓每一個想法，都留下它的人生。」點子檔案庫與靈感博物館，保存曾經想到、正在實現，以及因拖延而錯過的創意與故事，搭配 100 點子進度矩陣。
+            </p>
+
+            <div class="card-tags">
+              <span class="tag">#100Ideas矩陣</span>
+              <span class="tag">#對帳法</span>
+              <span class="tag">#老人電動車遠端</span>
+              <span class="tag">#靈感檔案庫</span>
+            </div>
+          </div>
+
+          <a href="https://stevebobobo.github.io/My100Ideas/" target="_blank" rel="noopener noreferrer" class="card-action-btn btn-amber-gradient">
+            <span>前往 My100Ideas 網站</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Skills Matrix -->
+    <section id="skills">
+      <div class="section-header">
+        <span class="section-tag">Core Competencies</span>
+        <h2 class="section-title">專業領域與技術棧</h2>
+        <p class="section-desc">橫跨嵌入式軟硬體整合、自動控制與企業級軟體架構。</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🛠️</div>
+          <h3 class="skill-name">Embedded System 嵌入式系統</h3>
+          <p class="skill-desc">微控制器韌體開發、即時作業系統 (RTOS)、硬體底層驅動與通訊協定整合。</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🖥️</div>
+          <h3 class="skill-name">Interface Design 介面設計</h3>
+          <p class="skill-desc">人機介面 (HMI) 開發、使用者體驗優化、現代化網頁與桌面端控制介面。</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h3 class="skill-name">Automatic Control 自動控制</h3>
+          <p class="skill-desc">工業自動化、運動控制系統、伺服馬達驅動與感測器訊號處理。</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <h3 class="skill-name">Program Language 程式語言</h3>
+          <p class="skill-desc">精通 C/C++、Java、ASP.NET、Python 與現代 JavaScript 前後端開發。</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3 class="skill-name">Database & ERP 系統架構</h3>
+          <p class="skill-desc">企業資源規劃 (ERP) 流程規劃、關聯式資料庫設計與高效能查詢優化。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs" style="margin-top: 80px;">
+      <div class="section-header">
+        <span class="section-tag">Credentials</span>
+        <h2 class="section-title">專業證照與資格</h2>
+      </div>
+
+      <div class="certs-grid">
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">ORACLE JAVA SE 程式設計師證照</div>
+        </div>
+
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">MCTS 微軟資料庫專業認證</div>
+        </div>
+
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">ACE 晶心高級工程師認證</div>
+        </div>
+
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">丙級硬體裝修證照</div>
+        </div>
+
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">乙級天車執照</div>
+        </div>
+
+        <div class="cert-pill">
+          <div class="cert-icon">📜</div>
+          <div class="cert-title">甲級作業主管資格</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy">
+      <div class="philosophy-box">
+        <p class="philosophy-quote">
+          「或許命運帶著我們走入了複雜的生命程式陣營。受到許多工程師先進的影響，想要讓自己思考能力變強、變得更有格局、更有邏輯，於是走上了這條寫程式的不歸路。<br><br>
+          我不是那種寫程式越寫越開心的天才，常常寫到頭昏眼花，常忘記自己寫過什麼，越是沒有天資的地方我能選擇的只有努力。一切都是苦功夫，一點一滴累積下來的經驗與運氣。<br><br>
+          一個人的力量有限，在此提供一些資源與大家一起分享，希望有機會能跟各位交流成長！」
+        </p>
+        <div class="philosophy-author">— 唐英傑 (Austin Tang) · 為何選擇寫程式這條路？</div>
+      </div>
+    </section>
+
+    <!-- Resources & Student Portfolios -->
+    <section id="resources">
+      <div class="section-header">
+        <span class="section-tag">Knowledge Hub</span>
+        <h2 class="section-title">教學與學生作品資源庫</h2>
+        <p class="section-desc">歷年來教學累積之學生成果作品集與個人程式備忘錄。</p>
+      </div>
+
+      <div class="resources-grid">
+        <!-- Student Portfolio Collection -->
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">
+              <span>🎓 同學們的作品集</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">展示學生在各階段課程的創意與實作產出：</p>
+            
+            <div class="resource-sublinks">
+              <a href="11024180c354863532831243243353537335336.html" class="sublink-item">▸ 110年 C語言程式設計</a>
+              <a href="11024180aspnet.html" class="sublink-item">▸ 110年 ASP.NET 網頁實作</a>
+              <a href="104ecommerce.html" class="sublink-item">▸ 106年 電子書專案</a>
+              <a href="104ecommerce-590659.html" class="sublink-item">▸ 104年 電子商務作品</a>
+              <a href="scratch.html" class="sublink-item">▸ SCRATCH 程式體驗</a>
+              <a href="skecthup.html" class="sublink-item">▸ SketchUp 3D建模</a>
+              <a href="21517292553506920316.html" class="sublink-item">▸ 名片設計製作</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Memos & Articles -->
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">
+              <span>📝 程式備忘錄與筆記</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">整理常用程式語法、範例與工程問題處理：</p>
+            
+            <div class="resource-sublinks">
+              <a href="3124324335206332453637636.html" class="sublink-item">▸ 進入程式備忘錄</a>
+              <a href="2403720316368892728420107.html" class="sublink-item">▸ 工作這檔事 (職涯經驗談)</a>
+              <a href="28608212373548637636.html" class="sublink-item">▸ 激勵語錄小品</a>
+              <a href="3836426044217762080829983.html" class="sublink-item">▸ 關於唐先生的故事</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool Recommendations -->
+        <div class="resource-card">
+          <div>
+            <div class="resource-title">
+              <span>🧰 實用工具推薦區</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">精心挑選之硬體、軟體與網站工具推薦：</p>
+            
+            <div class="resource-sublinks">
+              <a href="2290930828255123421421312.html" class="sublink-item">▸ 好硬推薦區 (硬體配備)</a>
+              <a href="2290936575255123421421312.html" class="sublink-item">▸ 好軟推薦區 (實用軟體)</a>
+              <a href="22909314492551234214.html" class="sublink-item">▸ 好站推薦區 (優質網站)</a>
+              <a href="24037208552551234214.html" class="sublink-item">▸ 工具推薦總覽</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" style="margin-top: 80px;">
+      <div class="contact-card">
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px;">保持交流與聯繫</h2>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">歡迎針對嵌入式系統開發、軟體專案合作或教學經驗進行交流！</p>
+
+        <div class="contact-links">
+          <a href="mailto:Yingjie-Tang@Hotmail.com" class="btn btn-secondary">
+            <span>📧 Email: Yingjie-Tang@Hotmail.com</span>
+          </a>
+          <a href="https://github.com/stevebobobo" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <span>🐙 GitHub: @stevebobobo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 唐英傑 Austin Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-dim);">自由軟體薈萃 · Powered by GitHub Pages</p>
     </div>
+  </footer>
 
-    <div class="footer-wrap">
-      <div class="container">
-        <div class="footer">
-
-<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></div>
-      </div><!-- end container -->
-    </div><!-- end footer-wrap -->
-  </div><!-- /.wrapper -->
-
-  <div id="navMobile" class="nav mobile-nav">
-    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-    <ul class="wsite-menu-default">
-    		<li id="active" class="wsite-menu-item-wrap">
-    			<a
-    						href="index.html"
-    				class="wsite-menu-item"
-    				>
-    				Home
-    			</a>
-    			
-    		</li>
-    		<li id="pg578688892453584983" class="wsite-menu-item-wrap">
-    			<a
-    						href="21516234162049730340203162169738598.html"
-    				class="wsite-menu-item"
-    				>
-    				同學們的作品集
-    			</a>
-    			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-826658736466131980"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180c354863532831243243353537335336.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;C&#35486;&#35328;&#31243;&#24335;&#35373;&#35336;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-225768607550831855"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180aspnet.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;ASP.NET
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-725777791694854770"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			106&#24180;&#38651;&#23376;&#26360;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-627041105534408128"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce-590659.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			104&#24180;&#38651;&#23376;&#21830;&#21209;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-500101051499873344"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="scratch.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			SCRATCH
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-998848036458342947"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="skecthup.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			Skecthup
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-586240549168411379"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="21517292553506920316.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#21517;&#29255;&#35069;&#20316;
-		</span>
-	</a>
-	
-</li>
-
-	</ul>
-</div>
-
-    		</li>
-    		<li id="pg779677151797262475" class="wsite-menu-item-wrap">
-    			<a
-    						href="3124324335206332453637636.html"
-    				class="wsite-menu-item"
-    				>
-    				程式備忘錄
-    			</a>
-    			
-    		</li>
-    		<li id="pg187307614580991560" class="wsite-menu-item-wrap">
-    			<a
-    						href="3836426044217762080829983.html"
-    				class="wsite-menu-item"
-    				>
-    				關於唐先生
-    			</a>
-    			
-    		</li>
-    		<li id="pg389701259554127448" class="wsite-menu-item-wrap">
-    			<a
-    						href="28608212373548637636.html"
-    				class="wsite-menu-item"
-    				>
-    				激勵語錄
-    			</a>
-    			
-    		</li>
-    		<li id="pg831431531717958248" class="wsite-menu-item-wrap">
-    			<a
-    						href="24037208552551234214.html"
-    				class="wsite-menu-item"
-    				>
-    				工具推薦
-    			</a>
-    			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-592817536305581899"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290930828255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#30828;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-836674342461745894"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290936575255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#36575;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-282132276887905643"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="22909314492551234214.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#31449;&#25512;&#34214;
-		</span>
-	</a>
-	
-</li>
-
-	</ul>
-</div>
-
-    		</li>
-    		<li id="pg920116728180717917" class="wsite-menu-item-wrap">
-    			<a
-    						href="203162169738598.html"
-    				class="wsite-menu-item"
-    				>
-    				作品集
-    			</a>
-    			
-    		</li>
-    		<li id="pg780988301805790510" class="wsite-menu-item-wrap">
-    			<a
-    						href="2403720316368892728420107.html"
-    				class="wsite-menu-item"
-    				>
-    				工作這檔事
-    			</a>
-    			
-    		</li>
-    </ul>
-  </div>
-
-  <script type="text/javascript" src="files/theme/plugins.js"></script>
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-    <div id="customer-accounts-app"></div>
-    <script src="cdn2.editmysite.com/js/site/main-customer-accounts-site.js"></script>
-
-		<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-7870337-1']);
-	_gaq.push(['_setDomainName', 'none']);
-	_gaq.push(['_setAllowLinker', true]);
-
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		// NOTE: keep the [1] if you replace this code. Otherwise cookie banner scripts won't be first on the page
-		var s = document.getElementsByTagName('script')[1]; s.parentNode.insertBefore(ga, s);
-	})();
-
-	_W.Analytics = _W.Analytics || {'trackers': {}};
-	_W.Analytics.trackers.wGA = '_gaq';
-</script>
-
-<script type="text/javascript" async=1>
-	// NOTE: keep the getElementsByTagName(o)**[1]** if you replace this code. Otherwise cookie banner scripts won't be first on the page
-	;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-			p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-			};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[1];n.async=1;
-			n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,'script','//cdn2.editmysite.com/js/wsnbn/snowday262.js','snowday'));
-
-	var r = [99, 104, 101, 99, 107, 111, 117, 116, 46, 40, 119, 101, 101, 98, 108, 121, 124, 101, 100, 105, 116, 109, 121, 115, 105, 116, 101, 41, 46, 99, 111, 109];
-	var snPlObR = function(arr) {
-		var s = '';
-		for (var i = 0 ; i < arr.length ; i++){
-			s = s + String.fromCharCode(arr[i]);
-		}
-		return s;
-	};
-	var s = snPlObR(r);
-
-	var regEx = new RegExp(s);
-
-	_W.Analytics = _W.Analytics || {'trackers': {}};
-	_W.Analytics.trackers.wSP = 'snowday';
-	_W.Analytics.user_id = '80395834';
-	_W.Analytics.site_id = '492471226876923722';
-
-
-	(function(app_id, ec_hostname, discover_root_domain) {
-		var track = window[_W.Analytics.trackers.wSP];
-		if (!track) return;
-		track('newTracker', app_id, ec_hostname, {
-			appId: app_id,
-			post: true,
-			platform: 'web',
-			discoverRootDomain: discover_root_domain,
-			cookieName: '_snow_',
-			contexts: {
-				webPage: true,
-				performanceTiming: true,
-				gaCookies: true
-			},
-			crossDomainLinker: function (linkElement) {
-				return regEx.test(linkElement.href);
-			},
-			respectDoNotTrack: true
-		});
-		track('trackPageView', _W.Analytics.user_id+':'+_W.Analytics.site_id, _W.Analytics.spContexts);
-		track('crossDomainLinker', function (linkElement) {
-			return regEx.test(linkElement.href);
-		});
-	})(
-		'_wn',
-		'ec.editmysite.com',
-		false
-	);
-</script>
-
-
-
-
-
-<script>
-	(function(jQuery) {
-		try {
-			if (jQuery) {
-				jQuery('div.blog-social div.fb-like').attr('class', 'blog-social-item blog-fb-like');
-				var $commentFrame = jQuery('#commentArea iframe');
-				if ($commentFrame.length > 0) {
-					var frameHeight = jQuery($commentFrame[0].contentWindow.document).height() + 50;
-					$commentFrame.css('min-height', frameHeight + 'px');
-				}
-				if (jQuery('.product-button').length > 0){
-					jQuery(document).ready(function(){
-						jQuery('.product-button').parent().each(function(index, product){
-							if(jQuery(product).attr('target') == 'paypal'){
-								if (!jQuery(product).find('> [name="bn"]').length){
-									jQuery('<input>').attr({
-										type: 'hidden',
-										name: 'bn',
-										value: 'DragAndDropBuil_SP_EC'
-									}).appendTo(product);
-								}
-							}
-						});
-					});
-				}
-			}
-			else {
-				// Prototype
-				$$('div.blog-social div.fb-like').each(function(div) {
-					div.className = 'blog-social-item blog-fb-like';
-				});
-				$$('#commentArea iframe').each(function(iframe) {
-					iframe.style.minHeight = '410px';
-				});
-			}
-		}
-		catch(ex) {}
-	})(window._W && _W.jQuery);
-</script>
-
-<script>
-	window._W.isEUUser = false;
-	window._W.showCookieToAll = "";
-</script>
-
-<script>
-	(function(jQuery) {
-		try {
-			function forceShowCcLinks() {
-				var ccLinks = document.querySelector('.cc_links');
-				if (!ccLinks) {
-					return;
-				}
-
-				var ccLinksVisible = jQuery(ccLinks).is(':visible');
-				if (ccLinksVisible) {
-					return;
-				}
-
-
-				ccLinks.style.display = 'block';
-
-				var ccParent = ccLinks.parentElement;
-
-				var ccParentVisible = jQuery(ccParent).is(':visible');
-				if (ccParentVisible) {
-					return;
-				}
-
-				ccParent.style.display = 'block';
-
-				var ccGrandparent = ccParent.parentElement;
-				var ccGrandparentVisible = jQuery(ccGrandparent).is(':visible');
-				if (ccGrandparentVisible) {
-					return;
-				}
-				ccGrandparent.style.display = 'block';
-
-			}
-
-			function forceShowCcLinksForever() {
-				var tenSeconds = 10000;
-				forceShowCcLinks();
-				setTimeout(forceShowCcLinksForever, tenSeconds);
-			}
-
-			jQuery(document).ready(forceShowCcLinksForever);
-		}
-		catch(ex) {}
-	})(window._W && _W.jQuery);
-</script>
-
-
-	</body>
+</body>
 </html>
