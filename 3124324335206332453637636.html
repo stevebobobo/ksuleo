@@ -1,916 +1,437 @@
 <!DOCTYPE html>
-<html lang="zh">
-	<head>
-		<title>&#31243;&#24335;&#20633;&#24536;&#37636; - &#33258;&#30001;&#36575;&#39636;&#33836;&#27506;</title><meta property="og:site_name" content="&#33258;&#30001;&#36575;&#39636;&#33836;&#27506;" />
-<meta property="og:title" content="&#31243;&#24335;&#20633;&#24536;&#37636;" />
-<meta property="og:description" content="​只要用select語法中的Select Distinct * From myTable Where xxxx就不會有重覆的Record. // Linq模糊查詢 IEnumerable&lt;DataGridViewRow&gt; enumerableList =..." />
-<meta property="og:image" content="https://cdn2.editmysite.com/images/site/footer/og-image-placeholder-blank.png" />
-<meta property="og:url" content="3124324335206332453637636.html" />
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>程式備忘錄與語法速查 | Austin Tang</title>
+  <meta name="description" content="C# LINQ 語法速查、List 排序、條件篩選與 Async 非同步開發備忘錄。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/sites.css" />
-<link rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/old/fancybox.css" />
-<link rel="stylesheet" type="text/css" href="cdn2.editmysite.com/css/social-icons.css" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css" title="wsite-theme-css" />
-<link href='cdn2.editmysite.com/fonts/Montserrat/font.css' rel='stylesheet' type='text/css' />
-
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Droid_Serif/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Droid_Serif/font.css' rel='stylesheet' type='text/css' />
-<link href='cdn2.editmysite.com/fonts/Roboto/font.css' rel='stylesheet' type='text/css' />
-<style type='text/css'>
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Roboto" !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {color:#626262 !important;}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-family:"Droid Serif" !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {color:#2a2a2a !important;}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{font-family:"Roboto" !important;font-weight:700 !important;}
-#wsite-title {font-family:"Roboto" !important;color:#2a2a2a !important;text-transform:  uppercase !important;}
-.wsite-menu-default a {font-family:"Roboto" !important;font-weight:700 !important;}
-.wsite-menu a {font-family:"Roboto" !important;}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-family:"Droid Serif" !important;color:#2a2a2a !important;letter-spacing: 0px !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {font-family:"Roboto" !important;font-weight:700 !important;}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-size:16px !important;line-height:23px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:42px !important;line-height:54px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{font-size:10px !important;}
-#wsite-title {font-size:16px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-size:65px !important;line-height:70px !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}</style>
-
-		<script src='files/templateArtifacts.js'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn2.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
-
-<script type="text/javascript" src="//cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
-<script src="cdn2.editmysite.com/js/site/main.js"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='ksuleo.weebly.com'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "TW";
-			_W.storeCurrency = "USD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "492471226876923722";
-			com_userID = "80395834";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="//cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1719603132&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	
-	
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"718338965729140747","title":"Home","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"578688892453584983","title":"&#21516;&#23416;&#20497;&#30340;&#20316;&#21697;&#38598;","url":"21516234162049730340203162169738598.html","target":"","nav_menu":false,"nonclickable":false},{"id":"779677151797262475","title":"&#31243;&#24335;&#20633;&#24536;&#37636;","url":"3124324335206332453637636.html","target":"","nav_menu":false,"nonclickable":false},{"id":"187307614580991560","title":"&#38364;&#26044;&#21776;&#20808;&#29983;","url":"3836426044217762080829983.html","target":"","nav_menu":false,"nonclickable":false},{"id":"389701259554127448","title":"&#28608;&#21237;&#35486;&#37636;","url":"28608212373548637636.html","target":"","nav_menu":false,"nonclickable":false},{"id":"831431531717958248","title":"&#24037;&#20855;&#25512;&#34214;","url":"24037208552551234214.html","target":"","nav_menu":false,"nonclickable":false},{"id":"920116728180717917","title":"&#20316;&#21697;&#38598;","url":"203162169738598.html","target":"","nav_menu":false,"nonclickable":false},{"id":"780988301805790510","title":"&#24037;&#20316;&#36889;&#27284;&#20107;","url":"2403720316368892728420107.html","target":"","nav_menu":false,"nonclickable":false}],
-			"779677151797262475",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
-		
-		
-	<style>
-.code-block {
-	background: #1e1e2e;
-	color: #d4d4d4;
-	font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
-	font-size: 14px;
-	line-height: 1.6;
-	padding: 18px 22px;
-	border-radius: 8px;
-	overflow-x: auto;
-	white-space: pre;
-	margin: 14px 0 24px 0;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  <style>
+    
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-hover: #f1f5f9;
+  --border-light: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-blue: #2563eb;
+  --accent-blue-hover: #1d4ed8;
+  --accent-blue-light: #eff6ff;
+  --accent-emerald: #059669;
+  --accent-emerald-light: #ecfdf5;
+  --accent-amber: #d97706;
+  --accent-amber-light: #fffbeb;
+  --accent-purple: #7c3aed;
+  --accent-purple-light: #f5f3ff;
+  --accent-rose: #e11d48;
+  --accent-rose-light: #fff1f2;
+  
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
 }
-.code-block code {
-	font-family: inherit;
-	background: none;
-	color: inherit;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
-</style>
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.brand-avatar-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.brand-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-back-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  margin-top: 60px;
+}
+
+    
+    .search-box {
+      margin-top: 24px;
+      position: relative;
+      max-width: 480px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .section-label {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 40px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .snippet-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .snippet-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .code-box {
+      background: #0f172a;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      margin-top: 12px;
+    }
+    .code-bar {
+      background: #1e293b;
+      padding: 8px 16px;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    pre {
+      padding: 16px;
+      overflow-x: auto;
+      color: #e2e8f0;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .feature-card {
+      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-top: 36px;
+    }
+  </style>
 </head>
-	<body class="header-page  wsite-page-3124324335206332453637636  full-width-body-off header-overlay-on alt-nav-off  wsite-theme-light"><div class="wrapper">
-    <div class="birdseye-header">
-      <div class="nav-wrap">
-        <div class="container">
-          <div class="logo"><span class="wsite-logo">
+<body>
 
-	<a href="index.html">
-	
-	<span id="wsite-title">&#33258;&#30001;&#36575;&#39636;&#33836;&#27506;</span>
-	
-	</a>
-
-</span></div>
-          <div class="nav desktop-nav"><ul class="wsite-menu-default">
-		<li id="pg718338965729140747" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				Home
-			</a>
-			
-		</li>
-		<li id="pg578688892453584983" class="wsite-menu-item-wrap">
-			<a
-						href="21516234162049730340203162169738598.html"
-				class="wsite-menu-item"
-				>
-				同學們的作品集
-			</a>
-			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-826658736466131980"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180c354863532831243243353537335336.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;C&#35486;&#35328;&#31243;&#24335;&#35373;&#35336;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-225768607550831855"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180aspnet.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;ASP.NET
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-725777791694854770"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			106&#24180;&#38651;&#23376;&#26360;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-627041105534408128"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce-590659.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			104&#24180;&#38651;&#23376;&#21830;&#21209;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-500101051499873344"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="scratch.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			SCRATCH
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-998848036458342947"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="skecthup.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			Skecthup
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-586240549168411379"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="21517292553506920316.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#21517;&#29255;&#35069;&#20316;
-		</span>
-	</a>
-	
-</li>
-
-	</ul>
-</div>
-
-		</li>
-		<li id="active" class="wsite-menu-item-wrap">
-			<a
-						href="3124324335206332453637636.html"
-				class="wsite-menu-item"
-				>
-				程式備忘錄
-			</a>
-			
-		</li>
-		<li id="pg187307614580991560" class="wsite-menu-item-wrap">
-			<a
-						href="3836426044217762080829983.html"
-				class="wsite-menu-item"
-				>
-				關於唐先生
-			</a>
-			
-		</li>
-		<li id="pg389701259554127448" class="wsite-menu-item-wrap">
-			<a
-						href="28608212373548637636.html"
-				class="wsite-menu-item"
-				>
-				激勵語錄
-			</a>
-			
-		</li>
-		<li id="pg831431531717958248" class="wsite-menu-item-wrap">
-			<a
-						href="24037208552551234214.html"
-				class="wsite-menu-item"
-				>
-				工具推薦
-			</a>
-			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-592817536305581899"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290930828255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#30828;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-836674342461745894"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290936575255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#36575;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-282132276887905643"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="22909314492551234214.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#31449;&#25512;&#34214;
-		</span>
-	</a>
-	
-</li>
-
-	</ul>
-</div>
-
-		</li>
-		<li id="pg920116728180717917" class="wsite-menu-item-wrap">
-			<a
-						href="203162169738598.html"
-				class="wsite-menu-item"
-				>
-				作品集
-			</a>
-			
-		</li>
-		<li id="pg780988301805790510" class="wsite-menu-item-wrap">
-			<a
-						href="2403720316368892728420107.html"
-				class="wsite-menu-item"
-				>
-				工作這檔事
-			</a>
-			
-		</li>
-</ul>
-</div>
-          <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Austin Tang Avatar">
         </div>
+        <span>Austin Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-blue-light); color: var(--accent-blue); border: 1px solid rgba(37, 99, 235, 0.2);">
+        📝 Developer CheatSheet
+      </div>
+      <h1 class="hero-title">程式備忘錄與語法速查</h1>
+      <p class="hero-desc">
+        彙整 C# 軟體與嵌入式系統開發中常用的 LINQ 高效查詢、List 排序演算法、條件判斷與 Async 非同步開發心法。
+      </p>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="搜尋語法 (例如: Distinct, OrderBy, Async)..." onkeyup="filterCards()">
       </div>
     </div>
+  </section>
 
-    <div class="banner-wrap">
-      <div class="wsite-elements wsite-not-footer wsite-header-elements">
-	<div class="wsite-section-wrap">
-	<div  class="wsite-section wsite-header-section wsite-section-bg-image" style="background-image: url(&quot;uploads/8/0/3/9/80395834/background-images/391317221.jpg&quot;) ;background-repeat: no-repeat ;background-position: 50% 50% ;background-size: 100% ;background-color: transparent ;background-size: cover;" >
-		<div class="wsite-section-content">
-			
-          <div class="container">
-            <div class="banner">
-				<div class="wsite-section-elements">
-					<h2 class="wsite-content-title"><font color="#ffffff" style="text-shadow: 0 2px 6px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6);">LINQ &#35486;&#27861;&#20633;&#24536;&#37636;</font></h2>
-				</div>
-			</div>
-          </div>
-      
-		</div>
-		<div class=""></div>
-	</div>
-</div>
+  <main class="container">
+    
+    <h2 class="section-label">⚡ 1. LINQ 高效查詢與剔除重複 (Distinct)</h2>
 
-</div>
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">剔除重複資料 (LINQ Distinct & DataGridView)</h3>
+        <div>
+          <span class="tag">#LINQ</span>
+          <span class="tag">#Distinct</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">利用 LINQ 與 DataGridView 資料集進行關鍵字模糊搜尋以及剔除指定欄位重複值的語法。</p>
+      <div class="code-box">
+        <div class="code-bar">C# / LINQ</div>
+        <pre><code>// 1. SQL 剔除重複記錄
+// Select Distinct * From myTable Where xxxx
 
-    </div>
-
-    <div class="main-wrap">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-23"  >
-		<div class="wsite-section-content">
-          <div class="container">
-			<div class="wsite-section-elements">
-				<h2 class="wsite-content-title"><span style="color:rgb(98, 98, 98)">&#21076;&#38500;&#37325;&#35079;&#20803;&#32032;Distinct&nbsp;</span>&#8203;</h2>
-
-<div class="paragraph"><pre class="code-block"><code>&#21482;&#35201;&#29992;select&#35486;&#27861;&#20013;&#30340;Select Distinct * From myTable Where xxxx&#23601;&#19981;&#26371;&#26377;&#37325;&#35206;&#30340;Record.
-// Linq&#27169;&#31946;&#26597;&#35426;
+// 2. DataGridView 模糊查詢
 IEnumerable&lt;DataGridViewRow&gt; enumerableList = this.dataGridView.Rows.Cast&lt;DataGridViewRow&gt;();  
 List&lt;DataGridViewRow&gt; list = (from item in enumerableList  
   where item.Cells[0].Value.ToString().IndexOf(this.KeyWord.Text) &gt;= 0  
   select item).ToList();  
   
-//&#21076;&#38500;FirstName&#27396;&#20301;&#20013;&#26377;&#37325;&#35079;&#30340;&#36039;&#26009;
+// 3. 剔除 FirstName 欄位中有重複的資料
 var result = (from p in db.t_Personnel
-                  select p.FirstName).Distinct();
+              select p.FirstName).Distinct();
 
-//Return a List of distinct values from DataGridView<span> </span>  
-var vv = dataGridView1.Rows.Cast&lt;DataGridViewRow&gt;()
-   .Where(x =&gt; !x.IsNewRow)                   // either..
-   .Where(x =&gt; x.Cells[column].Value != null) //..or or both
+// 4. 從 DataGridView 取得不重複的欄位值 List
+var distinctList = dataGridView1.Rows.Cast&lt;DataGridViewRow&gt;()
+   .Where(x =&gt; !x.IsNewRow)
+   .Where(x =&gt; x.Cells[column].Value != null)
    .Select(x =&gt; x.Cells[column].Value.ToString())
    .Distinct()
-   .ToList();
-
-//&#25628;&#23563;&#37325;&#35079;&#21443;&#25976;//////////////////////////////////////////////////////////////
-listNodeMatched = NodeList.FindAll(x =&gt; x.Header.ToString().ToUpper().Contains(DeviceSeachBox1.Text.ToUpper()));//&#23559;&#25214;&#21040;&#30340;&#32080;&#26524;&#20132;&#32102;&#26032;&#30340;LIST
-
-//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;
-//&#26377;&#37679;&#35492;--&gt;var LastRungButtonDev = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).OrderBy(x =&gt; x.Bounds.Height + x.Location.Y).Max();
-
-//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#24231;&#27161;
-var offset = _plotlist.Where(x =&gt; x.RungID == cnt.ToString()).ToList&lt;Plot&gt;().Max(x =&gt; x.Bounds.Height + x.Location.Y);
-
-//&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;
-var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();
-
-//&#25214;&#20986;LIST&#20013;&#31526;&#21512;&#26781;&#20214;&#30340;&#25104;&#21729;&#22312;LIST&#20013;&#30340;INDEX&#32232;&#34399;
-var index = EditProject.POUList.FindIndex(X =&gt; X.POUName == sectionName &amp;&amp; X.POUType == sectionType); 
-//&#34389;&#29702;&#26368;&#24460;&#19968;&#25903;&#33139;&#20197;&#22806;&#30340;&#31227;&#38500;&#25152;&#29986;&#29983;&#30340;&#30340;&#20559;&#31227;reassignment of inputs when shifting inputs
-var modepin = source[0].Module.Outputs[source[0].Pin].Link.Targets.Find(module =&gt;module.Module ==this &amp;&amp;module.Pin == input);
-//&#29992;&#36664;&#20837;&#33139;&#25214;&#36664;&#20986;&#33139;
-var module = input.Link[0].Module.Outputs[1].Link.Targets.FirstOrDefault(tar =&gt; tar.Module == plt);
-//&#25214;&#20986;ParentNode(POU)&#30340;&#35722;&#25976;&#27396;&#20839;&#26377;&#21628;&#21483;seachSource(POU&#21015;&#34920;)&#20013;&#30340;&#35722;&#25976;&#21517;&#31281;
-var ChildrenName = ParentNode.genelParas.Where(x =&gt; seachSource.Any(b =&gt; b.POUName.ToUpper() == x.Type.ToUpper())).Select(y =&gt; y.Name).ToList();
-//&#25214;&#20986;seachSource(POU&#21015;&#34920;)&#20013;&#26377;&#34987;ParentNode(POU)&#21628;&#21483;&#30340;&#25104;&#21729;(POU)
-            var ChildrenName = seachSource.Where(x =&gt; ParentNode.genelParas.Any(b =&gt; b.Type.ToUpper() == x.POUName.ToUpper())).ToList();
-
-//&#25214;&#20986;&#21508;POU&#20013;&#21517;&#31281;&#28858;a1&#30340;&#35722;&#25976;
-var aa= EditProject.POUList.Select(x =&gt; x.genelParas.Where(y =&gt; y.Name == "a1").FirstOrDefault()).ToList()
-//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU
-var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();</code></pre></div>
-
-<h2 class="wsite-content-title">&#25490;&#24207;</h2>
-
-<div class="paragraph"><pre class="code-block"><code><span style="color:rgb(98, 98, 98)">//LIST&#25490;&#24207;//////////////////////////////////////////</span>
-<span style="color:rgb(98, 98, 98)">var list = new List&lt;Plot&gt;();</span>
-<span style="color:rgb(98, 98, 98)">var query = from module in list//LINQ &#35486;&#27861;</span>
-<span style="color:rgb(98, 98, 98)">                        orderby module.OrderNum</span>
-<span style="color:rgb(98, 98, 98)">                        select module;</span>
-<span style="color:rgb(98, 98, 98)">_plotlist.Clear();</span>
-<span style="color:rgb(98, 98, 98)">_plotlist.AddRange(query);</span>
-
-<span style="color:rgb(98, 98, 98)">//////////////////////////////////////</span>
-<span style="color:rgb(98, 98, 98)">//PopupMenut&#37325;&#26032;&#25490;&#24207;</span>
-<span style="color:rgb(98, 98, 98)">                        PopupMenu.Items.SortDescriptions.Clear();</span>
-<span style="color:rgb(98, 98, 98)">                        PopupMenu.Items.SortDescriptions.Add(</span>
-<span style="color:rgb(98, 98, 98)">                new System.ComponentModel.SortDescription("Name",</span>
-<span style="color:rgb(98, 98, 98)">                    System.ComponentModel.ListSortDirection.Descending));
-
-/</span>/ORDERBY&#25490;&#24207;(&#25214;&#21040;RUNG&#20013;&#20803;&#20214;&#24213;&#37096;&#20301;&#26044;&#26368;&#24213;&#37096;&#30340;&#20803;&#20214;)
-var CurrHeightestDev = _plotlist.Where(x =&gt; x.RungID == RungID).OrderByDescending(x =&gt; x.Location.Y + x.Bounds.Height).Max();
-/***************************************************************************/<span> </span>
- //&#20197;&#20803;&#20214;&#24231;&#27161;&#37325;&#25490;LIST                      
- /***************************************************************************/
-var CurrentDevlist = CurrPOU.PGplotlist.OrderBy(x =&gt; x.Location.Y).ThenBy(x =&gt; x.Location.X).ToList&lt;Plot&gt;();<span> 
-</span>//List&lt;String&gt;&#25353;&#23383;&#27597;&#25490;&#21015;1
-/***************************************************************************/<span> </span>
-Displayparaments.Sort((x, y) =&gt; x.CompareTo(y));
-EditProject.POUList.Sort((x, y) =&gt; x.POUName.CompareTo(y.POUName));//POU&#31680;&#40670;&#25353;&#23383;&#27597;&#25490;&#24207;
-/***************************************************************************/
-//List&lt;String&gt;&#25353;&#26178;&#38291;&#25490;&#21015;
-/***************************************************************************/<span> </span>
-StrList.Sort((x, y) =&gt; DateTime.Compare(Convert.ToDateTime(x.Value), Convert.ToDateTime(y.Value)));
-/***************************************************************************/
-//Sourcelist&#25353;CompStr&#20986;&#29694;&#30340;&#20301;&#32622;&#25490;&#24207;
-/***************************************************************************/<span> </span>
-Sourcelist.Where(x =&gt; x.ToUpper().IndexOf(CompStr)&gt;=0).OrderBy(x=&gt;x.ToUpper().IndexOf(CompStr)).ToList();  <span></span></code></pre></div>
-
-<h2 class="wsite-content-title">&#29992;select &#21462;&#20986;&#22810;&#20491;&#23660;&#24615;</h2>
-
-<div class="paragraph"><pre class="code-block"><code>var query = (from plt in _plotlist select new { plt.Name, plt.Location.X, plt.Location.Y }).ToList();
-//&#25214;&#20986;&#21547;&#26377;&#35722;&#25976;&#21517;&#28858;a1&#30340;POU
-var AAA = EditProject.POUList.Where(x =&gt; x.genelParas.Select(y=&gt;y.Name=="a1").FirstOrDefault()).FirstOrDefault();</code></pre></div>
-
-<h2 class="wsite-content-title"><a href="https://blog.opasschang.com/understand-csharp-asyn/" target="_blank">&#27491;&#30906;&#29702;&#35299; C# Async &#33287;&#38750;&#21516;&#27493;</a></h2>
-
-<div class="paragraph"><font style="color:rgb(98, 98, 98)">&#24341;&#29992;&#33258;<a href="https://blog.opasschang.com/">&nbsp;Life</a><a href="https://blog.opasschang.com/">Opass Life</a><br />&#23566;&#27491;&#20102;&#19981;&#23569;&#38750;&#21516;&#27493;&#21644;&#22810;&#22519;&#34892;&#32210;&#35264;&#24565;&#65292;&#20540;&#24471;&#23416;&#32722;</font><span style="color:rgb(98, 98, 98)">.</span></div>
-			</div>
-		</div>
+   .ToList();</code></pre>
       </div>
-
-	</div>
-</div>
-
-</div>
-
     </div>
 
-    <div class="footer-wrap">
-        <div class="footer">
+    <h2 class="section-label">📊 2. List 排序與多條件排序 (OrderBy / Sort)</h2>
 
-</div>
-    </div><!-- end footer-wrap -->
-  </div><!-- /.wrapper -->
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">多條件座標排序與字母/時間排序</h3>
+        <div>
+          <span class="tag">#OrderBy</span>
+          <span class="tag">#CompareTo</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">包含繪圖物件座標 OrderBy / ThenBy 雙重排序、字串字母 CompareTo 排序與 DateTime 時間排序。</p>
+      <div class="code-box">
+        <div class="code-bar">C# OrderBy & Sort</div>
+        <pre><code>// 1. LINQ 條件排序與 AddRange
+var query = from module in list
+            orderby module.OrderNum
+            select module;
+_plotlist.Clear();
+_plotlist.AddRange(query);
 
-  <div id="navMobile" class="nav mobile-nav">
-    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-    <ul class="wsite-menu-default">
-    		<li id="pg718338965729140747" class="wsite-menu-item-wrap">
-    			<a
-    						href="index.html"
-    				class="wsite-menu-item"
-    				>
-    				Home
-    			</a>
-    			
-    		</li>
-    		<li id="pg578688892453584983" class="wsite-menu-item-wrap">
-    			<a
-    						href="21516234162049730340203162169738598.html"
-    				class="wsite-menu-item"
-    				>
-    				同學們的作品集
-    			</a>
-    			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-826658736466131980"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180c354863532831243243353537335336.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;C&#35486;&#35328;&#31243;&#24335;&#35373;&#35336;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-225768607550831855"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="11024180aspnet.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			110&#24180;ASP.NET
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-725777791694854770"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			106&#24180;&#38651;&#23376;&#26360;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-627041105534408128"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="104ecommerce-590659.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			104&#24180;&#38651;&#23376;&#21830;&#21209;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-500101051499873344"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="scratch.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			SCRATCH
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-998848036458342947"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="skecthup.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			Skecthup
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-586240549168411379"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="21517292553506920316.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#21517;&#29255;&#35069;&#20316;
-		</span>
-	</a>
-	
-</li>
+// 2. 雙重條件座標排序 (以 Y 座標主排序，X 座標次排序)
+var CurrentDevlist = CurrPOU.PGplotlist
+    .OrderBy(x =&gt; x.Location.Y)
+    .ThenBy(x =&gt; x.Location.X)
+    .ToList&lt;Plot&gt;();
 
-	</ul>
-</div>
+// 3. List&lt;String&gt; 按字母排列
+Displayparaments.Sort((x, y) =&gt; x.CompareTo(y));
+EditProject.POUList.Sort((x, y) =&gt; x.POUName.CompareTo(y.POUName));
 
-    		</li>
-    		<li id="active" class="wsite-menu-item-wrap">
-    			<a
-    						href="3124324335206332453637636.html"
-    				class="wsite-menu-item"
-    				>
-    				程式備忘錄
-    			</a>
-    			
-    		</li>
-    		<li id="pg187307614580991560" class="wsite-menu-item-wrap">
-    			<a
-    						href="3836426044217762080829983.html"
-    				class="wsite-menu-item"
-    				>
-    				關於唐先生
-    			</a>
-    			
-    		</li>
-    		<li id="pg389701259554127448" class="wsite-menu-item-wrap">
-    			<a
-    						href="28608212373548637636.html"
-    				class="wsite-menu-item"
-    				>
-    				激勵語錄
-    			</a>
-    			
-    		</li>
-    		<li id="pg831431531717958248" class="wsite-menu-item-wrap">
-    			<a
-    						href="24037208552551234214.html"
-    				class="wsite-menu-item"
-    				>
-    				工具推薦
-    			</a>
-    			<div class="wsite-menu-wrap" style="display:none">
-	<ul class="wsite-menu">
-		<li id="wsite-nav-592817536305581899"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290930828255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#30828;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-836674342461745894"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="2290936575255123421421312.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#36575;&#25512;&#34214;&#21312;
-		</span>
-	</a>
-	
-</li>
-<li id="wsite-nav-282132276887905643"
-	class="wsite-menu-subitem-wrap "
-	>
-	<a
-				href="22909314492551234214.html"
-		class="wsite-menu-subitem"
-		>
-		<span class="wsite-menu-title">
-			&#22909;&#31449;&#25512;&#34214;
-		</span>
-	</a>
-	
-</li>
+// 4. List 按時間 DateTime 排列
+StrList.Sort((x, y) =&gt; DateTime.Compare(Convert.ToDateTime(x.Value), Convert.ToDateTime(y.Value)));
 
-	</ul>
-</div>
+// 5. Sourcelist 按關鍵字出現位置排序
+Sourcelist.Where(x =&gt; x.ToUpper().IndexOf(CompStr) &gt;= 0)
+          .OrderBy(x =&gt; x.ToUpper().IndexOf(CompStr))
+          .ToList();</code></pre>
+      </div>
+    </div>
 
-    		</li>
-    		<li id="pg920116728180717917" class="wsite-menu-item-wrap">
-    			<a
-    						href="203162169738598.html"
-    				class="wsite-menu-item"
-    				>
-    				作品集
-    			</a>
-    			
-    		</li>
-    		<li id="pg780988301805790510" class="wsite-menu-item-wrap">
-    			<a
-    						href="2403720316368892728420107.html"
-    				class="wsite-menu-item"
-    				>
-    				工作這檔事
-    			</a>
-    			
-    		</li>
-    </ul>
-  </div>
+    <h2 class="section-label">🔍 3. 複雜物件條件搜尋與極值尋找</h2>
 
-	<script type="text/javascript" src="files/theme/plugins.js"></script>
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-    <div id="customer-accounts-app"></div>
-    <script src="cdn2.editmysite.com/js/site/main-customer-accounts-site.js"></script>
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">最極值座標與 FindIndex 多重條件</h3>
+        <div>
+          <span class="tag">#FindIndex</span>
+          <span class="tag">#Max</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">搜尋指定元件底部座標最下方之元件，以及多重選取 FindIndex 與 FindAll 工具。</p>
+      <div class="code-box">
+        <div class="code-bar">C# Advanced LINQ</div>
+        <pre><code>// 1. 搜尋符合條件之元件交給新 List
+listNodeMatched = NodeList.FindAll(x =&gt; x.Header.ToString().ToUpper().Contains(DeviceSeachBox1.Text.ToUpper()));
 
-		<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-7870337-1']);
-	_gaq.push(['_setDomainName', 'none']);
-	_gaq.push(['_setAllowLinker', true]);
+// 2. 找到 RUNG 中最底部元件之 Y 軸最大座標
+var offset = _plotlist.Where(x =&gt; x.RungID == cnt.ToString())
+                      .ToList&lt;Plot&gt;()
+                      .Max(x =&gt; x.Bounds.Height + x.Location.Y);
 
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		// NOTE: keep the [1] if you replace this code. Otherwise cookie banner scripts won't be first on the page
-		var s = document.getElementsByTagName('script')[1]; s.parentNode.insertBefore(ga, s);
-	})();
+// 3. 找出符合條件成員在 List 中的 Index 編號
+var index = EditProject.POUList.FindIndex(x =&gt; x.POUName == sectionName && x.POUType == sectionType);
 
-	_W.Analytics = _W.Analytics || {'trackers': {}};
-	_W.Analytics.trackers.wGA = '_gaq';
-</script>
+// 4. Select 取出多個匿名屬性組合
+var query = (from plt in _plotlist select new { plt.Name, plt.Location.X, plt.Location.Y }).ToList();</code></pre>
+      </div>
+    </div>
 
-<script type="text/javascript" async=1>
-	// NOTE: keep the getElementsByTagName(o)**[1]** if you replace this code. Otherwise cookie banner scripts won't be first on the page
-	;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-			p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-			};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[1];n.async=1;
-			n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,'script','//cdn2.editmysite.com/js/wsnbn/snowday262.js','snowday'));
+    <div class="feature-card searchable">
+      <h3 style="color: #1e40af; font-size: 1.2rem; margin-bottom: 8px;">💡 正確理解 C# Async 與非同步觀念</h3>
+      <p style="color: #334155; line-height: 1.7;">
+        引用自 <strong>Life / Opass Life</strong> 觀念導正：<br>
+        非同步 (Asynchronous) 不等於多執行緒 (Multithreading)。Async / Await 的本質是「讓出執行緒資源等待 I/O 完成」，而非盲目開啟多執行緒。正確區分 CPU-bound 與 I/O-bound 才能真正優化 UI 回應速度並避免 Thread Pool 枯竭。
+      </p>
+    </div>
 
-	var r = [99, 104, 101, 99, 107, 111, 117, 116, 46, 40, 119, 101, 101, 98, 108, 121, 124, 101, 100, 105, 116, 109, 121, 115, 105, 116, 101, 41, 46, 99, 111, 109];
-	var snPlObR = function(arr) {
-		var s = '';
-		for (var i = 0 ; i < arr.length ; i++){
-			s = s + String.fromCharCode(arr[i]);
-		}
-		return s;
-	};
-	var s = snPlObR(r);
+  </main>
 
-	var regEx = new RegExp(s);
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Austin Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
 
-	_W.Analytics = _W.Analytics || {'trackers': {}};
-	_W.Analytics.trackers.wSP = 'snowday';
-	_W.Analytics.user_id = '80395834';
-	_W.Analytics.site_id = '492471226876923722';
+  <script>
+    function filterCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.searchable');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+  </script>
 
-
-	(function(app_id, ec_hostname, discover_root_domain) {
-		var track = window[_W.Analytics.trackers.wSP];
-		if (!track) return;
-		track('newTracker', app_id, ec_hostname, {
-			appId: app_id,
-			post: true,
-			platform: 'web',
-			discoverRootDomain: discover_root_domain,
-			cookieName: '_snow_',
-			contexts: {
-				webPage: true,
-				performanceTiming: true,
-				gaCookies: true
-			},
-			crossDomainLinker: function (linkElement) {
-				return regEx.test(linkElement.href);
-			},
-			respectDoNotTrack: true
-		});
-		track('trackPageView', _W.Analytics.user_id+':'+_W.Analytics.site_id, _W.Analytics.spContexts);
-		track('crossDomainLinker', function (linkElement) {
-			return regEx.test(linkElement.href);
-		});
-	})(
-		'_wn',
-		'ec.editmysite.com',
-		false
-	);
-</script>
-
-
-
-
-
-<script>
-	(function(jQuery) {
-		try {
-			if (jQuery) {
-				jQuery('div.blog-social div.fb-like').attr('class', 'blog-social-item blog-fb-like');
-				var $commentFrame = jQuery('#commentArea iframe');
-				if ($commentFrame.length > 0) {
-					var frameHeight = jQuery($commentFrame[0].contentWindow.document).height() + 50;
-					$commentFrame.css('min-height', frameHeight + 'px');
-				}
-				if (jQuery('.product-button').length > 0){
-					jQuery(document).ready(function(){
-						jQuery('.product-button').parent().each(function(index, product){
-							if(jQuery(product).attr('target') == 'paypal'){
-								if (!jQuery(product).find('> [name="bn"]').length){
-									jQuery('<input>').attr({
-										type: 'hidden',
-										name: 'bn',
-										value: 'DragAndDropBuil_SP_EC'
-									}).appendTo(product);
-								}
-							}
-						});
-					});
-				}
-			}
-			else {
-				// Prototype
-				$$('div.blog-social div.fb-like').each(function(div) {
-					div.className = 'blog-social-item blog-fb-like';
-				});
-				$$('#commentArea iframe').each(function(iframe) {
-					iframe.style.minHeight = '410px';
-				});
-			}
-		}
-		catch(ex) {}
-	})(window._W && _W.jQuery);
-</script>
-
-<script>
-	window._W.isEUUser = false;
-	window._W.showCookieToAll = "";
-</script>
-
-<script>
-	(function(jQuery) {
-		try {
-			function forceShowCcLinks() {
-				var ccLinks = document.querySelector('.cc_links');
-				if (!ccLinks) {
-					return;
-				}
-
-				var ccLinksVisible = jQuery(ccLinks).is(':visible');
-				if (ccLinksVisible) {
-					return;
-				}
-
-
-				ccLinks.style.display = 'block';
-
-				var ccParent = ccLinks.parentElement;
-
-				var ccParentVisible = jQuery(ccParent).is(':visible');
-				if (ccParentVisible) {
-					return;
-				}
-
-				ccParent.style.display = 'block';
-
-				var ccGrandparent = ccParent.parentElement;
-				var ccGrandparentVisible = jQuery(ccGrandparent).is(':visible');
-				if (ccGrandparentVisible) {
-					return;
-				}
-				ccGrandparent.style.display = 'block';
-
-			}
-
-			function forceShowCcLinksForever() {
-				var tenSeconds = 10000;
-				forceShowCcLinks();
-				setTimeout(forceShowCcLinksForever, tenSeconds);
-			}
-
-			jQuery(document).ready(forceShowCcLinksForever);
-		}
-		catch(ex) {}
-	})(window._W && _W.jQuery);
-</script>
-
-
-	</body>
+</body>
 </html>
