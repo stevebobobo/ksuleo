@@ -1105,8 +1105,9 @@
     const ACCESS_PASSWORD = '1234';
 
     function openProtectedLink(url, targetName) {
-      // 檢查 Session / LocalStorage 是否已解鎖過
-      if (localStorage.getItem('ksuleo_unlocked') === 'true') {
+      // 依專案獨立檢查 Session 解鎖狀態 (AiErrorLog 與 My100Ideas 獨立驗證)
+      const projectKey = 'unlocked_' + url.replace(/[^a-zA-Z0-9]/g, '');
+      if (sessionStorage.getItem(projectKey) === 'true') {
         window.open(url, '_blank');
         return;
       }
@@ -1126,7 +1127,8 @@
       const errMsg = document.getElementById('modalErrMsg');
 
       if (inputPass === ACCESS_PASSWORD) {
-        localStorage.setItem('ksuleo_unlocked', 'true');
+        const projectKey = 'unlocked_' + currentProtectedUrl.replace(/[^a-zA-Z0-9]/g, '');
+        sessionStorage.setItem(projectKey, 'true');
         closePasswordModal();
         window.open(currentProtectedUrl, '_blank');
       } else {
