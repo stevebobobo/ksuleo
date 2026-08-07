@@ -653,7 +653,154 @@
       }
     }
   </style>
+
+  <!-- Password Protection Modal CSS -->
+  <style>
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 36px 30px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      transform: translateY(12px) scale(0.96);
+      transition: transform 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: #eff6ff;
+      color: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 16px;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .modal-target-name {
+      font-size: 0.88rem;
+      color: var(--accent-blue);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .modal-desc {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-strong);
+      font-size: 1rem;
+      outline: none;
+      font-family: var(--font-sans);
+      text-align: center;
+      letter-spacing: 2px;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+
+    .modal-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .modal-err-msg {
+      color: #dc2626;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-modal-cancel {
+      flex: 1;
+      padding: 11px;
+      border-radius: 12px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-modal-cancel:hover {
+      background: #ffffff;
+      color: var(--text-primary);
+    }
+
+    .btn-modal-confirm {
+      flex: 1.4;
+      padding: 11px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent-blue);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-modal-confirm:hover {
+      background: var(--accent-blue-hover);
+      transform: translateY(-1px);
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Clean Navbar -->
@@ -701,12 +848,12 @@
         </p>
 
         <div class="hero-actions">
-          <a href="https://stevebobobo.github.io/AiErrorLog/" target="_blank" rel="noopener noreferrer" class="btn-primary-blue">
+          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')" class="btn-primary-blue">
             <span>⚠️ AI 翻車與盲點實錄</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
 
-          <a href="https://stevebobobo.github.io/My100Ideas/" target="_blank" rel="noopener noreferrer" class="btn-secondary-light">
+          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/My100Ideas/', 'My100Ideas 靈感館')" class="btn-secondary-light">
             <span>💡 My100Ideas 靈感館</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
@@ -752,7 +899,7 @@
             </div>
           </div>
 
-          <a href="https://stevebobobo.github.io/AiErrorLog/" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-red">
+          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')" class="btn-card-action btn-red">
             <span>前往 AiErrorLog 網站 ↗</span>
           </a>
         </div>
@@ -778,7 +925,7 @@
             </div>
           </div>
 
-          <a href="https://stevebobobo.github.io/My100Ideas/" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-amber">
+          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/My100Ideas/', 'My100Ideas 靈感館')" class="btn-card-action btn-amber">
             <span>前往 My100Ideas 網站 ↗</span>
           </a>
         </div>
@@ -933,5 +1080,67 @@
     </div>
   </footer>
 
+
+  <!-- Password Protection Modal -->
+  <div id="passwordModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon-badge">🔒</div>
+      <h3 class="modal-title">受保護資源專區</h3>
+      <div id="modalTargetName" class="modal-target-name">目標專區</div>
+      <p class="modal-desc">前往此資源項目需要存取密碼驗證。請輸入密碼解鎖存取權限。</p>
+
+      <input type="password" id="passInput" class="modal-input" placeholder="請輸入存取密碼..." onkeydown="if(event.key==='Enter') verifyPassword()">
+      <div id="modalErrMsg" class="modal-err-msg">⚠️ 密碼不正確，請重新輸入！</div>
+
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closePasswordModal()">取消</button>
+        <button class="btn-modal-confirm" onclick="verifyPassword()">解鎖並前往 ↗</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentProtectedUrl = '';
+    // 預設解鎖密碼 (可隨時在此修改，例如: '1234' 或您的自訂密碼)
+    const ACCESS_PASSWORD = '1234';
+
+    function openProtectedLink(url, targetName) {
+      // 檢查 Session / LocalStorage 是否已解鎖過
+      if (localStorage.getItem('ksuleo_unlocked') === 'true') {
+        window.open(url, '_blank');
+        return;
+      }
+
+      currentProtectedUrl = url;
+      document.getElementById('modalTargetName').textContent = '前往：' + (targetName || '專區');
+      document.getElementById('passwordModal').classList.add('active');
+      const passInput = document.getElementById('passInput');
+      passInput.value = '';
+      passInput.style.borderColor = 'var(--border-strong)';
+      document.getElementById('modalErrMsg').style.display = 'none';
+      setTimeout(() => passInput.focus(), 100);
+    }
+
+    function verifyPassword() {
+      const inputPass = document.getElementById('passInput').value;
+      const errMsg = document.getElementById('modalErrMsg');
+
+      if (inputPass === ACCESS_PASSWORD) {
+        localStorage.setItem('ksuleo_unlocked', 'true');
+        closePasswordModal();
+        window.open(currentProtectedUrl, '_blank');
+      } else {
+        errMsg.style.display = 'block';
+        const inputField = document.getElementById('passInput');
+        inputField.style.borderColor = '#dc2626';
+        inputField.focus();
+      }
+    }
+
+    function closePasswordModal() {
+      document.getElementById('passwordModal').classList.remove('active');
+    }
+  </script>
 </body>
+
 </html>
