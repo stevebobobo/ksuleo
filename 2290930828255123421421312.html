@@ -1,338 +1,297 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>好硬推薦區 (硬體工具推薦) | Austin Tang</title>
-  <meta name="description" content="好硬推薦區：高CP值硬體裝備、USB數位電視棒無線投影改裝、隨身卡拉OK音響極致推薦。">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好硬推薦區 (硬體工具推薦) | Austin Tang</title>
+    <meta name="description" content="精選高 CP 值硬體周邊與實務改裝神器：從 USB 數位電視棒、無線投影改裝、隨身音響到 Type-C Hub、GaN 快充與便攜螢幕。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-hover-bg: #334155;
+            --primary: #38bdf8;
+            --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #34d399;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
 
-  <style>
-    
-:root {
-  --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-indigo: #4f46e5;
-  --accent-indigo-hover: #4338ca;
-  --accent-indigo-light: #eef2ff;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
-  
-  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
-  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
 
-.container {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-/* Header Nav */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-light);
-}
+        /* Nav & Header */
+        header {
+            margin-bottom: 2.5rem;
+        }
 
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
 
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 800;
-  font-size: 1.1rem;
-}
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
 
-.brand-avatar-wrap {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--border-light);
-}
+        .nav-links a:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
 
-.brand-avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+        .nav-divider {
+            color: var(--text-muted);
+        }
 
-.nav-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
-  background: var(--bg-surface);
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.88rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
 
-.nav-back-btn:hover {
-  border-color: var(--accent-indigo);
-  color: var(--accent-indigo);
-  background: #ffffff;
-  box-shadow: var(--shadow-sm);
-}
+        .page-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
 
-/* Hero Section */
-.hero-section {
-  padding: 48px 0 36px;
-  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
-  border-bottom: 1px solid var(--border-light);
-}
+        /* Hardware Cards Grid */
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.82rem;
-  margin-bottom: 16px;
-}
+        @media (min-width: 640px) {
+            .hardware-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-.hero-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-}
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.25s ease-in-out;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
 
-.hero-desc {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  max-width: 720px;
-  line-height: 1.75;
-}
+        .card:hover {
+            background-color: var(--card-hover-bg);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
 
-/* Footer */
-.site-footer {
-  border-top: 1px solid var(--border-light);
-  padding: 36px 0;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  background: var(--bg-surface);
-  margin-top: 60px;
-}
+        .card-badge {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
 
-    
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-      margin: 40px 0;
-    }
-    .hw-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hw-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-strong);
-    }
-    .card-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--accent-rose-light);
-      color: var(--accent-rose);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-    .hw-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--text-primary);
-    }
-    .hw-desc {
-      color: var(--text-secondary);
-      font-size: 0.98rem;
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-    .spec-list {
-      list-style: none;
-      background: #ffffff;
-      padding: 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-light);
-      margin-bottom: 20px;
-    }
-    .spec-list li {
-      font-size: 0.88rem;
-      color: var(--text-primary);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .spec-list li:last-child { margin-bottom: 0; }
-    .highlight-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: var(--accent-rose-light);
-      color: var(--accent-rose);
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-  </style>
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: auto;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 0.75rem;
+        }
+
+        .feature-list li {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container nav-inner">
-      <a href="index.html" class="brand-logo">
-        <div class="brand-avatar-wrap">
-          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Austin Tang Avatar">
-        </div>
-        <span>Austin Tang</span>
-      </a>
-      <a href="index.html#resources" class="nav-back-btn">
-        ← 返回首頁資源庫
-      </a>
-    </div>
-  </header>
-
-  <section class="hero-section">
     <div class="container">
-      <div class="hero-badge" style="background: var(--accent-rose-light); color: var(--accent-rose); border: 1px solid rgba(225, 29, 72, 0.2);">
-        🔌 Hardware Gadgets
-      </div>
-      <h1 class="hero-title">好硬推薦區 (硬體裝備)</h1>
-      <p class="hero-desc">
-        精選高 CP 值硬體周邊與實務改裝神器：從 USB 數位電視棒/無線投影改裝到隨身卡拉OK歡樂音響。
-      </p>
+        <!-- Header Section -->
+        <header>
+            <nav class="nav-links">
+                <a href="https://stevebobobo.github.io/ksuleo/index.html">Austin Tang</a>
+                <span class="nav-divider">/</span>
+                <a href="https://stevebobobo.github.io/ksuleo/index.html#resources">← 返回首頁資源庫</a>
+            </nav>
+
+            <h1 class="page-title">好硬推薦區 (硬體裝備)</h1>
+            <p class="page-desc">精選高 CP 值硬體周邊與實務改裝神器：從 USB 數位電視棒/無線投影改裝到擴充埠、GaN 快充與便攜螢幕等實務工具。</p>
+        </header>
+
+        <!-- Hardware List Grid -->
+        <main class="hardware-grid">
+
+            <!-- Card 1: USB 數位電視棒 / 無線投影改裝 (Original) -->
+            <article class="card">
+                <span class="card-badge">影音改裝必備</span>
+                <h2 class="card-title">📺 USB 數位電視棒 / 無線投影改裝</h2>
+                <p class="card-desc">電子消費產品必備神器！包含收看數位廣播頻道、支援 WiFi 無線行動連結與 HDMI 液晶螢幕播放 (例如 Chromecast)。最重要的是：想要把投影機改裝出手機無線投影功能，全靠它！</p>
+                <ul class="feature-list">
+                    <li>替代機機盒，價格划算不佔空間</li>
+                    <li>方便隨身攜帶，筆記型與桌上型電腦皆適用</li>
+                    <li>支援 HDMI 介面直連液晶電視或投影機</li>
+                </ul>
+            </article>
+
+            <!-- Card 2: WONDER 歡樂唱隨身音響 (WS-P001) (Original) -->
+            <article class="card">
+                <span class="card-badge">極致高 CP 值</span>
+                <h2 class="card-title">🎤 WONDER 歡樂唱隨身音響 (WS-P001)</h2>
+                <p class="card-desc">省電、大聲、支援多又便宜！具備雙麥克風插座與貼心平板卡槽設計，不需手拿即可歡樂對唱。這年頭做喇叭真難賺，這台 CP 值無敵高！</p>
+                <ul class="feature-list">
+                    <li>支援 32G 容量 USB 裝置及 SD 記憶卡播放</li>
+                    <li>貼心卡槽設計：放置平板不需手拿</li>
+                    <li>具備 2 組麥克風插座，歡樂雙人對唱</li>
+                    <li>外置鋰電池，隨攜極致省電</li>
+                </ul>
+            </article>
+
+            <!-- Card 3: Type-C 10-in-1 多功能擴充埠 (New) -->
+            <article class="card">
+                <span class="card-badge">行動辦公必備</span>
+                <h2 class="card-title">🔌 Type-C 10-in-1 多功能擴充埠 (Hub)</h2>
+                <p class="card-desc">極速傳輸與多螢幕輸出的終極工具！單孔擴充出 4K HDMI、100W PD 快充、Gigabit 有線網路、USB 3.2 極速埠與 SD/TF 雙卡槽，解決輕薄筆電連接埠不足的痛點。</p>
+                <ul class="feature-list">
+                    <li>支援 100W PD 快速充電，邊工作邊傳輸不耗電</li>
+                    <li>雙卡雙讀 (SD/microSD)，攝影影音創作者熱插拔神器</li>
+                    <li>高散熱鋁合金外殼，長時間高負載穩定不發燙</li>
+                </ul>
+            </article>
+
+            <!-- Card 4: 65W/100W GaN 氮化鎵多口快充頭 (New) -->
+            <article class="card">
+                <span class="card-badge">隨身減重神器</span>
+                <h2 class="card-title">⚡ 65W / 100W GaN 氮化鎵快速充電器</h2>
+                <p class="card-desc">告別笨重變壓器！採用第三代 GaN 氮化鎵半導體技術，體積縮小 50%，卻能同時為 MacBook/Windows 筆電、iPhone/Android 手機與平板高速充電。</p>
+                <ul class="feature-list">
+                    <li>可摺疊插頭設計，隨身口袋或包包輕鬆收納</li>
+                    <li>智慧動態分配功率，防過熱與過充保護機制</li>
+                    <li>多孔 Type-C + USB-A 介面，出門一顆搞定全裝置</li>
+                </ul>
+            </article>
+
+            <!-- Card 5: 15.6 吋 FHD 可攜式外接螢幕 (New) -->
+            <article class="card">
+                <span class="card-badge">雙螢幕工作站</span>
+                <h2 class="card-title">💻 15.6 吋 FHD/4K 可攜式外接螢幕</h2>
+                <p class="card-desc">打造行動雙螢幕工作站！超輕薄設計，支援 Type-C 單線直連供電與畫面輸出，無論外出辦公、簡報演示或連接 Switch/PS5 遊戲體驗皆能一秒展開。</p>
+                <ul class="feature-list">
+                    <li>Type-C 一線直連（影音+供電），告別繁雜線材</li>
+                    <li>IPS 廣視角防眩光面板，色彩飽滿護眼無負擔</li>
+                    <li>內建磁吸皮套立架與雙聲道揚聲器</li>
+                </ul>
+            </article>
+
+            <!-- Card 6: 無線藍牙簡報筆 (New) -->
+            <article class="card">
+                <span class="card-badge">簡報教學必備</span>
+                <h2 class="card-title">🎯 雙模無線藍牙綠光簡報筆</h2>
+                <p class="card-desc">演講、教學與商務簡報利器！支援 2.4G 無線與藍牙雙模式，內建超高亮度綠光雷射指標，並支援一鍵開啟超連結與視窗切換。</p>
+                <ul class="feature-list">
+                    <li>高亮度綠光雷射，大會議室與 LCD 螢幕清晰可見</li>
+                    <li>磁吸式 USB 接收器收納，防丟防忘超貼心</li>
+                    <li>相容 PowerPoint、Keynote、Google Slides 全平台</li>
+                </ul>
+            </article>
+
+            <!-- Card 7: 靜音雙模無線滑鼠 (New) -->
+            <article class="card">
+                <span class="card-badge">安靜舒適</span>
+                <h2 class="card-title">🖱️ 靜音雙模無線滑鼠 (藍牙 5.0 + 2.4G)</h2>
+                <p class="card-desc">圖書館、咖啡廳與深夜加班必備！採用微動靜音按鈕降噪 90%，搭配人體工學曲面設計，支援多裝置一鍵切換與精準光學追蹤。</p>
+                <ul class="feature-list">
+                    <li>微動靜音按鈕，有效減低敲擊噪音 90% 以上</li>
+                    <li>支援藍牙 5.0 與 2.4G 雙模切換，輕鬆跨電腦操作</li>
+                    <li>高精度光學感應器，無滑鼠墊也能流暢操控</li>
+                </ul>
+            </article>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2026 Austin Tang (stevebobobo). All rights reserved.</p>
+            <p>Hosted on GitHub Pages</p>
+        </footer>
     </div>
-  </section>
-
-  <main class="container">
-    <div class="grid-layout">
-
-      <div class="hw-card">
-        <div>
-          <div class="card-top">
-            <div class="card-icon">📺</div>
-            <div>
-              <h2 class="hw-title">USB 數位電視棒 / 無線投影改裝</h2>
-            </div>
-          </div>
-          <p class="hw-desc">
-            電子消費產品必備神器！包含收看數位廣播頻道、支援 WiFi 無線行動連結與 HDMI 液晶螢幕播放 (例如 Chromecast)。最重要的是：<strong>想要把投影機改裝出手機無線投影功能，全靠它！</strong>
-          </p>
-          <ul class="spec-list">
-            <li>✓ 替代機機盒，價格划算不佔空間</li>
-            <li>✓ 方便隨身攜帶，筆記型與桌上型電腦皆適用</li>
-            <li>✓ 支援 HDMI 介面直連液晶電視或投影機</li>
-          </ul>
-        </div>
-        <div>
-          <span class="highlight-pill">💡 改裝投影機無線功能首選</span>
-        </div>
-      </div>
-
-      <div class="hw-card">
-        <div>
-          <div class="card-top">
-            <div class="card-icon" style="background: var(--accent-amber-light); color: var(--accent-amber);">🎤</div>
-            <div>
-              <h2 class="hw-title">WONDER 歡樂唱隨身音響 (WS-P001)</h2>
-            </div>
-          </div>
-          <p class="hw-desc">
-            省電、大聲、支援多又便宜！具備雙麥克風插座與貼心平板卡槽設計，不需手拿即可歡樂對唱。這年頭做喇叭真難賺，這台 CP 值無敵高！
-          </p>
-          <ul class="spec-list">
-            <li>✓ 支援 32G 容量 USB 裝置及 SD 記憶卡播放</li>
-            <li>✓ 貼心卡槽設計：放置平板不需手拿</li>
-            <li>✓ 具備 2 組麥克風插座，歡樂雙人對唱</li>
-            <li>✓ 外置鋰電池，隨攜極致省電</li>
-          </ul>
-        </div>
-        <div>
-          <span class="highlight-pill" style="background: var(--accent-amber-light); color: var(--accent-amber);">🔥 CP值無敵高、音量爆棚</span>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Austin Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
-    </div>
-  </footer>
 
 </body>
 </html>
