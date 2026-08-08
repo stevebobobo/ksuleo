@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好 AI 推薦區 (AI 工具推薦) | Austin Tang</title>
+  <meta name="description" content="好 AI 推薦區：精選熱門 AI 語言模型 (ChatGPT, Claude, Gemini)、AI 程式輔助 (GitHub Copilot, Cursor)、AI 繪圖與多模態創作工具。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-surface-hover: #f1f5f9;
+      --border-light: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-indigo: #4f46e5;
+      --accent-indigo-hover: #4338ca;
+      --accent-indigo-light: #eef2ff;
+      --accent-blue: #2563eb;
+      --accent-blue-light: #eff6ff;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #ecfdf5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fffbeb;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #f5f3ff;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #fff1f2;
+      --accent-cyan: #0891b2;
+      --accent-cyan-light: #ecfeff;
+      
+      --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-avatar-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .brand-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-back-btn:hover {
+      border-color: var(--accent-indigo);
+      color: var(--accent-indigo);
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 48px 0 36px;
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+      background: var(--accent-purple-light);
+      color: var(--accent-purple);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      line-height: 1.75;
+    }
+
+    /* Category Section Header */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .sw-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sw-card:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .sw-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .sw-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .sw-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .sw-desc {
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .sw-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-light);
+      padding: 36px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: var(--bg-surface);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Austin Tang Avatar">
+        </div>
+        <span>Austin Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge">
+        ✨ Artificial Intelligence Tools
+      </div>
+      <h1 class="hero-title">好 AI 推薦區 (AI 工具)</h1>
+      <p class="hero-desc">
+        精選高實用度的 AI 語言模型助手、程式寫碼輔助、繪圖設計、音訊影片創作與知識研究工具，助您打造高效率工作流程。
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- 1. LLM 語言模型與日常 AI 助手 -->
+    <h2 class="section-title">🤖 語言模型與通用 AI 助手</h2>
+    <div class="grid-layout">
+
+      <!-- ChatGPT -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #ecfdf5; color: #059669;">🟢</div>
+            <h3 class="sw-title">ChatGPT (OpenAI)</h3>
+          </div>
+          <p class="sw-desc">
+            全球最熱門的全能型 AI 助手。支援 GPT-4o 多模態視覺、即時語音對話、網頁聯網搜尋與 Code Interpreter 資料分析。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#OpenAI</span>
+          <span class="sw-tag">#GPT4o</span>
+          <span class="sw-tag">#全能助手</span>
+        </div>
+      </div>
+
+      <!-- Claude -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #fff1f2; color: #e11d48;">🧡</div>
+            <h3 class="sw-title">Claude (Anthropic)</h3>
+          </div>
+          <p class="sw-desc">
+            文章撰寫、長文摘要與程式碼重構首選。邏輯嚴密自然、不瞎編亂造，具備極佳的長上下文理解能力。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#Claude35</span>
+          <span class="sw-tag">#寫作神器</span>
+          <span class="sw-tag">#長文分析</span>
+        </div>
+      </div>
+
+      <!-- Google Gemini -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #eff6ff; color: #2563eb;">✨</div>
+            <h3 class="sw-title">Google Gemini</h3>
+          </div>
+          <p class="sw-desc">
+            原生多模態 AI 助手。深度整合 Google 生態系（搜尋、Drive、Gmail），擁有超大 Context Window 處理巨量資料。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#Google</span>
+          <span class="sw-tag">#多模態</span>
+          <span class="sw-tag">#生態整合</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. AI 程式開發與寫碼輔助 -->
+    <h2 class="section-title">💻 程式開發與 AI 輔助寫碼</h2>
+    <div class="grid-layout">
+
+      <!-- GitHub Copilot -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #f5f3ff; color: #7c3aed;">🐙</div>
+            <h3 class="sw-title">GitHub Copilot</h3>
+          </div>
+          <p class="sw-desc">
+            主流 IDE 必備的 AI Pair Programmer。提供智慧程式碼行內補全、自動生成單元測試與快速程式碼解說。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#GitHub</span>
+          <span class="sw-tag">#CodeCompletion</span>
+          <span class="sw-tag">#IDE必備</span>
+        </div>
+      </div>
+
+      <!-- Cursor / Agentic AI -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #ecfeff; color: #0891b2;">🚀</div>
+            <h3 class="sw-title">Cursor / Agentic AI</h3>
+          </div>
+          <p class="sw-desc">
+            專為 AI 優先開發設計的智慧 IDE。支援全專案 Codebase 檢索、Agentic 自動構建與多檔重構，大幅提升開發產能。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#AI_IDE</span>
+          <span class="sw-tag">#AgenticCoding</span>
+          <span class="sw-tag">#CodebaseIndex</span>
+        </div>
+      </div>
+
+      <!-- v0.dev -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #f8fafc; color: #0f172a;">⚡</div>
+            <h3 class="sw-title">v0.dev by Vercel</h3>
+          </div>
+          <p class="sw-desc">
+            文字 Prompt 生成現代 UI 元件神器！輸入描述即可秒級產出 React + Tailwind CSS 互動前端代碼。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#Vercel</span>
+          <span class="sw-tag">#UI生成</span>
+          <span class="sw-tag">#React</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. AI 繪圖與視覺設計 -->
+    <h2 class="section-title">🎨 AI 繪圖與視覺設計</h2>
+    <div class="grid-layout">
+
+      <!-- Midjourney -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #fffbeb; color: #d97706;">🎨</div>
+            <h3 class="sw-title">Midjourney</h3>
+          </div>
+          <p class="sw-desc">
+            藝術質感與畫風表現力最強的 AI 圖像生成工具。適合商業插畫、概念設計、產品渲染與高品質視覺製作。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#AIArt</span>
+          <span class="sw-tag">#概念設計</span>
+          <span class="sw-tag">#高品質算圖</span>
+        </div>
+      </div>
+
+      <!-- FLUX.1 -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #ecfdf5; color: #059669;">🔥</div>
+            <h3 class="sw-title">FLUX.1 (Black Forest)</h3>
+          </div>
+          <p class="sw-desc">
+            新一代開源 SOTA 圖像生成模型。Prompt 服從度極高、手部細節與光影渲染自然，文字在圖片中精準呈現。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#OpenSource</span>
+          <span class="sw-tag">#FLUX</span>
+          <span class="sw-tag">#精準文字算圖</span>
+        </div>
+      </div>
+
+      <!-- Remove.bg -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #eff6ff; color: #2563eb;">✂️</div>
+            <h3 class="sw-title">Remove.bg / PhotoRoom</h3>
+          </div>
+          <p class="sw-desc">
+            一鍵 AI 自動去背神器！秒級去背景、人物或商品去瑕疵，簡報製作與電商去背必備。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#一鍵去背</span>
+          <span class="sw-tag">#圖片處理</span>
+          <span class="sw-tag">#簡報電商</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 4. 音訊、影音與知識研究 -->
+    <h2 class="section-title">📚 音訊影音與知識研究</h2>
+    <div class="grid-layout">
+
+      <!-- NotebookLM -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #f5f3ff; color: #7c3aed;">📖</div>
+            <h3 class="sw-title">Google NotebookLM</h3>
+          </div>
+          <p class="sw-desc">
+            基於個人文件的智慧研究筆記。上傳 PDF/文章即可精準對話問答、自動生成心智圖與雙人對話 Podcast 講評。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#知識庫</span>
+          <span class="sw-tag">#Podcast生成</span>
+          <span class="sw-tag">#論文研究</span>
+        </div>
+      </div>
+
+      <!-- Perplexity AI -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #ecfeff; color: #0891b2;">🔍</div>
+            <h3 class="sw-title">Perplexity AI</h3>
+          </div>
+          <p class="sw-desc">
+            下一代 AI 智慧搜尋引擎。實時檢索網頁並附帶清晰引用來源，告別傳統搜尋引擎的廣告與不精準結果。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#AISearch</span>
+          <span class="sw-tag">#實時引用</span>
+          <span class="sw-tag">#資料收集</span>
+        </div>
+      </div>
+
+      <!-- Suno AI -->
+      <div class="sw-card">
+        <div>
+          <div class="sw-top">
+            <div class="sw-icon" style="background: #fff1f2; color: #e11d48;">🎵</div>
+            <h3 class="sw-title">Suno AI</h3>
+          </div>
+          <p class="sw-desc">
+            文字 Prompt 一鍵生成完整廣播級音樂！含主唱歌手、歌詞、編曲伴奏與各式曲風混音。
+          </p>
+        </div>
+        <div class="tag-row">
+          <span class="sw-tag">#AI音樂</span>
+          <span class="sw-tag">#一鍵成曲</span>
+          <span class="sw-tag">#配樂製作</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Austin Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>
