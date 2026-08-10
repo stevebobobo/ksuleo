@@ -637,6 +637,59 @@
       background: var(--bg-surface);
     }
 
+    /* Visitor Counter Badge */
+    .footer-counter-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .counter-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .counter-badge-pill:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .counter-icon {
+      font-size: 0.95rem;
+    }
+
+    .counter-label {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .counter-value {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: var(--accent-blue-light);
+      padding: 2px 9px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      min-width: 32px;
+      text-align: center;
+    }
+
     /* Responsive */
     @media (max-width: 868px) {
       .hero-section {
@@ -1072,9 +1125,27 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Austin Tang (stevebobobo). All rights reserved.</p>
+
+      <!-- 累計瀏覽人數顯示 (Visitor Counters) -->
+      <div class="footer-counter-wrap">
+        <div class="counter-badge-pill" id="busuanzi_container_site_pv" title="本站累計總瀏覽次數">
+          <span class="counter-icon">👁️</span>
+          <span class="counter-label">累計瀏覽人次</span>
+          <span class="counter-value" id="busuanzi_value_site_pv">--</span>
+        </div>
+        <div class="counter-badge-pill" id="busuanzi_container_site_uv" title="本站不重複訪客數">
+          <span class="counter-icon">👤</span>
+          <span class="counter-label">累計訪客數</span>
+          <span class="counter-value" id="busuanzi_value_site_uv">--</span>
+        </div>
+      </div>
+
       <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
     </div>
   </footer>
+
+  <!-- 不蒜子 (Busuanzi) 瀏覽計數器腳本 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
   <!-- Password Protection Modal -->
