@@ -773,6 +773,39 @@
         display: none;
       }
     }
+
+    .mini-photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .mini-photo-strip .photo-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      aspect-ratio: 4 / 3;
+    }
+    .mini-photo-strip .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .mini-photo-strip .photo-item:hover img {
+      transform: scale(1.06);
+    }
+    .mini-photo-strip .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 5px 8px 4px;
+      background: linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.78) 100%);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
   </style>
 
   <!-- Password Protection Modal CSS -->
@@ -1165,6 +1198,21 @@
             <p class="card-item-desc">
               開發工業射出成型機 (Injection Molding Machine) 監看系統，跨國（台灣、中國、越南、泰國、印尼、巴西、巴基斯坦）遠端連線控制與維護超過 300 台射出機台。
             </p>
+
+            <div class="mini-photo-strip">
+              <div class="photo-item">
+                <img src="uploads/8/0/3/9/80395834/1558340846364.jpg" alt="印尼校園公益交流" loading="lazy">
+                <div class="photo-caption">印尼｜校園交流</div>
+              </div>
+              <div class="photo-item">
+                <img src="uploads/8/0/3/9/80395834/37019321-10214903006181276-1528767757603045376-o.jpg" alt="越南廠房巡查" loading="lazy">
+                <div class="photo-caption">越南｜廠房巡查</div>
+              </div>
+              <div class="photo-item">
+                <img src="uploads/8/0/3/9/80395834/65793028-10217538310182229-6195276022791798784-n.jpg" alt="巴基斯坦廠區合影" loading="lazy">
+                <div class="photo-caption">巴基斯坦｜廠區合影</div>
+              </div>
+            </div>
 
             <div class="tag-container">
               <span class="tag-pill">#射出機監看系統</span>
