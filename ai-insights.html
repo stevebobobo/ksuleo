@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 觀察誤區與導入策略 (工程師的AI落地筆記) | Leo Tang</title>
+  <meta name="description" content="從一線工程實戰看 AI 落地：三個常被忽略的觀察，加上一套挑選 AI 介面的實務框架。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-surface-hover: #f1f5f9;
+  --border-light: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-blue: #2563eb;
+  --accent-blue-hover: #1d4ed8;
+  --accent-blue-light: #eff6ff;
+  --accent-emerald: #059669;
+  --accent-emerald-light: #ecfdf5;
+  --accent-amber: #d97706;
+  --accent-amber-light: #fffbeb;
+  --accent-purple: #7c3aed;
+  --accent-purple-light: #f5f3ff;
+  --accent-rose: #e11d48;
+  --accent-rose-light: #fff1f2;
+
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-primary); font-weight: 800; font-size: 1.1rem; }
+.brand-avatar-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border-light); }
+.brand-avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.nav-back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border-light);
+  background: var(--bg-surface); color: var(--text-secondary);
+  font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: all 0.2s ease;
+}
+.nav-back-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); background: #ffffff; box-shadow: var(--shadow-sm); }
+
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.82rem; margin-bottom: 16px;
+}
+.hero-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text-primary); }
+.hero-desc { font-size: 1.05rem; color: var(--text-secondary); max-width: 720px; line-height: 1.75; }
+
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;
+  background: var(--bg-surface); margin-top: 60px;
+}
+
+.article-grid { display: grid; grid-template-columns: 1fr; gap: 28px; margin: 40px 0; }
+.article-card {
+  background: var(--bg-surface); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); transition: all 0.2s ease;
+}
+.article-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.card-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.card-icon-wrap { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.article-title { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 14px; }
+.article-content { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.8; }
+.article-content p { margin-bottom: 14px; }
+.article-content p:last-child { margin-bottom: 0; }
+.quote-box {
+  border-left: 4px solid var(--accent-blue); background: #ffffff; padding: 16px 20px;
+  border-radius: 0 12px 12px 0; margin: 16px 0; font-weight: 500; color: var(--text-primary);
+}
+.mini-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.96rem; }
+.mini-table th, .mini-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-light); }
+.mini-table th { color: var(--text-muted); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.step-row { display: flex; gap: 14px; align-items: flex-start; margin: 10px 0; }
+.step-num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem; color: #fff; background: var(--accent-amber);
+}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Avatar">
+        </div>
+        <span>Leo Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">← 返回首頁資源庫</a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-purple-light); color: var(--accent-purple); border: 1px solid rgba(124, 58, 237, 0.2);">
+        🤖 AI Adoption Notes
+      </div>
+      <h1 class="hero-title">AI 觀察誤區與導入策略</h1>
+      <p class="hero-desc">
+        從一線工程實戰看 AI 落地——三個常被忽略的觀察，加上一套挑選 AI 介面的實務框架。這些觀察來自實際把 AI 整合進工業軟體產品、以及日常動手做各種 AI side project 的第一手經驗，不是純理論。
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="article-grid">
+
+      <!-- 1 -->
+      <article class="article-card">
+        <div class="card-meta">
+          <div class="card-icon-wrap" style="background: var(--accent-blue-light); color: var(--accent-blue);">📊</div>
+          <span style="font-weight: 700; color: var(--accent-blue); font-size: 0.88rem;">商業價值</span>
+        </div>
+        <h2 class="article-title">誤區一：AI 的商業價值，順序常被講反</h2>
+        <div class="article-content">
+          <p>
+            以中小企業／傳統製造業的角度評估 ROI 成熟度，順序其實是：<strong>影像辨識 &gt; LLM 應用 &gt; 從零 Training</strong>。
+            影像辨識（瑕疵檢測、預測性維護）是工業界最久、最成熟的 AI 應用，比這波 LLM 熱潮早得多；LLM 應用（文件查詢、流程輔助）導入快，能立刻看到效果；
+            從零訓練一個基礎模型，伺服器動輒千萬等級投資，對多數中小企業來說完全不划算。
+          </p>
+          <div class="quote-box">
+            「伺服器廠商的行銷炒作，不等於企業的真實需求——硬體廠商推動的 Hype Cycle，經媒體放大後，不代表 Training 是中小企業的最佳投資。」
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="article-card">
+        <div class="card-meta">
+          <div class="card-icon-wrap" style="background: var(--accent-amber-light); color: var(--accent-amber);">🪜</div>
+          <span style="font-weight: 700; color: var(--accent-amber); font-size: 0.88rem;">技術選型</span>
+        </div>
+        <h2 class="article-title">「Training」被過度簡化了</h2>
+        <div class="article-content">
+          <p>多數人講「AI Training」時其實混在一起講，但這三件事的成本與適用對象完全不同：</p>
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div><strong>Pretrain（從零訓練基礎模型）</strong>——千萬等級投資，中小企業不划算</div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div><strong>Fine-tune / LoRA（微調既有開源模型）</strong>——成本可控，但多數企業也用不到</div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div><strong>RAG（檢索增強生成）</strong>——幾乎免訓練，多數企業真正該做的</div>
+          </div>
+          <p style="margin-top: 14px;">
+            自己在工業軟體產品裡實際落地的，正是第三種：本地端 LLM（LLaMA／Gemma）搭配 RAG 知識庫，用 Open WebUI 做成內部技術文件查詢平台。
+          </p>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="article-card">
+        <div class="card-meta">
+          <div class="card-icon-wrap" style="background: var(--accent-emerald-light); color: var(--accent-emerald);">💬</div>
+          <span style="font-weight: 700; color: var(--accent-emerald); font-size: 0.88rem;">心態</span>
+        </div>
+        <h2 class="article-title">誤區二：跟 AI 對話，一點都不奇怪</h2>
+        <div class="article-content">
+          <p>
+            軟體工程界有個公認的真實技巧叫 <strong>Rubber Duck Debugging（橡皮鴨除錯法）</strong>：工程師對著一隻橡皮鴨講述問題，往往講到一半就自己解出來了。
+            道理很簡單——陳述問題的過程，本身就是在重新審視、重新整理思路、尋找線索。
+          </p>
+          <p>跟 AI 對話也是同樣的機制，AI 只是最方便、最不怕麻煩的那個回應對象。</p>
+          <div class="quote-box">
+            「AI 不是取代思考，是加速你自己把問題想清楚的過程。」
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="article-card">
+        <div class="card-meta">
+          <div class="card-icon-wrap" style="background: var(--accent-purple-light); color: var(--accent-purple);">🎯</div>
+          <span style="font-weight: 700; color: var(--accent-purple); font-size: 0.88rem;">流程優化</span>
+        </div>
+        <h2 class="article-title">誤區三：AI 該處理的是無聊的事，不是困難的事</h2>
+        <div class="article-content">
+          <p>
+            人類記憶有「負向偏誤（Negativity Bias）」：越危險、越少見的事，越容易被優先想起、優先講出來。
+            所以訪談客戶或同仁討論流程改善時，大家講出來的多半是「重要且緊急」的大事，很少有人會主動提每天在做的 daily routine。
+          </p>
+          <p>
+            但 routine 才是真正能寫成 function 的東西——這正是企業導入 RPA（流程自動化）挑候選流程的標準判準：<strong>量大、頻率高、規則明確</strong>。
+            AI 在辦公室或工廠流程優化裡，最好的切入點永遠是那些不斷重複、不難但很煩的日常工作，把基礎的部分交給 AI，才能讓人專心處理真正需要判斷力的高難度問題。
+          </p>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="article-card">
+        <div class="card-meta">
+          <div class="card-icon-wrap" style="background: var(--accent-rose-light); color: var(--accent-rose);">🧭</div>
+          <span style="font-weight: 700; color: var(--accent-rose); font-size: 0.88rem;">實務框架</span>
+        </div>
+        <h2 class="article-title">選對介面，AI 才會好用</h2>
+        <div class="article-content">
+          <p>同一顆模型，透過不同介面使用，表現天差地遠。這是自己實際使用歸納出來的三層架構：</p>
+          <table class="mini-table">
+            <thead>
+              <tr><th>介面</th><th>特性</th><th>適合場景</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>雲端（文字／語音）</td><td>Context 最受限；語音模式為即時延遲優化，能力更保守</td><td>快速小問題、不方便打字時</td></tr>
+              <tr><td>Desktop App</td><td>同雲端模型 + 檔案／工具整合，UX 最友善</td><td>日常查資料、整理文件</td></tr>
+              <tr><td>CLI Agent</td><td>完整 Context + 自主工具調用（讀寫檔、執行指令），效能最完整</td><td>工程開發、多步驟自動化任務</td></tr>
+            </tbody>
+          </table>
+          <div class="quote-box">
+            「先懂屬性，才知道該把任務指派給誰：語音問小問題、Desktop 找資料整理文件、CLI 寫程式跑多步驟任務。」
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>
