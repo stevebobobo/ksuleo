@@ -14,31 +14,31 @@
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-blue: #2563eb;
-      --accent-blue-hover: #1d4ed8;
-      --accent-blue-light: #eff6ff;
-      --accent-emerald: #059669;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-blue: #1b1915;
+      --accent-blue-hover: #1b1915;
+      --accent-blue-light: #ebe6da;
+      --accent-emerald: #a3341c;
 
       /* Dark Code Window Colors */
-      --code-bg: #0f172a;
-      --code-header: #1e293b;
-      --code-text: #e2e8f0;
+      --code-bg: #1b1915;
+      --code-header: #1b1915;
+      --code-text: #cfc8b8;
       --code-keyword: #38bdf8;
       --code-string: #4ade80;
-      --code-comment: #64748b;
-      --code-number: #f43f5e;
+      --code-comment: #857f72;
+      --code-number: #a3341c;
       --code-func: #c084fc;
 
       --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
@@ -130,7 +130,7 @@
     .nav-back-btn:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
-      background: #fff;
+      background: transparent;
     }
 
     /* Hero Banner */
@@ -172,7 +172,7 @@
     }
 
     .example-card {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
       padding: 32px;
@@ -218,7 +218,7 @@
       background: var(--code-bg);
       border-radius: var(--radius-md);
       overflow: hidden;
-      border: 1px solid #334155;
+      border: 1px solid #4a463e;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
     }
 
@@ -228,7 +228,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #334155;
+      border-bottom: 1px solid #4a463e;
     }
 
     .code-dots {
@@ -241,14 +241,14 @@
       height: 10px;
       border-radius: 50%;
     }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
+    .dot-red { background: #a3341c; }
+    .dot-yellow { background: #a3341c; }
+    .dot-green { background: #a3341c; }
 
     .code-filename {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: #94a3b8;
+      color: #857f72;
     }
 
     .code-body {
@@ -278,6 +278,7 @@
       background: var(--bg-surface);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -303,7 +304,7 @@
   <section class="page-hero">
     <div class="container">
       <div class="hero-badge">
-        <span>💻 110學年度 C 語言程式設計 · 學生實作與教學範例</span>
+        <span>110學年度 C 語言程式設計 · 學生實作與教學範例</span>
       </div>
       <h1 class="page-title">C 語言程式設計範例庫</h1>
       <p class="page-desc">
@@ -319,7 +320,7 @@
     <article class="example-card">
       <div class="example-header">
         <h2 class="example-title">
-          <span>📌 範例一：列舉 (enum) 與狀態機 Switch-Case 控制</span>
+          <span>範例一：列舉 (enum) 與狀態機 Switch-Case 控制</span>
         </h2>
         <span class="example-tag">enum_state.c</span>
       </div>
@@ -397,7 +398,7 @@
     <article class="example-card">
       <div class="example-header">
         <h2 class="example-title">
-          <span>📌 範例二：結構體 (struct) 陣列與 BMI 指數計算</span>
+          <span>範例二：結構體 (struct) 陣列與 BMI 指數計算</span>
         </h2>
         <span class="example-tag">bmi_struct.c</span>
       </div>
@@ -478,7 +479,7 @@
     <article class="example-card">
       <div class="example-header">
         <h2 class="example-title">
-          <span>📌 範例三：多重迴圈圖形繪製 — 三角形演算法</span>
+          <span>範例三：多重迴圈圖形繪製 — 三角形演算法</span>
         </h2>
         <span class="example-tag">draw_triangles.c</span>
       </div>
@@ -559,7 +560,7 @@
     <article class="example-card">
       <div class="example-header">
         <h2 class="example-title">
-          <span>📌 範例四：個人月儲蓄與收支試算系統</span>
+          <span>範例四：個人月儲蓄與收支試算系統</span>
         </h2>
         <span class="example-tag">monthly_savings.c</span>
       </div>
@@ -630,7 +631,7 @@
     <article class="example-card">
       <div class="example-header">
         <h2 class="example-title">
-          <span>📌 範例五：嵌套雙重迴圈與月曆日期繪製</span>
+          <span>範例五：嵌套雙重迴圈與月曆日期繪製</span>
         </h2>
         <span class="example-tag">calendar_loops.c</span>
       </div>
@@ -694,7 +695,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">110學年度 C 語言教學成果彙整專頁</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">110學年度 C 語言教學成果彙整專頁</p>
     </div>
   </footer>
 

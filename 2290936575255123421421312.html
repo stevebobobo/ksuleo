@@ -8,32 +8,32 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     
 :root {
   --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-indigo: #4f46e5;
-  --accent-indigo-hover: #4338ca;
-  --accent-indigo-light: #eef2ff;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-indigo: #1b1915;
+  --accent-indigo-hover: #1b1915;
+  --accent-indigo-light: #ebe6da;
+  --accent-blue: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
   
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -120,7 +120,7 @@ body {
 .nav-back-btn:hover {
   border-color: var(--accent-indigo);
   color: var(--accent-indigo);
-  background: #ffffff;
+  background: transparent;
   box-shadow: var(--shadow-sm);
 }
 
@@ -226,11 +226,12 @@ body {
       font-size: 0.75rem;
       padding: 2px 8px;
       border-radius: 6px;
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       color: var(--text-muted);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -251,7 +252,7 @@ body {
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge" style="background: var(--accent-indigo-light); color: var(--accent-indigo); border: 1px solid rgba(79, 70, 229, 0.2);">
-        💻 Software Utilities
+        Software Utilities
       </div>
       <h1 class="hero-title">好軟推薦區 (軟體工具)</h1>
       <p class="hero-desc">
@@ -267,7 +268,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #eff6ff; color: #2563eb;">🗄️</div>
             <h2 class="sw-title">SQLite Expert Personal</h2>
           </div>
           <p class="sw-desc">
@@ -285,7 +285,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #ecfdf5; color: #059669;">🐬</div>
             <h2 class="sw-title">HeidiSQL</h2>
           </div>
           <p class="sw-desc">
@@ -303,7 +302,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #f5f3ff; color: #7c3aed;">⚙️</div>
             <h2 class="sw-title">UaExpert (OPC UA)</h2>
           </div>
           <p class="sw-desc">
@@ -321,7 +319,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #fff1f2; color: #e11d48;">🖼️</div>
             <h2 class="sw-title">光影魔手</h2>
           </div>
           <p class="sw-desc">
@@ -339,7 +336,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #fffbeb; color: #d97706;">🎥</div>
             <h2 class="sw-title">Apowersoft 螢幕錄影</h2>
           </div>
           <p class="sw-desc">
@@ -357,7 +353,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #fdf2f8; color: #db2777;">🎞️</div>
             <h2 class="sw-title">KIZOA 線上影片編輯</h2>
           </div>
           <p class="sw-desc">
@@ -374,7 +369,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #eff6ff; color: #2563eb;">🖥️</div>
             <h2 class="sw-title">Screenleap 螢幕共享</h2>
           </div>
           <p class="sw-desc">
@@ -391,7 +385,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #eff6ff; color: #2563eb;">📝</div>
             <h2 class="sw-title">Visual Studio Code</h2>
           </div>
           <p class="sw-desc">
@@ -409,7 +402,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #fffbeb; color: #b45309;">🦫</div>
             <h2 class="sw-title">DBeaver Community</h2>
           </div>
           <p class="sw-desc">
@@ -427,7 +419,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #ecfdf5; color: #059669;">🔍</div>
             <h2 class="sw-title">Everything (極速搜尋)</h2>
           </div>
           <p class="sw-desc">
@@ -445,7 +436,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #f5f3ff; color: #7c3aed;">📦</div>
             <h2 class="sw-title">7-Zip / Bandizip</h2>
           </div>
           <p class="sw-desc">
@@ -463,7 +453,6 @@ body {
       <div class="sw-card">
         <div>
           <div class="sw-top">
-            <div class="sw-icon" style="background: #f5f3ff; color: #6d28d9;">🧠</div>
             <h2 class="sw-title">Obsidian (第二大腦)</h2>
           </div>
           <p class="sw-desc">
@@ -483,7 +472,7 @@ body {
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
     </div>
   </footer>
 

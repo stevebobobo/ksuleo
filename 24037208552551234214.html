@@ -8,32 +8,32 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     
 :root {
   --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-indigo: #4f46e5;
-  --accent-indigo-hover: #4338ca;
-  --accent-indigo-light: #eef2ff;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-indigo: #1b1915;
+  --accent-indigo-hover: #1b1915;
+  --accent-indigo-light: #ebe6da;
+  --accent-blue: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
   
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -120,7 +120,7 @@ body {
 .nav-back-btn:hover {
   border-color: var(--accent-indigo);
   color: var(--accent-indigo);
-  background: #ffffff;
+  background: transparent;
   box-shadow: var(--shadow-sm);
 }
 
@@ -225,6 +225,7 @@ body {
       transition: all 0.2s ease;
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -245,7 +246,7 @@ body {
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge" style="background: var(--accent-purple-light); color: var(--accent-purple); border: 1px solid rgba(124, 58, 237, 0.2);">
-        🧰 Tools Hub
+        Tools Hub
       </div>
       <h1 class="hero-title">實用工具推薦總覽</h1>
       <p class="hero-desc">
@@ -260,13 +261,12 @@ body {
       <!-- 好硬 -->
       <div class="hub-card">
         <div>
-          <div class="hub-icon-wrap" style="background: #fff1f2; color: #e11d48;">🔌</div>
           <h2 class="hub-title">好硬推薦區 (硬體)</h2>
           <p class="hub-desc">
             收錄高 CP 值 USB 數位電視棒、投影機無線改裝技術與 WONDER 歡樂唱隨身喇叭音響。
           </p>
         </div>
-        <a href="2290930828255123421421312.html" class="hub-btn" style="background: #e11d48; color: #ffffff;">
+        <a href="2290930828255123421421312.html" class="hub-btn" style="background: #a3341c; color: #ffffff;">
           <span>進入好硬推薦區 ↗</span>
         </a>
       </div>
@@ -274,13 +274,12 @@ body {
       <!-- 好軟 -->
       <div class="hub-card">
         <div>
-          <div class="hub-icon-wrap" style="background: #eef2ff; color: #4f46e5;">💻</div>
           <h2 class="hub-title">好軟推薦區 (軟體)</h2>
           <p class="hub-desc">
             SQLite Expert, HeidiSQL, 工控 OPC UA (UaExpert) 測試工具、光影魔手去背與螢幕錄影共享神器。
           </p>
         </div>
-        <a href="2290936575255123421421312.html" class="hub-btn" style="background: #4f46e5; color: #ffffff;">
+        <a href="2290936575255123421421312.html" class="hub-btn" style="background: #1b1915; color: #ffffff;">
           <span>進入好軟推薦區 ↗</span>
         </a>
       </div>
@@ -288,13 +287,12 @@ body {
       <!-- 好站 -->
       <div class="hub-card">
         <div>
-          <div class="hub-icon-wrap" style="background: #ecfdf5; color: #059669;">🌐</div>
           <h2 class="hub-title">好站推薦區 (網站)</h2>
           <p class="hub-desc">
             免費資源網路社群、Standard Resume 線上網頁履歷表設計與全球最大 GitHub 開源程式碼平台。
           </p>
         </div>
-        <a href="22909314492551234214.html" class="hub-btn" style="background: #059669; color: #ffffff;">
+        <a href="22909314492551234214.html" class="hub-btn" style="background: #a3341c; color: #ffffff;">
           <span>進入好站推薦區 ↗</span>
         </a>
       </div>
@@ -305,7 +303,7 @@ body {
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
     </div>
   </footer>
 

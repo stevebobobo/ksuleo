@@ -15,24 +15,24 @@
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-orange: #ea580c;
-      --accent-orange-light: #fff7ed;
-      --accent-blue: #2563eb;
-      --accent-blue-light: #eff6ff;
-      --accent-purple: #7c3aed;
-      --accent-purple-light: #f5f3ff;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-orange: #a3341c;
+      --accent-orange-light: #ebe6da;
+      --accent-blue: #1b1915;
+      --accent-blue-light: #ebe6da;
+      --accent-purple: #a3341c;
+      --accent-purple-light: #ebe6da;
 
       --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -124,7 +124,7 @@
     .nav-back-btn:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
-      background: #fff;
+      background: transparent;
     }
 
     /* Hero Banner */
@@ -193,7 +193,7 @@
     }
 
     .mystuff-btn:hover {
-      background: #c2410c;
+      background: #a3341c;
       transform: translateY(-1px);
     }
 
@@ -229,7 +229,7 @@
     }
 
     .student-card {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 24px;
@@ -406,6 +406,7 @@
       background: var(--bg-surface);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -432,7 +433,7 @@
     <div class="container hero-container">
       <div class="hero-text-content">
         <div class="hero-badge">
-          <span>🧩 麻省理工學院 · SCRATCH 程式設計課程</span>
+          <span>麻省理工學院 · SCRATCH 程式設計課程</span>
         </div>
         <h1 class="page-title">人人人都會寫程式的時代 - SCRATCH</h1>
         <p class="page-desc">
@@ -441,7 +442,7 @@
 
         <div class="mystuff-bar">
           <a href="https://scratch.mit.edu/mystuff/" target="_blank" rel="noopener noreferrer" class="mystuff-btn">
-            <span>🐱 前往 Leo's Scratch 個人工作室</span>
+            <span>前往 Leo's Scratch 個人工作室</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -907,7 +908,7 @@
     <!-- Video Embed Section -->
     <section class="video-section">
       <h2 class="video-title">
-        <span>🎥 Scratch 課程介紹與展示影片</span>
+        <span>Scratch 課程介紹與展示影片</span>
       </h2>
       <div class="video-responsive">
         <iframe src="https://www.youtube.com/embed/C2OCA6SBKQA" title="Scratch Course Introduction Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -920,7 +921,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">MIT Scratch 學生程式作品集展示頁面</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">MIT Scratch 學生程式作品集展示頁面</p>
     </div>
   </footer>
 

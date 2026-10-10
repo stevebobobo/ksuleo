@@ -1,1416 +1,627 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leo Tang | Software & Embedded Systems Engineer</title>
-  <meta name="description" content="Leo Tang's personal developer portfolio and engineering portal featuring Embedded Systems, System Architecture, AiErrorLog, and My100Ideas.">
-  <meta name="keywords" content="Leo Tang, stevebobobo, Embedded Systems, Interface Design, AiErrorLog, My100Ideas, Developer Portfolio">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Leo Tang | Software & Embedded Systems Engineer">
-  <meta property="og:description" content="Senior Software Engineer & Embedded Systems Specialist. Featured projects: AiErrorLog & My100Ideas.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://stevebobobo.github.io/ksuleo/">
-  <meta property="og:image" content="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg">
-
-  <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
+  <title>Leo Tang｜嵌入式系統與軟體架構</title>
+  <base target="_self">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-blue: #2563eb;
-      --accent-blue-hover: #1d4ed8;
-      --accent-blue-light: #eff6ff;
-      --accent-red: #dc2626;
-      --accent-red-light: #fef2f2;
-      --accent-amber: #d97706;
-      --accent-amber-light: #fffbeb;
-      --accent-emerald: #059669;
-      --accent-emerald-light: #ecfdf5;
-      --accent-purple: #9333ea;
-      --accent-purple-light: #faf5ff;
-      --accent-indigo: #4f46e5;
-      --accent-indigo-light: #eef2ff;
-      
-      --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+      --paper: #f5f2ea;
+      --paper-deep: #ebe6da;
+      --ink: #1b1915;
+      --ink-soft: #4a463e;
+      --ink-mute: #857f72;
+      --rule: #cfc8b8;
+      --seal: #a3341c;
+
+      --serif: 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
+      --sans: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+      --latin: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+
+      --gutter: clamp(20px, 5vw, 72px);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg-page);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      line-height: 1.6;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.9;
+      letter-spacing: 0.02em;
       -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* 小標：英文斜體，取代彩色徽章 */
+    .kicker {
+      font-family: var(--latin);
+      font-style: italic;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      color: var(--ink-mute);
     }
 
-    /* Header Nav */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-avatar-wrap {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid var(--border-light);
-      background: var(--bg-surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .brand-avatar-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      padding: 2px 6px;
-      border-radius: 6px;
-      color: var(--text-muted);
+    /* 文字連結：底線，不用按鈕 */
+    .more {
+      display: inline-block;
+      font-size: 0.92rem;
       font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
     }
+    .more:hover { color: var(--seal); border-color: var(--seal); }
 
-    .nav-menu {
+    /* ── 刊頭 ── */
+    .masthead { border-bottom: 1px solid var(--ink); }
+    .masthead .wrap {
       display: flex;
-      align-items: center;
+      align-items: baseline;
+      justify-content: space-between;
       gap: 24px;
-      list-style: none;
+      padding-top: 22px;
+      padding-bottom: 18px;
     }
-
-    .nav-link {
-      color: var(--text-secondary);
+    .masthead-name {
+      font-family: var(--latin);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.92rem;
-      transition: color 0.2s ease;
     }
-
-    .nav-link:hover {
-      color: var(--accent-blue);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 30px;
-      border: 1px solid var(--border-strong);
-      background: #ffffff;
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 0.88rem;
+    .masthead nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+    .masthead nav a {
+      font-size: 0.9rem;
       text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent-blue);
-      color: var(--accent-blue);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Hero Section */
-    .hero-section {
-      padding: 72px 0 56px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: var(--accent-emerald-light);
-      border: 1px solid rgba(5, 150, 105, 0.2);
-      color: var(--accent-emerald);
-      font-weight: 600;
-      font-size: 0.85rem;
-      margin-bottom: 24px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-emerald);
-    }
-
-    .hero-heading {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .hero-role {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--accent-blue);
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-description {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      margin-bottom: 32px;
-      max-width: 580px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-primary-blue {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: var(--radius-md);
-      background: var(--accent-blue);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-primary-blue:hover {
-      background: var(--accent-blue-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-    }
-
-    .btn-secondary-light {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: var(--radius-md);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      color: var(--text-primary);
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-secondary-light:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--border-strong);
-      transform: translateY(-1px);
-    }
-
-    /* Portrait Image Card - Natural Unclipped Framing */
-    .portrait-card {
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-md);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .portrait-frame {
-      width: 100%;
-      max-width: 280px;
-      background: var(--bg-surface);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-light);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    .portrait-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .portrait-title {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      margin-top: 4px;
-    }
-
-    /* Section Styling */
-    .section-block {
-      padding: 64px 0;
-      border-top: 1px solid var(--border-light);
-    }
-
-    .section-header {
-      margin-bottom: 40px;
-    }
-
-    .section-subtitle {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      color: var(--ink-soft);
       letter-spacing: 0.08em;
-      color: var(--accent-blue);
-      margin-bottom: 8px;
     }
+    .masthead nav a:hover { color: var(--seal); }
 
-    .section-title {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-    }
-
-    /* Featured Masterpiece Grid */
-    .featured-grid {
+    /* ── 首屏 ── */
+    .lead { padding-top: clamp(40px, 7vw, 96px); }
+    .lead-head {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(24px, 5vw, 80px);
+      align-items: end;
+      margin-bottom: clamp(32px, 5vw, 64px);
+    }
+    .lead-title {
+      font-family: var(--latin);
+      font-weight: 400;
+      font-size: clamp(4rem, 13vw, 11rem);
+      line-height: 0.86;
+      letter-spacing: -0.03em;
+      margin-top: 12px;
+    }
+    .lead-title em { font-style: italic; color: var(--seal); }
+    .lead-intro {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+      line-height: 1.85;
+      letter-spacing: 0.04em;
+    }
+    .lead-role {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.06em;
     }
 
-    .card-masterpiece {
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: 32px;
+    .lead-photo { aspect-ratio: 21 / 9; overflow: hidden; background: var(--paper-deep); }
+    .lead-photo img { object-position: 50% 50%; }
+    .caption {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
-      box-shadow: var(--shadow-sm);
+      gap: 16px;
+      padding-top: 10px;
+      font-size: 0.82rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.05em;
     }
 
-    .card-masterpiece:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+    /* ── 區塊標頭 ── */
+    section.wrap { padding-top: clamp(64px, 9vw, 128px); }
+    .sec-head {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: baseline;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: clamp(28px, 4vw, 56px);
+    }
+    .sec-head h2 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      line-height: 1.3;
+      letter-spacing: 0.06em;
     }
 
-    .card-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
+    /* ── 主打：射出機 ── */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: start;
     }
-
-    .card-icon-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
+    .figures { display: flex; gap: clamp(24px, 4vw, 56px); margin-bottom: 28px; }
+    .figure-num {
+      font-family: var(--latin);
+      font-size: clamp(3.6rem, 8vw, 6.4rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
     }
+    .figure-num sup { font-size: 0.45em; color: var(--seal); vertical-align: top; }
+    .figure-label { font-size: 0.85rem; color: var(--ink-mute); letter-spacing: 0.1em; margin-top: 6px; }
 
-    .bg-red-light {
-      background: var(--accent-red-light);
-      color: var(--accent-red);
-      border: 1px solid rgba(220, 38, 38, 0.2);
-    }
-
-    .bg-amber-light {
-      background: var(--accent-amber-light);
-      color: var(--accent-amber);
-      border: 1px solid rgba(217, 119, 6, 0.2);
-    }
-
-    .bg-emerald-light {
-      background: var(--accent-emerald-light);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(5, 150, 105, 0.2);
-    }
-
-    .bg-blue-light {
-      background: var(--accent-blue-light);
-      color: var(--accent-blue);
-      border: 1px solid rgba(37, 99, 235, 0.2);
-    }
-
-    .bg-purple-light {
-      background: var(--accent-purple-light);
-      color: var(--accent-purple);
-      border: 1px solid rgba(147, 51, 234, 0.2);
-    }
-
-    .bg-indigo-light {
-      background: var(--accent-indigo-light);
-      color: var(--accent-indigo);
-      border: 1px solid rgba(79, 70, 229, 0.2);
-    }
-
-    .live-status {
-      font-size: 0.78rem;
+    h3 {
+      font-family: var(--serif);
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: var(--accent-emerald-light);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(5, 150, 105, 0.2);
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
     }
-
-    .card-item-title {
-      font-size: 1.45rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-
-    .card-item-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
+    .body-text { color: var(--ink-soft); margin-bottom: 20px; max-width: 34em; }
+    .places {
+      font-size: 0.88rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.12em;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
       margin-bottom: 24px;
     }
 
-    .tag-container {
+    .feature-photos { display: grid; gap: 22px; }
+    .feature-photos .shot { aspect-ratio: 16 / 9; overflow: hidden; background: var(--paper-deep); }
+    .feature-photos figcaption { padding-top: 8px; font-size: 0.82rem; color: var(--ink-mute); letter-spacing: 0.05em; }
+
+    /* ── 作品列表 ── */
+    .works { margin-top: clamp(48px, 7vw, 96px); border-top: 1px solid var(--rule); }
+    .work {
+      display: grid;
+      grid-template-columns: 72px 1fr 1.5fr auto;
+      gap: clamp(16px, 3vw, 40px);
+      align-items: start;
+      padding: clamp(24px, 3vw, 36px) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .work-no {
+      font-family: var(--latin);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--ink-mute);
+      line-height: 1.5;
+    }
+    .work h3 { margin-bottom: 4px; }
+    .work-kind { font-size: 0.82rem; color: var(--ink-mute); letter-spacing: 0.1em; }
+    .work p { color: var(--ink-soft); font-size: 0.97rem; }
+    .work .more { margin-top: 6px; white-space: nowrap; justify-self: start; }
+
+    /* 有照片的兩件作品 */
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 44px); margin-top: clamp(48px, 7vw, 96px); }
+    .pair-photo { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink); margin-bottom: 18px; }
+    .pair-photo img { transition: transform .8s ease; }
+    .pair article:hover .pair-photo img { transform: scale(1.03); }
+    .pair p { color: var(--ink-soft); font-size: 0.97rem; margin-bottom: 14px; }
+
+    /* ── 專業領域 ── */
+    .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .skill { padding: 0 clamp(14px, 2vw, 28px); border-left: 1px solid var(--rule); }
+    .skill:first-child { padding-left: 0; border-left: 0; }
+    .skill .kicker { display: block; margin-bottom: 4px; }
+    .skill h3 { font-size: 1.2rem; }
+    .skill p { color: var(--ink-soft); font-size: 0.95rem; }
+
+    /* ── 證照 ── */
+    .certs { list-style: none; columns: 2; column-gap: clamp(28px, 5vw, 80px); }
+    .certs li {
+      display: flex;
+      gap: 18px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+      break-inside: avoid;
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .certs li span { font-family: var(--latin); font-style: italic; color: var(--ink-mute); min-width: 1.6em; }
+
+    /* ── 理念 ── */
+    .creed { display: grid; grid-template-columns: 220px 1fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
+    .creed-portrait { width: 100%; max-width: 220px; aspect-ratio: 1; overflow: hidden; }
+    .creed-sign { margin-top: 14px; font-family: var(--latin); font-style: italic; font-size: 1.15rem; }
+    .creed-sub { font-size: 0.82rem; color: var(--ink-mute); letter-spacing: 0.06em; line-height: 1.6; }
+    .creed blockquote p {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+      line-height: 2.1;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2em;
+    }
+    .creed blockquote p:first-child {
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+      line-height: 1.75;
+    }
+    .creed blockquote p:first-child::first-letter { color: var(--seal); }
+
+    /* ── 資源庫：目錄樣式 ── */
+    .index { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 44px); }
+    .index h3 { font-size: 1.1rem; padding-bottom: 10px; border-bottom: 1px solid var(--ink); margin-bottom: 6px; }
+    .index ul { list-style: none; }
+    .index li { border-bottom: 1px dotted var(--rule); }
+    .index a { display: block; padding: 9px 0; font-size: 0.93rem; text-decoration: none; color: var(--ink-soft); cursor: pointer; }
+    .index a:hover { color: var(--seal); }
+
+    /* ── 頁尾 ── */
+    footer { margin-top: clamp(72px, 10vw, 140px); border-top: 1px solid var(--ink); }
+    footer .wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-
-    .tag-pill {
-      font-size: 0.78rem;
-      font-family: var(--font-mono);
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-light);
-    }
-
-    .btn-card-action {
-      width: 100%;
-      padding: 12px 0;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 0.92rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .btn-red {
-      background: var(--accent-red);
-      color: #ffffff;
-    }
-
-    .btn-red:hover {
-      background: #b91c1c;
-      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
-    }
-
-    .btn-amber {
-      background: var(--accent-amber);
-      color: #ffffff;
-    }
-
-    .btn-amber:hover {
-      background: #b45309;
-      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
-    }
-
-    .btn-emerald {
-      background: var(--accent-emerald);
-      color: #ffffff;
-    }
-
-    .btn-emerald:hover {
-      background: #047857;
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
-    }
-
-    .btn-blue {
-      background: var(--accent-blue);
-      color: #ffffff;
-    }
-
-    .btn-blue:hover {
-      background: var(--accent-blue-hover);
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-purple {
-      background: var(--accent-purple);
-      color: #ffffff;
-    }
-
-    .btn-purple:hover {
-      background: #7e22ce;
-      box-shadow: 0 4px 12px rgba(147, 51, 234, 0.25);
-    }
-
-    .btn-indigo {
-      background: var(--accent-indigo);
-      color: #ffffff;
-    }
-
-    .btn-indigo:hover {
-      background: #4338ca;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card-item {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      transition: all 0.2s ease;
-    }
-
-    .skill-card-item:hover {
-      background: #ffffff;
-      border-color: var(--accent-blue);
-      box-shadow: var(--shadow-md);
-    }
-
-    .skill-icon-wrap {
-      font-size: 1.8rem;
-      margin-bottom: 14px;
-    }
-
-    .skill-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text-primary);
-    }
-
-    .skill-text {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Credentials Grid */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    .cert-item {
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .cert-check {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--accent-blue-light);
-      color: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .cert-name {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    /* Philosophy Quote Card */
-    .philosophy-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-light);
-      border-left: 4px solid var(--accent-blue);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      margin: 20px 0;
-    }
-
-    .quote-text {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
-
-    .quote-author {
-      font-weight: 700;
-      color: var(--accent-blue);
-      font-size: 0.95rem;
-      text-align: right;
-    }
-
-    /* Resources Grid */
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .resource-box {
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
-    }
-
-    .resource-box-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .resource-sublinks {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .link-item {
-      color: var(--accent-blue);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.15s ease;
-    }
-
-    .link-item:hover {
-      color: var(--accent-blue-hover);
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--border-light);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      background: var(--bg-surface);
-    }
-
-    /* Visitor Counter Badge */
-    .footer-counter-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 16px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .counter-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-      transition: all 0.2s ease;
-      font-weight: 500;
-    }
-
-    .counter-badge-pill:hover {
-      border-color: var(--border-strong);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .counter-icon {
-      font-size: 0.95rem;
-    }
-
-    .counter-label {
-      color: var(--text-muted);
+      gap: 8px 32px;
+      padding-top: 22px;
+      padding-bottom: 40px;
       font-size: 0.82rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.06em;
     }
 
-    .counter-value {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--accent-blue);
-      background: var(--accent-blue-light);
-      padding: 2px 9px;
-      border-radius: 12px;
-      font-size: 0.82rem;
-      min-width: 32px;
-      text-align: center;
+    /* ── 密碼視窗 ── */
+    .modal { position: fixed; inset: 0; background: rgba(27, 25, 21, .55); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+    .modal.active { display: flex; }
+    .modal-box { background: var(--paper); width: 100%; max-width: 420px; padding: 36px; border-top: 3px solid var(--seal); }
+    .modal-box h3 { margin-bottom: 4px; }
+    .modal-box p { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 18px; }
+    .modal-box input {
+      width: 100%; padding: 10px 2px; font: inherit; color: var(--ink);
+      background: transparent; border: 0; border-bottom: 1px solid var(--ink); outline: none;
     }
+    .modal-box input:focus { border-bottom-color: var(--seal); }
+    .modal-err { display: none; color: var(--seal); font-size: 0.86rem; margin-top: 8px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 24px; margin-top: 26px; }
+    .modal-actions button { font: inherit; font-size: 0.92rem; background: none; border: 0; cursor: pointer; color: var(--ink-mute); }
+    .modal-actions button.go { color: var(--ink); font-weight: 500; border-bottom: 1px solid var(--ink); }
+    .modal-actions button.go:hover { color: var(--seal); border-color: var(--seal); }
 
-    /* Responsive */
-    @media (max-width: 868px) {
-      .hero-section {
-        grid-template-columns: 1fr;
-        padding: 40px 0;
-      }
-      
-      .hero-heading {
-        font-size: 2.3rem;
-      }
-
-      .nav-menu {
-        display: none;
-      }
+    /* ── 窄螢幕 ── */
+    @media (max-width: 960px) {
+      .lead-head, .feature, .creed { grid-template-columns: 1fr; }
+      .skills, .index { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+      .skill:nth-child(odd) { padding-left: 0; border-left: 0; }
+      .work { grid-template-columns: 48px 1fr; }
+      .work p, .work .more { grid-column: 2; }
+      .sec-head { grid-template-columns: 1fr; gap: 4px; }
+      .creed-portrait { max-width: 140px; }
     }
-
-    .mini-photo-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin: 16px 0;
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .masthead .wrap { flex-direction: column; gap: 10px; }
+      .masthead nav { gap: 4px 18px; }
+      .lead-photo { aspect-ratio: 4 / 3; }
+      .pair, .skills, .index { grid-template-columns: 1fr; }
+      .skill { padding-left: 0; border-left: 0; }
+      .certs { columns: 1; }
+      .figures { gap: 28px; }
     }
-    .mini-photo-strip .photo-item {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      aspect-ratio: 4 / 3;
-    }
-    .mini-photo-strip .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    .mini-photo-strip .photo-item:hover img {
-      transform: scale(1.06);
-    }
-  </style>
-
-  <!-- Password Protection Modal CSS -->
-  <style>
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 36px 30px;
-      max-width: 440px;
-      width: 100%;
-      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
-      border: 1px solid var(--border-light);
-      text-align: center;
-      transform: translateY(12px) scale(0.96);
-      transition: transform 0.25s ease;
-    }
-
-    .modal-overlay.active .modal-card {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-icon-badge {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: #eff6ff;
-      color: #2563eb;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      margin: 0 auto 16px;
-    }
-
-    .modal-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .modal-target-name {
-      font-size: 0.88rem;
-      color: var(--accent-blue);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .modal-desc {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .modal-input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1.5px solid var(--border-strong);
-      font-size: 1rem;
-      outline: none;
-      font-family: var(--font-sans);
-      text-align: center;
-      letter-spacing: 2px;
-      transition: all 0.2s ease;
-      margin-bottom: 12px;
-    }
-
-    .modal-input:focus {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    }
-
-    .modal-err-msg {
-      color: #dc2626;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-      display: none;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn-modal-cancel {
-      flex: 1;
-      padding: 11px;
-      border-radius: 12px;
-      border: 1px solid var(--border-strong);
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-      font-weight: 700;
-      font-size: 0.92rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-modal-cancel:hover {
-      background: #ffffff;
-      color: var(--text-primary);
-    }
-
-    .btn-modal-confirm {
-      flex: 1.4;
-      padding: 11px;
-      border-radius: 12px;
-      border: none;
-      background: var(--accent-blue);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.92rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-modal-confirm:hover {
-      background: var(--accent-blue-hover);
-      transform: translateY(-1px);
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .pair-photo img { transition: none; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Clean Navbar -->
-  <header class="site-header">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="index.html" class="brand-logo">
-          <div class="brand-avatar-wrap">
-            <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang">
-          </div>
-          <span>Leo Tang</span>
-          <span class="brand-badge">.dev</span>
-        </a>
-
-        <ul class="nav-menu">
-          <li><a href="#projects" class="nav-link">精選代表作</a></li>
-          <li><a href="#skills" class="nav-link">專業領域</a></li>
-          <li><a href="#certs" class="nav-link">證照資格</a></li>
-          <li><a href="#philosophy" class="nav-link">程式理念</a></li>
-          <li><a href="#resources" class="nav-link">資源庫</a></li>
-        </ul>
-      </div>
+  <header class="masthead">
+    <div class="wrap">
+      <a href="#" class="masthead-name">Leo Tang</a>
+      <nav>
+        <a href="#projects">代表作</a>
+        <a href="#skills">專業領域</a>
+        <a href="#certs">證照</a>
+        <a href="#philosophy">理念</a>
+        <a href="#resources">資源庫</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div>
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>System Architecture & Embedded Systems</span>
+  <main>
+
+    <!-- 首屏 -->
+    <div class="lead wrap">
+      <div class="lead-head">
+        <div>
+          <span class="kicker">System Architecture &amp; Embedded Systems</span>
+          <h1 class="lead-title">Leo <em>Tang</em></h1>
         </div>
-
-        <h1 class="hero-heading">Leo Tang</h1>
-        <div class="hero-role">Senior Software Engineer & System Architect</div>
-
-        <p class="hero-description">
-          專注於嵌入式系統開發、自動控制、介面設計與資料庫架構。秉持實務累積經驗的精神，分享極致除錯經驗與創新靈感專案。
-        </p>
-
-        <div class="hero-actions">
-          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')" class="btn-primary-blue">
-            <span>⚠️ AI 翻車與盲點實錄</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </a>
-
-          <a href="javascript:void(0)" onclick="openProtectedLink('https://my100ideas.pages.dev/', 'My100Ideas 靈感館')" class="btn-secondary-light">
-            <span>💡 My100Ideas 靈感館</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </a>
+        <div>
+          <p class="lead-intro">專注於嵌入式系統開發、自動控制、介面設計與資料庫架構。秉持實務累積經驗的精神，分享極致除錯經驗與創新靈感專案。</p>
+          <p class="lead-role">Senior Software Engineer &amp; System Architect</p>
         </div>
       </div>
 
-      <!-- Natural Unclipped Portrait Card -->
-      <div class="portrait-card">
-        <div class="portrait-frame">
-          <img src="uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Portrait">
+      <div class="lead-photo">
+        <img src="img/vietnam_centered.jpg" alt="Leo Tang 站在越南廠房的射出機產線之間">
+      </div>
+      <div class="caption">
+        <span>越南廠房巡查</span>
+        <span>射出機監看系統・現場</span>
+      </div>
+    </div>
+
+    <!-- 代表作 -->
+    <section id="projects" class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Selected Works</span>
+        <h2>精選代表作</h2>
+      </div>
+
+      <div class="feature">
+        <div>
+          <div class="figures">
+            <div>
+              <div class="figure-num">300<sup>+</sup></div>
+              <div class="figure-label">台射出機連線</div>
+            </div>
+            <div>
+              <div class="figure-num">7</div>
+              <div class="figure-label">個國家</div>
+            </div>
+          </div>
+
+          <h3>射出機監看系統與跨國機台連線</h3>
+          <p class="body-text">開發工業射出成型機 (Injection Molding Machine) 監看系統，跨國遠端連線控制與維護超過 300 台射出機台。</p>
+          <p class="places">台灣・中國・越南・泰國・印尼・巴西・巴基斯坦</p>
+          <a class="more" href="3836426044217762080829983.html">檢視經歷與細節</a>
         </div>
-        <div class="portrait-name">Leo Tang</div>
-        <div class="portrait-title">Embedded Systems & Software Architect</div>
+
+        <div class="feature-photos">
+          <figure>
+            <div class="shot"><img src="img/pakistan_codex_centered.jpg" alt="巴基斯坦廠區合影" loading="lazy"></div>
+            <figcaption>巴基斯坦廠區合影</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><img src="img/indonesia_centered.jpg" alt="印尼校園公益交流" loading="lazy"></div>
+            <figcaption>印尼校園公益交流</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="works">
+        <article class="work">
+          <span class="work-no">02</span>
+          <div>
+            <h3>屋頂發電系統建置與監看</h3>
+            <span class="work-kind">綠能・太陽能監看</span>
+          </div>
+          <p>主導屋頂太陽能光電發電系統 1-6 期建置與維護作業，打造即時發電數據統計、設備狀態異常警告與太陽能遠端監看維護系統。</p>
+          <a class="more" href="3836426044217762080829983.html">細節</a>
+        </article>
+
+        <article class="work">
+          <span class="work-no">03</span>
+          <div>
+            <h3>小綠行人燈與 EMC/EMI 除錯</h3>
+            <span class="work-kind">微控制器・電磁相容</span>
+          </div>
+          <p>設計「小綠人」交通號誌 (行人燈) 微控制器控制電路，並完成先鋒牌 (Pioneer) 錄影機與索尼 (SONY) 電源供應器之電磁干擾 (EMI Debugging) 與電磁相容 (EMC) 測試除錯實戰作品。</p>
+          <a class="more" href="3836426044217762080829983.html">細節</a>
+        </article>
+
+        <article class="work">
+          <span class="work-no">04</span>
+          <div>
+            <h3>AI 翻車與盲點實錄</h3>
+            <span class="work-kind">AI 錯誤紀錄・避坑指南</span>
+          </div>
+          <p>「AI 不是萬能神，用真實案例警惕 AI 盲點與幻覺。」記錄資深工程師與 AI 對話寫 Code 時，AI 犯下的幻覺杜撰、路徑混淆、過度自信與邏輯漏洞案例。</p>
+          <a class="more" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')">前往（需密碼）</a>
+        </article>
+
+        <article class="work">
+          <span class="work-no">05</span>
+          <div>
+            <h3>My100Ideas 靈感博物館</h3>
+            <span class="work-kind">點子檔案庫</span>
+          </div>
+          <p>「讓每一個想法，都留下它的人生。」點子檔案庫與靈感博物館，保存曾經想到、正在實現，以及因拖延而錯過的創意與故事。</p>
+          <a class="more" onclick="openProtectedLink('https://my100ideas.pages.dev/', 'My100Ideas 靈感館')">前往（需密碼）</a>
+        </article>
+      </div>
+
+      <div class="pair">
+        <article>
+          <div class="pair-photo"><img src="img/leosview.jpg" alt="LEO'S VIEW 攝影作品" loading="lazy"></div>
+          <span class="kicker">06 — Photography</span>
+          <h3>LEO'S VIEW 視覺與觀點誌</h3>
+          <p>「禮歐先生的識(視)覺網站。」收錄攝影作品、視覺紀錄、生活隨筆與視覺設計，記錄日常生活與工程師視角之外的獨特影像觀點與創作。</p>
+          <a class="more" href="https://stevebobobo.github.io/leosview/" target="_blank" rel="noopener">前往 LEO'S VIEW</a>
+        </article>
+
+        <article>
+          <div class="pair-photo"><img src="img/angelparty.jpg" alt="JOIN THE ANGEL PARTY 樂團婚禮現場演出" loading="lazy" style="object-position:50% 40%"></div>
+          <span class="kicker">07 — Live Band</span>
+          <h3>JOIN THE ANGEL PARTY 天使派對樂團</h3>
+          <p>「來自台南的超級樂團 - JOIN THE ANGEL PARTY。」一生中最重要的大日子，Full Band 現場帶來的熱情與能量，震撼演唱會級音效與活動/婚禮紀錄。</p>
+          <a class="more" href="https://stevebobobo.github.io/angelparty/" target="_blank" rel="noopener">前往天使派對樂團</a>
+        </article>
       </div>
     </section>
 
-    <!-- Featured Masterpiece Projects -->
-    <section id="projects" class="section-block">
-      <div class="section-header">
-        <div class="section-subtitle">Flagship Portals</div>
-        <h2 class="section-title">精選代表作</h2>
+    <!-- 專業領域 -->
+    <section id="skills" class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Capabilities</span>
+        <h2>專業領域與技術棧</h2>
       </div>
 
-      <div class="featured-grid">
-        <!-- AiErrorLog -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-red-light">⚠️</div>
-              <span class="live-status">Live Project</span>
-            </div>
-
-            <h3 class="card-item-title">AI 翻車與盲點實錄</h3>
-            <p class="card-item-desc">
-              「AI 不是萬能神，用真實案例警惕 AI 盲點與幻覺。」記錄資深工程師與 AI 對話寫 Code 時，AI 犯下的幻覺杜撰、路徑混淆、過度自信與邏輯漏洞案例。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#AI錯誤紀錄</span>
-              <span class="tag-pill">#路徑混淆</span>
-              <span class="tag-pill">#Build來源誤判</span>
-              <span class="tag-pill">#避坑指南</span>
-            </div>
-          </div>
-
-          <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')" class="btn-card-action btn-red">
-            <span>前往 AiErrorLog 網站 ↗</span>
-          </a>
+      <div class="skills">
+        <div class="skill">
+          <span class="kicker">Embedded System</span>
+          <h3>嵌入式系統</h3>
+          <p>微控制器韌體開發、即時作業系統 (RTOS)、底層驅動與通訊協定整合。</p>
         </div>
-
-        <!-- My100Ideas -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-amber-light">💡</div>
-              <span class="live-status">Live Project</span>
-            </div>
-
-            <h3 class="card-item-title">My100Ideas 靈感博物館</h3>
-            <p class="card-item-desc">
-              「讓每一個想法，都留下它的人生。」點子檔案庫與靈感博物館，保存曾經想到、正在實現，以及因拖延而錯過的創意與故事。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#100Ideas矩陣</span>
-              <span class="tag-pill">#對帳法</span>
-              <span class="tag-pill">#老人電動車遠端</span>
-              <span class="tag-pill">#點子博物館</span>
-            </div>
-          </div>
-
-          <a href="javascript:void(0)" onclick="openProtectedLink('https://my100ideas.pages.dev/', 'My100Ideas 靈感館')" class="btn-card-action btn-amber">
-            <span>前往 My100Ideas 網站 ↗</span>
-          </a>
+        <div class="skill">
+          <span class="kicker">Interface Design</span>
+          <h3>介面設計</h3>
+          <p>人機介面 (HMI) 開發、使用者體驗優化、現代化網頁與控制介面。</p>
         </div>
-
-        <!-- LEO'S VIEW -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-purple-light">📷</div>
-              <span class="live-status">Live Project</span>
-            </div>
-
-            <h3 class="card-item-title">LEO'S VIEW 視覺與觀點誌</h3>
-            <p class="card-item-desc">
-              「禮歐先生的識(視)覺網站。」收錄攝影作品、視覺紀錄、生活隨筆與視覺設計，記錄日常生活與工程師視角之外的獨特影像觀點與創作。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#禮歐先生</span>
-              <span class="tag-pill">#視覺紀錄</span>
-              <span class="tag-pill">#攝影隨筆</span>
-              <span class="tag-pill">#視覺設計</span>
-              <span class="tag-pill">#觀點創作</span>
-            </div>
-          </div>
-
-          <a href="https://stevebobobo.github.io/leosview/" target="_blank" class="btn-card-action btn-purple">
-            <span>前往 LEO'S VIEW 網站 ↗</span>
-          </a>
+        <div class="skill">
+          <span class="kicker">Automatic Control</span>
+          <h3>自動控制</h3>
+          <p>工業自動化、運動控制系統、伺服驅動與感測器訊號處理。</p>
         </div>
-
-        <!-- JOIN THE ANGEL PARTY -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-indigo-light">🎸</div>
-              <span class="live-status">Live Project</span>
-            </div>
-
-            <h3 class="card-item-title">JOIN THE ANGEL PARTY 天使派對樂團</h3>
-            <p class="card-item-desc">
-              「來自台南的超級樂團 - JOIN THE ANGEL PARTY。」一生中最重要的大日子，Full Band 現場帶來的熱情與能量，震撼演唱會級音效與活動/婚禮紀錄。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#天使派對樂團</span>
-              <span class="tag-pill">#台南樂團</span>
-              <span class="tag-pill">#FULLBAND</span>
-              <span class="tag-pill">#婚禮活動演出</span>
-              <span class="tag-pill">#演唱會級音樂</span>
-            </div>
-          </div>
-
-          <a href="https://stevebobobo.github.io/angelparty/" target="_blank" class="btn-card-action btn-indigo">
-            <span>前往 天使派對樂團 網站 ↗</span>
-          </a>
-        </div>
-
-        <!-- 小綠行人燈 & EMC/EMI 電磁相容除錯工程 -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-emerald-light">🚦</div>
-              <span class="live-status">Featured Work</span>
-            </div>
-
-            <h3 class="card-item-title">小綠行人燈 & EMC/EMI 除錯</h3>
-            <p class="card-item-desc">
-              設計「小綠人」交通號誌 (行人燈) 微控制器控制電路，並完成先鋒牌 (Pioneer) 錄影機與索尼 (SONY) 電源供應器之電磁干擾 (EMI Debugging) 與電磁相容 (EMC) 測試除錯實戰作品。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#小綠行人燈</span>
-              <span class="tag-pill">#EMC電磁相容</span>
-              <span class="tag-pill">#EMI測試除錯</span>
-              <span class="tag-pill">#先鋒同影機</span>
-              <span class="tag-pill">#索尼電源</span>
-            </div>
-          </div>
-
-          <a href="3836426044217762080829983.html" class="btn-card-action btn-emerald">
-            <span>檢視經歷與細節 ↗</span>
-          </a>
-        </div>
-
-        <!-- 屋頂發電系統建置與太陽能監看 -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-amber-light">☀️</div>
-              <span class="live-status">Green Energy</span>
-            </div>
-
-            <h3 class="card-item-title">屋頂發電系統建置與監看</h3>
-            <p class="card-item-desc">
-              主導屋頂太陽能光電發電系統 1-6 期建置與維護作業，打造即時發電數據統計、設備狀態異常警告與太陽能遠端監看維護系統。
-            </p>
-
-            <div class="tag-container">
-              <span class="tag-pill">#屋頂發電系統</span>
-              <span class="tag-pill">#太陽能監看</span>
-              <span class="tag-pill">#發電數據統計</span>
-              <span class="tag-pill">#綠能自動化</span>
-            </div>
-          </div>
-
-          <a href="3836426044217762080829983.html" class="btn-card-action btn-amber">
-            <span>檢視經歷與細節 ↗</span>
-          </a>
-        </div>
-
-        <!-- 射出機監看系統 & 300+ 跨國機台連線 -->
-        <div class="card-masterpiece">
-          <div>
-            <div class="card-header-row">
-              <div class="card-icon-badge bg-blue-light">📡</div>
-              <span class="live-status">Industrial Systems</span>
-            </div>
-
-            <h3 class="card-item-title">射出機監看 & 300+ 機台連線</h3>
-            <p class="card-item-desc">
-              開發工業射出成型機 (Injection Molding Machine) 監看系統，跨國（台灣、中國、越南、泰國、印尼、巴西、巴基斯坦）遠端連線控制與維護超過 300 台射出機台。
-            </p>
-
-            <div class="mini-photo-strip">
-              <div class="photo-item">
-                <img src="uploads/8/0/3/9/80395834/1558340846364.jpg" alt="印尼校園公益交流" loading="lazy">
-              </div>
-              <div class="photo-item">
-                <img src="uploads/8/0/3/9/80395834/37019321-10214903006181276-1528767757603045376-o.jpg" alt="越南廠房巡查" loading="lazy">
-              </div>
-              <div class="photo-item">
-                <img src="uploads/8/0/3/9/80395834/65793028-10217538310182229-6195276022791798784-n.jpg" alt="巴基斯坦廠區合影" loading="lazy">
-              </div>
-            </div>
-
-            <div class="tag-container">
-              <span class="tag-pill">#射出機監看系統</span>
-              <span class="tag-pill">#300台機台連線</span>
-              <span class="tag-pill">#跨國出差維護</span>
-              <span class="tag-pill">#射出成型自動化</span>
-            </div>
-          </div>
-
-          <a href="3836426044217762080829983.html" class="btn-card-action btn-blue">
-            <span>檢視經歷與細節 ↗</span>
-          </a>
+        <div class="skill">
+          <span class="kicker">Software Architecture</span>
+          <h3>軟體架構</h3>
+          <p>C/C++、Java、ASP.NET、Python 與現代全棧網頁程式語言。</p>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-block">
-      <div class="section-header">
-        <div class="section-subtitle">Capabilities</div>
-        <h2 class="section-title">專業領域與技術棧</h2>
+    <!-- 證照 -->
+    <section id="certs" class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Qualifications</span>
+        <h2>專業證照與資格</h2>
       </div>
 
-      <div class="skills-grid">
-        <div class="skill-card-item">
-          <div class="skill-icon-wrap">🛠️</div>
-          <h3 class="skill-title">Embedded System 嵌入式系統</h3>
-          <p class="skill-text">微控制器韌體開發、即時作業系統 (RTOS)、底層驅動與通訊協定整合。</p>
+      <ol class="certs">
+        <li><span>i.</span>ORACLE JAVA SE 程式設計師證照</li>
+        <li><span>ii.</span>MCTS 微軟資料庫認證</li>
+        <li><span>iii.</span>ACE 晶心高級工程師認證</li>
+        <li><span>iv.</span>丙級硬體裝修證照</li>
+        <li><span>v.</span>乙級天車執照</li>
+        <li><span>vi.</span>甲級作業主管資格</li>
+      </ol>
+    </section>
+
+    <!-- 理念 -->
+    <section id="philosophy" class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Engineering Mindset</span>
+        <h2>程式理念與初衷</h2>
+      </div>
+
+      <div class="creed">
+        <div>
+          <div class="creed-portrait"><img src="img/portrait.jpg" alt="Leo Tang"></div>
+          <div class="creed-sign">Leo Tang</div>
+          <div class="creed-sub">Embedded Systems &amp;<br>Software Architect</div>
+        </div>
+        <blockquote>
+          <p>越是沒有天資的地方我能選擇的只有努力。一切都是苦功夫，一點一滴累積下來的經驗與運氣。</p>
+          <p>或許命運帶著我們走入了複雜的生命程式陣營。受到許多工程師先進的影響，想要讓自己思考能力變強、變得更有格局、更有邏輯，於是走上了這條寫程式的不歸路。</p>
+          <p>一個人的力量有限，在此提供一些資源與大家一起分享，希望有機會能跟各位交流成長！</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 資源庫 -->
+    <section id="resources" class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Archives &amp; Notes</span>
+        <h2>教學與學生作品資源庫</h2>
+      </div>
+
+      <div class="index">
+        <div>
+          <h3>同學們的作品集</h3>
+          <ul>
+            <li><a href="11024180c354863532831243243353537335336.html">110年 C語言程式設計</a></li>
+            <li><a href="11024180aspnet.html">110年 ASP.NET 網頁實作</a></li>
+            <li><a href="104ecommerce.html">106年 電子書專案</a></li>
+            <li><a href="104ecommerce-590659.html">104年 電子商務作品</a></li>
+            <li><a href="scratch.html">SCRATCH 程式體驗</a></li>
+            <li><a href="skecthup.html">SketchUp 3D建模</a></li>
+            <li><a href="21517292553506920316.html">名片設計製作</a></li>
+          </ul>
         </div>
 
-        <div class="skill-card-item">
-          <div class="skill-icon-wrap">🖥️</div>
-          <h3 class="skill-title">Interface Design 介面設計</h3>
-          <p class="skill-text">人機介面 (HMI) 開發、使用者體驗優化、現代化網頁與控制介面。</p>
+        <div>
+          <h3>程式備忘錄與筆記</h3>
+          <ul>
+            <li><a href="3124324335206332453637636.html">進入程式備忘錄</a></li>
+            <li><a href="2403720316368892728420107.html">工作這檔事（職涯筆記）</a></li>
+            <li><a href="28608212373548637636.html">激勵語錄小品</a></li>
+            <li><a href="3836426044217762080829983.html">關於 Leo Tang</a></li>
+          </ul>
         </div>
 
-        <div class="skill-card-item">
-          <div class="skill-icon-wrap">🤖</div>
-          <h3 class="skill-title">Automatic Control 自動控制</h3>
-          <p class="skill-text">工業自動化、運動控制系統、伺服驅動與感測器訊號處理。</p>
+        <div>
+          <h3>精選品牌與推薦站點</h3>
+          <ul>
+            <li><a href="https://stevebobobo.github.io/leosview/" target="_blank" rel="noopener">LEO'S VIEW 視覺誌</a></li>
+            <li><a href="https://stevebobobo.github.io/angelparty/" target="_blank" rel="noopener">ANGEL PARTY 天使派對樂團</a></li>
+            <li><a href="2290930828255123421421312.html">好硬推薦區（硬體）</a></li>
+            <li><a href="2290936575255123421421312.html">好軟推薦區（軟體）</a></li>
+            <li><a href="22909314492551234214.html">好站推薦區（網站）</a></li>
+            <li><a href="24037208552551234214.html">工具推薦總覽</a></li>
+          </ul>
         </div>
 
-        <div class="skill-card-item">
-          <div class="skill-icon-wrap">💻</div>
-          <h3 class="skill-title">Software Architecture 軟體架構</h3>
-          <p class="skill-text">C/C++、Java、ASP.NET、Python 與現代全棧網頁程式語言。</p>
+        <div>
+          <h3>AI 專區</h3>
+          <ul>
+            <li><a onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')">AI 翻車與盲點實錄（需密碼）</a></li>
+            <li><a href="ai-insights.html">AI 觀察誤區與導入策略</a></li>
+            <li><a href="aitools.html">好 AI 推薦區（AI 工具）</a></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Credentials Section -->
-    <section id="certs" class="section-block">
-      <div class="section-header">
-        <div class="section-subtitle">Qualifications</div>
-        <h2 class="section-title">專業證照與資格</h2>
-      </div>
-
-      <div class="certs-grid">
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">ORACLE JAVA SE 程式設計師證照</div>
-        </div>
-
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">MCTS 微軟資料庫認證</div>
-        </div>
-
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">ACE 晶心高級工程師認證</div>
-        </div>
-
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">丙級硬體裝修證照</div>
-        </div>
-
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">乙級天車執照</div>
-        </div>
-
-        <div class="cert-item">
-          <div class="cert-check">✓</div>
-          <div class="cert-name">甲級作業主管資格</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Philosophy -->
-    <section id="philosophy" class="section-block">
-      <div class="section-header">
-        <div class="section-subtitle">Engineering Mindset</div>
-        <h2 class="section-title">程式理念與初衷</h2>
-      </div>
-
-      <div class="philosophy-card">
-        <p class="quote-text">
-          「或許命運帶著我們走入了複雜的生命程式陣營。受到許多工程師先進的影響，想要讓自己思考能力變強、變得更有格局、更有邏輯，於是走上了這條寫程式的不歸路。<br><br>
-          越是沒有天資的地方我能選擇的只有努力。一切都是苦功夫，一點一滴累積下來的經驗與運氣。<br><br>
-          一個人的力量有限，在此提供一些資源與大家一起分享，希望有機會能跟各位交流成長！」
-        </p>
-        <div class="quote-author">— Leo Tang</div>
-      </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="section-block">
-      <div class="section-header">
-        <div class="section-subtitle">Archives & Notes</div>
-        <h2 class="section-title">教學與學生作品資源庫</h2>
-      </div>
-
-      <div class="resources-grid">
-        <div class="resource-box">
-          <div class="resource-box-title">
-            <span>🎓 同學們的作品集</span>
-          </div>
-          <div class="resource-sublinks">
-            <a href="11024180c354863532831243243353537335336.html" class="link-item">▸ 110年 C語言程式設計</a>
-            <a href="11024180aspnet.html" class="link-item">▸ 110年 ASP.NET 網頁實作</a>
-            <a href="104ecommerce.html" class="link-item">▸ 106年 電子書專案</a>
-            <a href="104ecommerce-590659.html" class="link-item">▸ 104年 電子商務作品</a>
-            <a href="scratch.html" class="link-item">▸ SCRATCH 程式體驗</a>
-            <a href="skecthup.html" class="link-item">▸ SketchUp 3D建模</a>
-            <a href="21517292553506920316.html" class="link-item">▸ 名片設計製作</a>
-          </div>
-        </div>
-
-        <div class="resource-box">
-          <div class="resource-box-title">
-            <span>📝 程式備忘錄與筆記</span>
-          </div>
-          <div class="resource-sublinks">
-            <a href="3124324335206332453637636.html" class="link-item">▸ 進入程式備忘錄</a>
-            <a href="2403720316368892728420107.html" class="link-item">▸ 工作這檔事 (職涯筆記)</a>
-            <a href="28608212373548637636.html" class="link-item">▸ 激勵語錄小品</a>
-            <a href="3836426044217762080829983.html" class="link-item">▸ 關於 Leo Tang</a>
-          </div>
-        </div>
-
-        <div class="resource-box">
-          <div class="resource-box-title">
-            <span>🧰 精選品牌與推薦站點</span>
-          </div>
-          <div class="resource-sublinks">
-            <a href="https://stevebobobo.github.io/leosview/" target="_blank" class="link-item">▸ LEO'S VIEW 視覺誌 ↗</a>
-            <a href="https://stevebobobo.github.io/angelparty/" target="_blank" class="link-item">▸ ANGEL PARTY 天使派對樂團 ↗</a>
-            <a href="2290930828255123421421312.html" class="link-item">▸ 好硬推薦區 (硬體)</a>
-            <a href="2290936575255123421421312.html" class="link-item">▸ 好軟推薦區 (軟體)</a>
-            <a href="22909314492551234214.html" class="link-item">▸ 好站推薦區 (網站)</a>
-            <a href="24037208552551234214.html" class="link-item">▸ 工具推薦總覽</a>
-          </div>
-        </div>
-
-        <div class="resource-box">
-          <div class="resource-box-title">
-            <span>🤖 AI 專區</span>
-          </div>
-          <div class="resource-sublinks">
-            <a href="javascript:void(0)" onclick="openProtectedLink('https://stevebobobo.github.io/AiErrorLog/', 'AI 翻車與盲點實錄')" class="link-item">▸ AI 翻車與盲點實錄 🔒</a>
-            <a href="ai-insights.html" class="link-item">▸ AI 觀察誤區與導入策略</a>
-            <a href="aitools.html" class="link-item">▸ 好 AI 推薦區 (AI 工具)</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-
-      <!-- 累計瀏覽人數顯示 (Visitor Counters) -->
-      <div class="footer-counter-wrap">
-        <div class="counter-badge-pill" id="busuanzi_container_site_pv" title="本站累計總瀏覽次數">
-          <span class="counter-icon">👁️</span>
-          <span class="counter-label">累計瀏覽人次</span>
-          <span class="counter-value" id="busuanzi_value_site_pv">--</span>
-        </div>
-        <div class="counter-badge-pill" id="busuanzi_container_site_uv" title="本站不重複訪客數">
-          <span class="counter-icon">👤</span>
-          <span class="counter-label">累計訪客數</span>
-          <span class="counter-value" id="busuanzi_value_site_uv">--</span>
-        </div>
-      </div>
-
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Leo Tang (stevebobobo)</span>
+      <span>
+        <span id="busuanzi_container_site_pv">累計瀏覽 <span id="busuanzi_value_site_pv">--</span></span>
+        ・
+        <span id="busuanzi_container_site_uv">訪客 <span id="busuanzi_value_site_uv">--</span></span>
+      </span>
     </div>
   </footer>
 
-  <!-- 不蒜子 (Busuanzi) 瀏覽計數器腳本 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-  <!-- Password Protection Modal -->
-  <div id="passwordModal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-icon-badge">🔒</div>
-      <h3 class="modal-title">受保護資源專區</h3>
-      <div id="modalTargetName" class="modal-target-name">目標專區</div>
-      <p class="modal-desc">前往此資源項目需要存取密碼驗證。請輸入密碼解鎖存取權限。</p>
-
-      <input type="password" id="passInput" class="modal-input" placeholder="請輸入存取密碼..." onkeydown="if(event.key==='Enter') verifyPassword()">
-      <div id="modalErrMsg" class="modal-err-msg">⚠️ 密碼不正確，請重新輸入！</div>
-
+  <!-- 密碼視窗 -->
+  <div id="passwordModal" class="modal">
+    <div class="modal-box">
+      <span class="kicker">Protected</span>
+      <h3 id="modalTargetName">目標專區</h3>
+      <p>前往此資源項目需要存取密碼驗證。</p>
+      <input type="password" id="passInput" placeholder="請輸入存取密碼" onkeydown="if(event.key==='Enter') verifyPassword()">
+      <div id="modalErrMsg" class="modal-err">密碼不正確，請重新輸入。</div>
       <div class="modal-actions">
-        <button class="btn-modal-cancel" onclick="closePasswordModal()">取消</button>
-        <button class="btn-modal-confirm" onclick="verifyPassword()">解鎖並前往 ↗</button>
+        <button onclick="closePasswordModal()">取消</button>
+        <button class="go" onclick="verifyPassword()">解鎖並前往</button>
       </div>
     </div>
   </div>
@@ -1429,18 +640,16 @@
       }
 
       currentProtectedUrl = url;
-      document.getElementById('modalTargetName').textContent = '前往：' + (targetName || '專區');
+      document.getElementById('modalTargetName').textContent = targetName || '專區';
       document.getElementById('passwordModal').classList.add('active');
       const passInput = document.getElementById('passInput');
       passInput.value = '';
-      passInput.style.borderColor = 'var(--border-strong)';
       document.getElementById('modalErrMsg').style.display = 'none';
       setTimeout(() => passInput.focus(), 100);
     }
 
     function verifyPassword() {
       const inputPass = document.getElementById('passInput').value;
-      const errMsg = document.getElementById('modalErrMsg');
 
       if (inputPass === ACCESS_PASSWORD) {
         const projectKey = 'unlocked_' + currentProtectedUrl.replace(/[^a-zA-Z0-9]/g, '');
@@ -1448,10 +657,8 @@
         closePasswordModal();
         window.open(currentProtectedUrl, '_blank');
       } else {
-        errMsg.style.display = 'block';
-        const inputField = document.getElementById('passInput');
-        inputField.style.borderColor = '#dc2626';
-        inputField.focus();
+        document.getElementById('modalErrMsg').style.display = 'block';
+        document.getElementById('passInput').focus();
       }
     }
 
@@ -1460,5 +667,4 @@
     }
   </script>
 </body>
-
 </html>

@@ -1,0 +1,266 @@
+/* ksuleo 內頁共用樣式：載入順序在各頁內嵌 <style> 之後，用來統一成首頁的編輯風 */
+
+:root {
+  --paper: #f5f2ea;
+  --paper-deep: #ebe6da;
+  --ink: #1b1915;
+  --ink-soft: #4a463e;
+  --ink-mute: #857f72;
+  --rule: #cfc8b8;
+  --seal: #a3341c;
+
+  --serif: 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
+  --latin: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+
+  /* 覆寫各頁原有變數 */
+  --bg-page: var(--paper);
+  --bg-color: var(--paper);
+  --bg-surface: var(--paper);
+  --bg-surface-hover: var(--paper-deep);
+  --card-bg: var(--paper);
+  --card-hover-bg: var(--paper-deep);
+  --border-light: var(--rule);
+  --border-strong: var(--ink-mute);
+  --border-color: var(--rule);
+  --text-primary: var(--ink);
+  --text-main: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+
+  --primary: var(--ink);
+  --primary-gradient: none;
+  --accent-blue: var(--ink);
+  --accent-blue-hover: var(--seal);
+  --accent-indigo: var(--ink);
+  --accent-indigo-hover: var(--seal);
+  --accent-emerald: var(--seal);
+  --accent-green: var(--seal);
+  --accent-purple: var(--seal);
+  --accent-amber: var(--seal);
+  --accent-orange: var(--seal);
+  --accent-rose: var(--seal);
+  --accent-red: var(--seal);
+  --accent-cyan: var(--seal);
+  --accent-blue-light: var(--paper-deep);
+  --accent-indigo-light: var(--paper-deep);
+  --accent-emerald-light: var(--paper-deep);
+  --accent-purple-light: var(--paper-deep);
+  --accent-amber-light: var(--paper-deep);
+  --accent-orange-light: var(--paper-deep);
+  --accent-rose-light: var(--paper-deep);
+  --accent-red-light: var(--paper-deep);
+  --accent-cyan-light: var(--paper-deep);
+
+  --font-sans: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-hover: none;
+}
+
+/* 去掉圓角、陰影、毛玻璃 */
+*, *::before, *::after {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+.container { max-width: 1140px; padding: 0 clamp(20px, 5vw, 48px); }
+
+h1, h2, h3, h4,
+[class$="-title"], [class*="-title "], [class$="-name"] {
+  font-family: var(--serif);
+  letter-spacing: 0.05em;
+}
+h2, h3, h4 { font-weight: 700; }
+
+a { color: var(--ink); }
+
+/* ── 刊頭 ── */
+.site-header {
+  position: static;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+.nav-inner { height: auto; padding-top: 22px; padding-bottom: 18px; align-items: baseline; }
+.brand-logo {
+  font-family: var(--latin);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.brand-avatar-wrap { display: none; }
+.nav-links { gap: 28px; }
+.nav-back-btn, .nav-links a {
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: none;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.nav-back-btn:hover, .nav-links a:hover { background: none; color: var(--seal); border-color: var(--seal); }
+
+/* ── 頁首區：小標 + 大標 + 墨線 ── */
+.hero-section, .page-hero {
+  background: none !important;
+  border-bottom: 0;
+  padding: clamp(40px, 7vw, 88px) 0 0;
+  text-align: left;
+}
+.hero-section > .container, .page-hero > .container {
+  padding-bottom: 24px;
+}
+.hero-section > .container::after, .page-hero > .container::after {
+  content: "";
+  display: block;
+  margin-top: 28px;
+  border-bottom: 1px solid var(--ink);
+}
+.hero-badge, .section-label, .project-label {
+  display: block;
+  padding: 0 !important;
+  margin-bottom: 10px;
+  border: 0 !important;
+  background: none !important;
+  color: var(--ink-mute) !important;
+  font-family: var(--latin);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.hero-title, .page-title {
+  font-weight: 900;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+.hero-desc, .page-desc {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 40em;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.hero-container::after { grid-column: 1 / -1; margin-top: 0 !important; }
+.hero-banner-img { border: 0 !important; }
+.hero-banner-img:hover { transform: none; }
+
+/* ── 區塊標題 ── */
+.section-title, .section-title-bar, .timeline-title {
+  padding-bottom: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+}
+
+/* ── 卡片改為以細線分隔的條目 ── */
+[class$="-card"], [class*="-card "], .card, .milestone-box {
+  background: none !important;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  padding: 24px 0 8px;
+  transition: none;
+}
+[class$="-card"]:hover, [class*="-card "]:hover, .card:hover { transform: none; border-color: var(--ink); }
+
+/* 純圖示容器（原本放表情符號） */
+.sw-icon, .card-icon-wrap, .card-icon, .hub-icon-wrap, .tool-icon, .search-icon, .avatar-placeholder { display: none; }
+
+/* 標籤：不用色塊 */
+.tag, .sw-tag, .id-tag, .class-tag, .example-tag, .c-badge, .card-badge, .student-badge, .no-link-badge {
+  padding: 0;
+  border: 0;
+  background: none !important;
+  color: var(--ink-mute);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+/* 按鈕：改為文字連結 */
+.visit-btn, .redirect-btn, .hub-btn, .tool-link-btn, .download-btn, .sketchup-btn, .mystuff-btn,
+.btn-blue, .btn-indigo, .btn-emerald {
+  display: inline-block;
+  width: auto;
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: none !important;
+  color: var(--ink) !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.visit-btn:hover, .redirect-btn:hover, .hub-btn:hover, .tool-link-btn:hover, .download-btn:hover,
+.sketchup-btn:hover, .mystuff-btn:hover, .btn-blue:hover, .btn-indigo:hover, .btn-emerald:hover {
+  transform: none;
+  color: var(--seal) !important;
+  border-color: var(--seal);
+}
+
+/* 引言 */
+.quote-box, .profile-quote {
+  margin: 20px 0;
+  padding: 4px 0 4px 20px;
+  border: 0;
+  border-left: 2px solid var(--seal);
+  background: none;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+/* 程式碼區維持深色 */
+.code-window, .code-box, .snippet-card pre { background: var(--ink) !important; border: 0; }
+.code-dots { display: none; }
+
+input, .search-input {
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  font: inherit;
+}
+
+/* ── 頁尾 ── */
+.site-footer {
+  margin-top: clamp(72px, 10vw, 140px);
+  padding: 22px 0 40px;
+  border-top: 1px solid var(--ink);
+  background: none;
+  text-align: left;
+  color: var(--ink-mute);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .nav-inner { flex-direction: column; gap: 10px; }
+  [class$="-grid"], .grid-layout { grid-template-columns: 1fr !important; }
+}

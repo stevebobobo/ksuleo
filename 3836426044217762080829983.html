@@ -8,30 +8,30 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     
 :root {
   --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-blue: #2563eb;
-  --accent-blue-hover: #1d4ed8;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-blue: #1b1915;
+  --accent-blue-hover: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
   
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -118,7 +118,7 @@ body {
 .nav-back-btn:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
-  background: #ffffff;
+  background: transparent;
   box-shadow: var(--shadow-sm);
 }
 
@@ -227,7 +227,7 @@ body {
       gap: 20px;
     }
     .milestone-box {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 20px;
@@ -274,7 +274,7 @@ body {
       margin-top: 12px;
     }
     .c-badge {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-strong);
       padding: 4px 10px;
       border-radius: 20px;
@@ -307,6 +307,7 @@ body {
       transform: scale(1.06);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -327,7 +328,7 @@ body {
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge" style="background: var(--accent-purple-light); color: var(--accent-purple); border: 1px solid rgba(124, 58, 237, 0.2);">
-        👤 Biography
+        Biography
       </div>
       <h1 class="hero-title">關於 Leo Tang (唐先生)</h1>
       <p class="hero-desc">
@@ -352,7 +353,7 @@ body {
     </div>
 
     <div class="timeline-section">
-      <h2 class="timeline-title">🌟 精彩 10 年工程歷程</h2>
+      <h2 class="timeline-title">精彩 10 年工程歷程</h2>
       <div class="milestones-grid">
 
         <div class="milestone-box">
@@ -383,21 +384,21 @@ body {
       </div>
 
       <div style="margin-top: 24px; background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-        <strong style="color: var(--text-primary);">✈️ 射出機監看系統與跨國連線：</strong>
+        <strong style="color: var(--text-primary);">射出機監看系統與跨國連線：</strong>
         <div class="badge-wrap">
-          <span class="c-badge">🇹🇼 台灣</span>
-          <span class="c-badge">🇨🇳 中國</span>
-          <span class="c-badge">🇻🇳 越南</span>
-          <span class="c-badge">🇹🇭 泰國</span>
-          <span class="c-badge">🇮🇩 印尼</span>
-          <span class="c-badge">🇧🇷 巴西</span>
-          <span class="c-badge">🇵🇰 巴基斯坦</span>
-          <span class="c-badge" style="background: var(--accent-blue-light); color: var(--accent-blue);">📡 遠端連線射出機台超過 300 台</span>
+          <span class="c-badge">台灣</span>
+          <span class="c-badge">中國</span>
+          <span class="c-badge">越南</span>
+          <span class="c-badge">泰國</span>
+          <span class="c-badge">印尼</span>
+          <span class="c-badge">巴西</span>
+          <span class="c-badge">巴基斯坦</span>
+          <span class="c-badge" style="background: var(--accent-blue-light); color: var(--accent-blue);">遠端連線射出機台超過 300 台</span>
         </div>
       </div>
 
       <div style="margin-top: 32px;">
-        <h3 class="story-title" style="margin-bottom: 16px;">📸 海外足跡</h3>
+        <h3 class="story-title" style="margin-bottom: 16px;">海外足跡</h3>
         <div class="photo-gallery">
           <div class="photo-item">
             <img src="uploads/8/0/3/9/80395834/1558340846364.jpg" alt="印尼校園公益交流" loading="lazy">
@@ -431,7 +432,7 @@ body {
     </div>
 
     <div class="story-card">
-      <h3 class="story-title">⚡ 初入社會與武林奇遇</h3>
+      <h3 class="story-title">初入社會與武林奇遇</h3>
       <p class="story-text">
         電力系統組畢業後跑去電力技術顧問公司，每個月跑 60 間工廠業務，親眼目睹高壓電的危險與大飽眼福。轉職電力電子業時意外學到了<strong>電磁相容性 (EMC)</strong> 技術，在電磁干擾除錯 (EMI Debugging) 的表現上受到肯定。<br>
         <strong>得意作品：</strong>小綠行人燈、先鋒牌同影機與索尼電源供應器 EMI 測試除錯。
@@ -439,7 +440,7 @@ body {
     </div>
 
     <div class="story-card">
-      <h3 class="story-title">🎓 學生與軍旅生涯</h3>
+      <h3 class="story-title">學生與軍旅生涯</h3>
       <p class="story-text">
         學生時期擔任樂團團長帶隊參加賽事勇奪冠軍！軍旅抽中金馬獎前線碉堡，帶領弟兄在荒山野嶺中扛水、接電、蓋碉堡度過戰備時期，深信團結就是力量。<br>
         研究所專攻嵌入式系統開發，論文作品榮獲教育部 SOC 設計競賽與國際創意論文競賽最佳創意獎，開啓了程式設計的世界之窗。
@@ -451,7 +452,7 @@ body {
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
     </div>
   </footer>
 

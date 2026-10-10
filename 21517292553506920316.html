@@ -15,24 +15,24 @@
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-indigo: #4f46e5;
-      --accent-indigo-light: #eef2ff;
-      --accent-blue: #2563eb;
-      --accent-blue-light: #eff6ff;
-      --accent-emerald: #059669;
-      --accent-emerald-light: #ecfdf5;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-indigo: #1b1915;
+      --accent-indigo-light: #ebe6da;
+      --accent-blue: #1b1915;
+      --accent-blue-light: #ebe6da;
+      --accent-emerald: #a3341c;
+      --accent-emerald-light: #ebe6da;
 
       --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -124,7 +124,7 @@
     .nav-back-btn:hover {
       border-color: var(--accent-indigo);
       color: var(--accent-indigo);
-      background: #fff;
+      background: transparent;
     }
 
     /* Hero Banner */
@@ -220,7 +220,7 @@
     }
 
     .tool-card {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 24px;
@@ -346,7 +346,7 @@
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border-light);
-      background: #fff;
+      background: transparent;
     }
 
     .showcase-caption {
@@ -366,6 +366,7 @@
       background: var(--bg-surface);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -392,7 +393,7 @@
     <div class="container hero-container">
       <div class="hero-text-content">
         <div class="hero-badge">
-          <span>🎴 個人品牌與名片設計實務</span>
+          <span>個人品牌與名片設計實務</span>
         </div>
         <h1 class="page-title">為自己做一張電子名片吧~</h1>
         <p class="page-desc">
@@ -412,7 +413,7 @@
     <!-- Section 1: Logo Tools -->
     <section>
       <div class="section-header">
-        <span style="font-size: 1.5rem;">🎨</span>
+        <span style="font-size: 1.5rem;"></span>
         <h2 class="section-title">Logo 設計與線上製造工具</h2>
       </div>
 
@@ -420,7 +421,6 @@
         <!-- Tool 1 -->
         <article class="tool-card">
           <div>
-            <div class="tool-icon icon-logo">🌈</div>
             <h3 class="tool-name">Color Logo Maker</h3>
             <p class="tool-desc">豐富色彩調配與字體設計的彩色 Logo 產生器，適合快速建立個性化商標。</p>
           </div>
@@ -433,7 +433,6 @@
         <!-- Tool 2 -->
         <article class="tool-card">
           <div>
-            <div class="tool-icon icon-logo">✨</div>
             <h3 class="tool-name">MarkMaker 線上 Logo 製作</h3>
             <p class="tool-desc">基於演算法自動演化的 Logo 設計生成平台，自動推薦並演化符合您風格的標誌。</p>
           </div>
@@ -460,7 +459,7 @@
     <!-- Section 2: QR Code Tools -->
     <section style="margin-top: 24px;">
       <div class="section-header">
-        <span style="font-size: 1.5rem;">📱</span>
+        <span style="font-size: 1.5rem;"></span>
         <h2 class="section-title">QR Code 條碼產生器與整合應用</h2>
       </div>
 
@@ -468,7 +467,6 @@
         <!-- QR Tool 1 -->
         <article class="tool-card" style="grid-column: 1 / -1; max-width: 600px;">
           <div>
-            <div class="tool-icon icon-qr">🔳</div>
             <h3 class="tool-name">Calm9 QR Code 條碼產生器</h3>
             <p class="tool-desc">簡單快速的線上 QR Code 產生工具，可將網址、名片資訊、LINE ID 與通訊協定轉換為高解析度二維碼。</p>
           </div>
@@ -495,7 +493,7 @@
     <!-- Section 3: Business Card Examples -->
     <section style="margin-top: 24px;">
       <div class="section-header">
-        <span style="font-size: 1.5rem;">🎴</span>
+        <span style="font-size: 1.5rem;"></span>
         <h2 class="section-title">名片範例網站與免費模板推薦</h2>
       </div>
 
@@ -503,7 +501,6 @@
         <!-- Site 1 -->
         <article class="tool-card">
           <div>
-            <div class="tool-icon icon-card">💳</div>
             <h3 class="tool-name">Mr.CaCa 卡卡先生</h3>
             <p class="tool-desc">台灣專業線上名片設計與印製平台，提供多樣化高質感模版與極簡設計樣式。</p>
           </div>
@@ -516,7 +513,6 @@
         <!-- Site 2 -->
         <article class="tool-card">
           <div>
-            <div class="tool-icon icon-card">💡</div>
             <h3 class="tool-name">飛飛創意設計</h3>
             <p class="tool-desc">101 款免費名片設計範本下載與靈感庫，提供豐富配色與排版設計參考。</p>
           </div>
@@ -529,7 +525,6 @@
         <!-- Site 3 -->
         <article class="tool-card">
           <div>
-            <div class="tool-icon icon-card">📄</div>
             <h3 class="tool-name">易普印 ePrint</h3>
             <p class="tool-desc">提供標準 Word 格式名片範本免費下載，適合自行於 Word 中修改並套印。</p>
           </div>
@@ -547,7 +542,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">電子名片製作與線上工具推薦頁面</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">電子名片製作與線上工具推薦頁面</p>
     </div>
   </footer>
 

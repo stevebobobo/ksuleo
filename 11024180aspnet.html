@@ -14,33 +14,33 @@
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-blue: #2563eb;
-      --accent-blue-hover: #1d4ed8;
-      --accent-blue-light: #eff6ff;
-      --accent-purple: #7c3aed;
-      --accent-purple-light: #f5f3ff;
-      --accent-emerald: #059669;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-blue: #1b1915;
+      --accent-blue-hover: #1b1915;
+      --accent-blue-light: #ebe6da;
+      --accent-purple: #a3341c;
+      --accent-purple-light: #ebe6da;
+      --accent-emerald: #a3341c;
 
       /* Dark Code Window Colors */
-      --code-bg: #0f172a;
-      --code-header: #1e293b;
-      --code-text: #e2e8f0;
+      --code-bg: #1b1915;
+      --code-header: #1b1915;
+      --code-text: #cfc8b8;
       --code-keyword: #38bdf8;
       --code-string: #4ade80;
-      --code-comment: #64748b;
-      --code-tag: #f43f5e;
+      --code-comment: #857f72;
+      --code-tag: #a3341c;
       --code-attr: #fbbf24;
 
       --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
@@ -132,7 +132,7 @@
     .nav-back-btn:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
-      background: #fff;
+      background: transparent;
     }
 
     /* Hero Banner */
@@ -174,7 +174,7 @@
     }
 
     .project-card {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
       padding: 32px;
@@ -234,7 +234,7 @@
       background: var(--code-bg);
       border-radius: var(--radius-md);
       overflow: hidden;
-      border: 1px solid #334155;
+      border: 1px solid #4a463e;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
     }
 
@@ -244,7 +244,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #334155;
+      border-bottom: 1px solid #4a463e;
     }
 
     .code-dots {
@@ -257,14 +257,14 @@
       height: 10px;
       border-radius: 50%;
     }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
+    .dot-red { background: #a3341c; }
+    .dot-yellow { background: #a3341c; }
+    .dot-green { background: #a3341c; }
 
     .code-filename {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: #94a3b8;
+      color: #857f72;
     }
 
     .code-body {
@@ -295,6 +295,7 @@
       background: var(--bg-surface);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -320,7 +321,7 @@
   <section class="page-hero">
     <div class="container">
       <div class="hero-badge">
-        <span>⚡ 110學年度 ASP.NET 網頁專題 · Web Forms & VB.NET</span>
+        <span>110學年度 ASP.NET 網頁專題 · Web Forms & VB.NET</span>
       </div>
       <h1 class="page-title">110年 ASP.NET 網頁程式設計專題</h1>
       <p class="page-desc">
@@ -336,7 +337,7 @@
     <article class="project-card">
       <div class="project-header">
         <h2 class="project-title">
-          <span>📌 專題一：使用 List(Of AccountRecord) 管理帳號與 LINQ 驗證</span>
+          <span>專題一：使用 List(Of AccountRecord) 管理帳號與 LINQ 驗證</span>
         </h2>
         <a href="uploads/8/0/3/9/80395834/login_demo.7z" class="download-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -417,7 +418,7 @@
     <article class="project-card">
       <div class="project-header">
         <h2 class="project-title">
-          <span>📌 專題二：茶葉訂購清單管理系統</span>
+          <span>專題二：茶葉訂購清單管理系統</span>
         </h2>
         <a href="uploads/8/0/3/9/80395834/teaording.7z" class="download-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -470,7 +471,7 @@
     <article class="project-card">
       <div class="project-header">
         <h2 class="project-title">
-          <span>📌 專題三：飲料點餐系統 (員工作業環境)</span>
+          <span>專題三：飲料點餐系統 (員工作業環境)</span>
         </h2>
         <a href="uploads/8/0/3/9/80395834/tea_selling_system.7z" class="download-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -513,7 +514,7 @@
     <article class="project-card">
       <div class="project-header">
         <h2 class="project-title">
-          <span>📌 專題四：客戶自助點餐系統 (ImageButton 漢堡與鬆餅點餐)</span>
+          <span>專題四：客戶自助點餐系統 (ImageButton 漢堡與鬆餅點餐)</span>
         </h2>
         <a href="uploads/8/0/3/9/80395834/self-helpording.7z" class="download-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -568,7 +569,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">110學年度 ASP.NET 網頁專題彙整專頁</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">110學年度 ASP.NET 網頁專題彙整專頁</p>
     </div>
   </footer>
 

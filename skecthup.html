@@ -15,22 +15,22 @@
   <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-page: #ffffff;
-      --bg-surface: #f8fafc;
-      --bg-surface-hover: #f1f5f9;
-      --border-light: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent-red: #dc2626;
-      --accent-red-light: #fef2f2;
-      --accent-blue: #2563eb;
-      --accent-blue-light: #eff6ff;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-red: #a3341c;
+      --accent-red-light: #ebe6da;
+      --accent-blue: #1b1915;
+      --accent-blue-light: #ebe6da;
 
       --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -122,7 +122,7 @@
     .nav-back-btn:hover {
       border-color: var(--accent-blue);
       color: var(--accent-blue);
-      background: #fff;
+      background: transparent;
     }
 
     /* Hero Banner */
@@ -191,7 +191,7 @@
     }
 
     .sketchup-btn:hover {
-      background: #b91c1c;
+      background: #a3341c;
       transform: translateY(-1px);
     }
 
@@ -227,7 +227,7 @@
     }
 
     .student-card {
-      background: #ffffff;
+      background: transparent;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 24px;
@@ -404,6 +404,7 @@
       background: var(--bg-surface);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -430,7 +431,7 @@
     <div class="container hero-container">
       <div class="hero-text-content">
         <div class="hero-badge">
-          <span>📐 3D 繪圖建模與空間設計課程</span>
+          <span>3D 繪圖建模與空間設計課程</span>
         </div>
         <h1 class="page-title">快速上手畫 3D - SketchUp</h1>
         <p class="page-desc">
@@ -439,7 +440,7 @@
 
         <div class="sketchup-bar">
           <a href="https://www.sketchup.com/" target="_blank" rel="noopener noreferrer" class="sketchup-btn">
-            <span>🔴 前往 SketchUp 官方網站</span>
+            <span>前往 SketchUp 官方網站</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -572,7 +573,7 @@
         </div>
         <div class="card-footer">
           <a href="https://www.youtube.com/watch?v=eNaQ7a_G_Bs&feature=youtu.be" target="_blank" rel="noopener noreferrer" class="visit-btn">
-            <span>🎥 觀看 YouTube 展演影片</span>
+            <span>觀看 YouTube 展演影片</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -622,7 +623,7 @@
         </div>
         <div class="card-footer">
           <a href="https://www.youtube.com/watch?v=eNaQ7a_G_Bs&feature=youtu.be" target="_blank" rel="noopener noreferrer" class="visit-btn">
-            <span>🎥 觀看 YouTube 展演影片</span>
+            <span>觀看 YouTube 展演影片</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -901,7 +902,7 @@
     <!-- Video Embed Section -->
     <section class="video-section">
       <h2 class="video-title">
-        <span>🎥 SketchUp 課程介紹與展示影片</span>
+        <span>SketchUp 課程介紹與展示影片</span>
       </h2>
       <div class="video-responsive">
         <iframe src="https://www.youtube.com/embed/3xzzvGDfve4" title="SketchUp Course Introduction Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -914,7 +915,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">SketchUp 3D 繪圖學生專題作品集展示頁面</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">SketchUp 3D 繪圖學生專題作品集展示頁面</p>
     </div>
   </footer>
 

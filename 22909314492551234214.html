@@ -8,32 +8,32 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     
 :root {
   --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-indigo: #4f46e5;
-  --accent-indigo-hover: #4338ca;
-  --accent-indigo-light: #eef2ff;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-indigo: #1b1915;
+  --accent-indigo-hover: #1b1915;
+  --accent-indigo-light: #ebe6da;
+  --accent-blue: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
   
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -120,7 +120,7 @@ body {
 .nav-back-btn:hover {
   border-color: var(--accent-indigo);
   color: var(--accent-indigo);
-  background: #ffffff;
+  background: transparent;
   box-shadow: var(--shadow-sm);
 }
 
@@ -235,6 +235,7 @@ body {
       transform: translateY(-1px);
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -255,7 +256,7 @@ body {
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge" style="background: var(--accent-emerald-light); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2);">
-        🌐 Web Directory
+        Web Directory
       </div>
       <h1 class="hero-title">好站推薦區 (優質網站)</h1>
       <p class="hero-desc">
@@ -270,7 +271,7 @@ body {
       <!-- 1 -->
       <div class="web-card">
         <div class="web-info">
-          <h2 class="web-title">🌐 免費資源網路社群</h2>
+          <h2 class="web-title">免費資源網路社群</h2>
           <span class="web-url">https://free.com.tw/</span>
           <p class="web-desc">
             台灣最知名的免費軟體、網路服務、圖庫與開發工具資訊網。更新頻率高，適合尋找最新實用網路資源。
@@ -284,7 +285,7 @@ body {
       <!-- 2 -->
       <div class="web-card">
         <div class="web-info">
-          <h2 class="web-title">📄 Standard Resume 線上履歷設計</h2>
+          <h2 class="web-title">Standard Resume 線上履歷設計</h2>
           <span class="web-url">https://standardresume.co/</span>
           <p class="web-desc">
             專為軟體工程師設計的極簡高品質履歷表產生器，輕鬆製作超吸睛的個人專業履歷網頁與 PDF。
@@ -298,7 +299,7 @@ body {
       <!-- 3 -->
       <div class="web-card">
         <div class="web-info">
-          <h2 class="web-title">🐙 GitHub 開源社群與版本控制</h2>
+          <h2 class="web-title">GitHub 開源社群與版本控制</h2>
           <span class="web-url">https://github.com/</span>
           <p class="web-desc">
             世界最大的程式碼存放網站與開源社群。透過 Git 進行版本控制與原始碼代管，支援協同開發、Issue 追蹤與 GitHub Pages 網站託管。
@@ -315,7 +316,7 @@ body {
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
     </div>
   </footer>
 

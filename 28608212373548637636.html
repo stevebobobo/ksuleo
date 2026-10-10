@@ -8,30 +8,30 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     
 :root {
   --bg-page: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-surface-hover: #f1f5f9;
-  --border-light: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent-blue: #2563eb;
-  --accent-blue-hover: #1d4ed8;
-  --accent-blue-light: #eff6ff;
-  --accent-emerald: #059669;
-  --accent-emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fffbeb;
-  --accent-purple: #7c3aed;
-  --accent-purple-light: #f5f3ff;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #fff1f2;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-blue: #1b1915;
+  --accent-blue-hover: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
   
   --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -118,7 +118,7 @@ body {
 .nav-back-btn:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
-  background: #ffffff;
+  background: transparent;
   box-shadow: var(--shadow-sm);
 }
 
@@ -168,7 +168,7 @@ body {
 
     
     .quote-hero-card {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, #1b1915 0%, #1b1915 100%);
       color: #ffffff;
       border-radius: var(--radius-lg);
       padding: 40px;
@@ -185,7 +185,7 @@ body {
     }
     .quote-hero-body {
       font-size: 1.1rem;
-      color: #94a3b8;
+      color: #857f72;
       line-height: 1.8;
     }
 
@@ -252,6 +252,7 @@ body {
       line-height: 1.75;
     }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -272,7 +273,7 @@ body {
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge" style="background: var(--accent-emerald-light); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2);">
-        ✨ Wisdom & Inspiration
+        Wisdom & Inspiration
       </div>
       <h1 class="hero-title">激勵語錄小品</h1>
       <p class="hero-desc">
@@ -293,7 +294,7 @@ body {
     <div class="cards-grid">
 
       <div class="box-card">
-        <div class="box-title" style="color: #2563eb;">💡 關於投資</div>
+        <div class="box-title" style="color: #1b1915;">關於投資</div>
         <ul class="box-list">
           <li>1. 最安全實用的投資就是投資自我。</li>
           <li>2. 既然投資了就要拿出來用，用多了就能煉鐵成鋼。</li>
@@ -304,7 +305,7 @@ body {
       </div>
 
       <div class="box-card">
-        <div class="box-title" style="color: #d97706;">💰 關於理財</div>
+        <div class="box-title" style="color: #a3341c;">關於理財</div>
         <ul class="box-list">
           <li>1. 先考慮可動資金再考慮優惠價格，才能決定是否真的划算。</li>
           <li>2. 先提出消費目標，執行存錢計畫，並以百分比顯示進度。</li>
@@ -313,7 +314,7 @@ body {
       </div>
 
       <div class="box-card">
-        <div class="box-title" style="color: #059669;">📚 自我學習 & 人際</div>
+        <div class="box-title" style="color: #a3341c;">自我學習 & 人際</div>
         <ul class="box-list">
           <li>1. 得到認同最實際的做法，就是解決別人的困難。</li>
           <li>2. 當我們開始鼓勵他人時，我們的價值就跟著上升。</li>
@@ -324,7 +325,7 @@ body {
 
     </div>
 
-    <h2 class="section-title-bar">🧠 職場碎碎念與思維模型</h2>
+    <h2 class="section-title-bar">職場碎碎念與思維模型</h2>
 
     <div class="essay-card">
       <h3 class="essay-title">直覺式思考 (Intuitive Thinking)</h3>
@@ -368,7 +369,7 @@ body {
   <footer class="site-footer">
     <div class="container">
       <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">Hosted on GitHub Pages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
     </div>
   </footer>
 
