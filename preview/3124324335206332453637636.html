@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>程式備忘錄與語法速查 | Leo Tang</title>
+  <meta name="description" content="C# LINQ 語法速查、List 排序、條件篩選與 Async 非同步開發備忘錄。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-blue: #1b1915;
+  --accent-blue-hover: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
+  
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.brand-avatar-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.brand-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-back-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  margin-top: 60px;
+}
+
+    
+    .search-box {
+      margin-top: 24px;
+      position: relative;
+      max-width: 480px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .section-label {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 40px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .snippet-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .snippet-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .code-box {
+      background: #1b1915;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid #1b1915;
+      margin-top: 12px;
+    }
+    .code-bar {
+      background: #1b1915;
+      padding: 8px 16px;
+      color: #857f72;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+    pre {
+      padding: 16px;
+      overflow-x: auto;
+      color: #cfc8b8;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .feature-card {
+      background: linear-gradient(135deg, #ebe6da 0%, #ebe6da 100%);
+      border: 1px solid #cfc8b8;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-top: 36px;
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="../uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Avatar">
+        </div>
+        <span>Leo Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-blue-light); color: var(--accent-blue); border: 1px solid rgba(37, 99, 235, 0.2);">
+        Developer CheatSheet
+      </div>
+      <h1 class="hero-title">程式備忘錄與語法速查</h1>
+      <p class="hero-desc">
+        彙整 C# 軟體與嵌入式系統開發中常用的 LINQ 高效查詢、List 排序演算法、條件判斷與 Async 非同步開發心法。
+      </p>
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="搜尋語法 (例如: Distinct, OrderBy, Async)..." onkeyup="filterCards()">
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    
+    <h2 class="section-label">1. LINQ 高效查詢與剔除重複 (Distinct)</h2>
+
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">剔除重複資料 (LINQ Distinct & DataGridView)</h3>
+        <div>
+          <span class="tag">#LINQ</span>
+          <span class="tag">#Distinct</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">利用 LINQ 與 DataGridView 資料集進行關鍵字模糊搜尋以及剔除指定欄位重複值的語法。</p>
+      <div class="code-box">
+        <div class="code-bar">C# / LINQ</div>
+        <pre><code>// 1. SQL 剔除重複記錄
+// Select Distinct * From myTable Where xxxx
+
+// 2. DataGridView 模糊查詢
+IEnumerable&lt;DataGridViewRow&gt; enumerableList = this.dataGridView.Rows.Cast&lt;DataGridViewRow&gt;();  
+List&lt;DataGridViewRow&gt; list = (from item in enumerableList  
+  where item.Cells[0].Value.ToString().IndexOf(this.KeyWord.Text) &gt;= 0  
+  select item).ToList();  
+  
+// 3. 剔除 FirstName 欄位中有重複的資料
+var result = (from p in db.t_Personnel
+              select p.FirstName).Distinct();
+
+// 4. 從 DataGridView 取得不重複的欄位值 List
+var distinctList = dataGridView1.Rows.Cast&lt;DataGridViewRow&gt;()
+   .Where(x =&gt; !x.IsNewRow)
+   .Where(x =&gt; x.Cells[column].Value != null)
+   .Select(x =&gt; x.Cells[column].Value.ToString())
+   .Distinct()
+   .ToList();</code></pre>
+      </div>
+    </div>
+
+    <h2 class="section-label">2. List 排序與多條件排序 (OrderBy / Sort)</h2>
+
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">多條件座標排序與字母/時間排序</h3>
+        <div>
+          <span class="tag">#OrderBy</span>
+          <span class="tag">#CompareTo</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">包含繪圖物件座標 OrderBy / ThenBy 雙重排序、字串字母 CompareTo 排序與 DateTime 時間排序。</p>
+      <div class="code-box">
+        <div class="code-bar">C# OrderBy & Sort</div>
+        <pre><code>// 1. LINQ 條件排序與 AddRange
+var query = from module in list
+            orderby module.OrderNum
+            select module;
+_plotlist.Clear();
+_plotlist.AddRange(query);
+
+// 2. 雙重條件座標排序 (以 Y 座標主排序，X 座標次排序)
+var CurrentDevlist = CurrPOU.PGplotlist
+    .OrderBy(x =&gt; x.Location.Y)
+    .ThenBy(x =&gt; x.Location.X)
+    .ToList&lt;Plot&gt;();
+
+// 3. List&lt;String&gt; 按字母排列
+Displayparaments.Sort((x, y) =&gt; x.CompareTo(y));
+EditProject.POUList.Sort((x, y) =&gt; x.POUName.CompareTo(y.POUName));
+
+// 4. List 按時間 DateTime 排列
+StrList.Sort((x, y) =&gt; DateTime.Compare(Convert.ToDateTime(x.Value), Convert.ToDateTime(y.Value)));
+
+// 5. Sourcelist 按關鍵字出現位置排序
+Sourcelist.Where(x =&gt; x.ToUpper().IndexOf(CompStr) &gt;= 0)
+          .OrderBy(x =&gt; x.ToUpper().IndexOf(CompStr))
+          .ToList();</code></pre>
+      </div>
+    </div>
+
+    <h2 class="section-label">3. 複雜物件條件搜尋與極值尋找</h2>
+
+    <div class="snippet-card searchable">
+      <div class="card-head">
+        <h3 class="card-title">最極值座標與 FindIndex 多重條件</h3>
+        <div>
+          <span class="tag">#FindIndex</span>
+          <span class="tag">#Max</span>
+        </div>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 0.93rem;">搜尋指定元件底部座標最下方之元件，以及多重選取 FindIndex 與 FindAll 工具。</p>
+      <div class="code-box">
+        <div class="code-bar">C# Advanced LINQ</div>
+        <pre><code>// 1. 搜尋符合條件之元件交給新 List
+listNodeMatched = NodeList.FindAll(x =&gt; x.Header.ToString().ToUpper().Contains(DeviceSeachBox1.Text.ToUpper()));
+
+// 2. 找到 RUNG 中最底部元件之 Y 軸最大座標
+var offset = _plotlist.Where(x =&gt; x.RungID == cnt.ToString())
+                      .ToList&lt;Plot&gt;()
+                      .Max(x =&gt; x.Bounds.Height + x.Location.Y);
+
+// 3. 找出符合條件成員在 List 中的 Index 編號
+var index = EditProject.POUList.FindIndex(x =&gt; x.POUName == sectionName && x.POUType == sectionType);
+
+// 4. Select 取出多個匿名屬性組合
+var query = (from plt in _plotlist select new { plt.Name, plt.Location.X, plt.Location.Y }).ToList();</code></pre>
+      </div>
+    </div>
+
+    <div class="feature-card searchable">
+      <h3 style="color: #1e40af; font-size: 1.2rem; margin-bottom: 8px;">正確理解 C# Async 與非同步觀念</h3>
+      <p style="color: #4a463e; line-height: 1.7;">
+        引用自 <strong>Life / Opass Life</strong> 觀念導正：<br>
+        非同步 (Asynchronous) 不等於多執行緒 (Multithreading)。Async / Await 的本質是「讓出執行緒資源等待 I/O 完成」，而非盲目開啟多執行緒。正確區分 CPU-bound 與 I/O-bound 才能真正優化 UI 回應速度並避免 Thread Pool 枯竭。
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.searchable');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

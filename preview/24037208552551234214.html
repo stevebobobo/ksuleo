@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工具推薦總覽 | Leo Tang</title>
+  <meta name="description" content="好硬、好軟與好站推薦總覽專區：全方位硬體、軟體與優質網站工具彙整門戶。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-indigo: #1b1915;
+  --accent-indigo-hover: #1b1915;
+  --accent-indigo-light: #ebe6da;
+  --accent-blue: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
+  
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.brand-avatar-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.brand-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-back-btn:hover {
+  border-color: var(--accent-indigo);
+  color: var(--accent-indigo);
+  background: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  margin-top: 60px;
+}
+
+    
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin: 40px 0;
+    }
+    .hub-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hub-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+    .hub-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .hub-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .hub-desc {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .hub-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="../uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Avatar">
+        </div>
+        <span>Leo Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-purple-light); color: var(--accent-purple); border: 1px solid rgba(124, 58, 237, 0.2);">
+        Tools Hub
+      </div>
+      <h1 class="hero-title">實用工具推薦總覽</h1>
+      <p class="hero-desc">
+        整合「好硬」、「好軟」與「好站」三大部分，包含高 CP 值硬體裝備、開發軟體與優質網路資源庫。
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="hub-grid">
+
+      <!-- 好硬 -->
+      <div class="hub-card">
+        <div>
+          <h2 class="hub-title">好硬推薦區 (硬體)</h2>
+          <p class="hub-desc">
+            收錄高 CP 值 USB 數位電視棒、投影機無線改裝技術與 WONDER 歡樂唱隨身喇叭音響。
+          </p>
+        </div>
+        <a href="2290930828255123421421312.html" class="hub-btn" style="background: #a3341c; color: #ffffff;">
+          <span>進入好硬推薦區 ↗</span>
+        </a>
+      </div>
+
+      <!-- 好軟 -->
+      <div class="hub-card">
+        <div>
+          <h2 class="hub-title">好軟推薦區 (軟體)</h2>
+          <p class="hub-desc">
+            SQLite Expert, HeidiSQL, 工控 OPC UA (UaExpert) 測試工具、光影魔手去背與螢幕錄影共享神器。
+          </p>
+        </div>
+        <a href="2290936575255123421421312.html" class="hub-btn" style="background: #1b1915; color: #ffffff;">
+          <span>進入好軟推薦區 ↗</span>
+        </a>
+      </div>
+
+      <!-- 好站 -->
+      <div class="hub-card">
+        <div>
+          <h2 class="hub-title">好站推薦區 (網站)</h2>
+          <p class="hub-desc">
+            免費資源網路社群、Standard Resume 線上網頁履歷表設計與全球最大 GitHub 開源程式碼平台。
+          </p>
+        </div>
+        <a href="22909314492551234214.html" class="hub-btn" style="background: #a3341c; color: #ffffff;">
+          <span>進入好站推薦區 ↗</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>

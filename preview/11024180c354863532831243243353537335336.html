@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>110年 C語言程式設計範例與學生作品 | Leo Tang</title>
+  <meta name="description" content="110學年度 C 語言程式設計教學範例與學生實作彙整，包含 enum 列舉、struct 結構體、BMI計算與幾何繪圖。">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="110年 C語言程式設計範例與學生作品 | Leo Tang">
+  <meta property="og:description" content="包含列舉 (enum)、結構體 (struct)、迴圈控制與演算法寫作示範。">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #ffffff;
+      --bg-surface: #f5f2ea;
+      --bg-surface-hover: #ebe6da;
+      --border-light: #cfc8b8;
+      --border-strong: #cfc8b8;
+      --text-primary: #1b1915;
+      --text-secondary: #4a463e;
+      --text-muted: #857f72;
+      --accent-blue: #1b1915;
+      --accent-blue-hover: #1b1915;
+      --accent-blue-light: #ebe6da;
+      --accent-emerald: #a3341c;
+
+      /* Dark Code Window Colors */
+      --code-bg: #1b1915;
+      --code-header: #1b1915;
+      --code-text: #cfc8b8;
+      --code-keyword: #38bdf8;
+      --code-string: #4ade80;
+      --code-comment: #857f72;
+      --code-number: #a3341c;
+      --code-func: #c084fc;
+
+      --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-avatar-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .brand-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-back-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      background: transparent;
+    }
+
+    /* Hero Banner */
+    .page-hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--accent-blue-light);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      color: var(--accent-blue);
+      font-weight: 600;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .page-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+    }
+
+    /* Section & Cards */
+    .content-section {
+      padding: 48px 0;
+    }
+
+    .example-card {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .example-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .example-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .example-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    .example-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Code Window */
+    .code-window {
+      background: var(--code-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid #4a463e;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .code-header {
+      background: var(--code-header);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #4a463e;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #a3341c; }
+    .dot-yellow { background: #a3341c; }
+    .dot-green { background: #a3341c; }
+
+    .code-filename {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #857f72;
+    }
+
+    .code-body {
+      padding: 20px 24px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--code-text);
+      white-space: pre;
+    }
+
+    /* Syntax Highlighting */
+    .kwd { color: var(--code-keyword); font-weight: 600; }
+    .str { color: var(--code-string); }
+    .cmt { color: var(--code-comment); font-style: italic; }
+    .num { color: var(--code-number); }
+    .fn  { color: var(--code-func); }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-light);
+      padding: 32px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: var(--bg-surface);
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-avatar-wrap">
+            <img src="../uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang">
+          </div>
+          <span>Leo Tang</span>
+        </a>
+
+        <a href="index.html#resources" class="nav-back-btn">
+          <span>← 返回資源庫總覽</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>110學年度 C 語言程式設計 · 學生實作與教學範例</span>
+      </div>
+      <h1 class="page-title">C 語言程式設計範例庫</h1>
+      <p class="page-desc">
+        彙整基礎語法到結構化程式設計範例，包含列舉 (enum)、結構體 (struct)、BMI 運算、幾何圖形繪製演算法與迴圈走訪。
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="container content-section">
+
+    <!-- Example 1: ENUM -->
+    <article class="example-card">
+      <div class="example-header">
+        <h2 class="example-title">
+          <span>範例一：列舉 (enum) 與狀態機 Switch-Case 控制</span>
+        </h2>
+        <span class="example-tag">enum_state.c</span>
+      </div>
+      <p class="example-desc">
+        示範利用 C 語言的 <code style="color:var(--accent-blue)">enum</code> 定義狀態常數 (RUNNING, STOPPED, FAILED, HIBERNATING)，並使用無限迴圈與 switch-case 處理使用者控制輸入。
+      </p>
+
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="code-filename">enum_state.c</span>
+        </div>
+        <div class="code-body"><span class="cmt">/* 
+ * 110學年度 C語言範例：列舉 (enum) 與狀態機應用
+ * 指導/紀錄：Leo Tang
+ */</span>
+
+<span class="kwd">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="kwd">#include</span> <span class="str">&lt;stdlib.h&gt;</span>
+
+<span class="cmt">// 定義機器運行狀態的 ASCII 列舉值</span>
+<span class="kwd">enum</span> STATE {
+    RUNNING     = <span class="num">49</span>,  <span class="cmt">// '1'</span>
+    STOPPED     = <span class="num">50</span>,  <span class="cmt">// '2'</span>
+    FAILED      = <span class="num">51</span>,  <span class="cmt">// '3'</span>
+    HIBERNATING = <span class="num">52</span>,  <span class="cmt">// '4'</span>
+    WARM_UP     = <span class="num">53</span>   <span class="cmt">// '5'</span>
+};
+
+<span class="kwd">int</span> <span class="fn">main</span>(<span class="kwd">int</span> argc, <span class="kwd">char</span> *argv[]) {
+    <span class="kwd">int</span> input1;
+    
+    <span class="fn">printf</span>(<span class="str">"RUNNING     = %d\n"</span>, RUNNING);
+    <span class="fn">printf</span>(<span class="str">"STOPPED     = %d\n"</span>, STOPPED);
+    <span class="fn">printf</span>(<span class="str">"FAILED      = %d\n"</span>, FAILED);
+    <span class="fn">printf</span>(<span class="str">"HIBERNATING = %d\n"</span>, HIBERNATING);
+    <span class="fn">printf</span>(<span class="str">"WARM_UP     = %d\n"</span>, WARM_UP);
+
+    <span class="kwd">while</span>(<span class="num">1</span>) {
+        <span class="fn">printf</span>(<span class="str">"\nPlease provide integer in range [1-5]: "</span>);
+        input1 = <span class="fn">getchar</span>();
+
+        <span class="kwd">switch</span>(input1) {
+            <span class="kwd">case</span> RUNNING:
+                <span class="fn">printf</span>(<span class="str">"運行中 Machine is RUNNING\n"</span>);
+                <span class="kwd">break</span>;
+            <span class="kwd">case</span> STOPPED:
+                <span class="fn">printf</span>(<span class="str">"停機 Machine is STOPPED\n"</span>);
+                <span class="kwd">break</span>;
+            <span class="kwd">case</span> FAILED:
+                <span class="fn">printf</span>(<span class="str">"失敗 Machine is FAILED\n"</span>);
+                <span class="kwd">break</span>;
+            <span class="kwd">case</span> WARM_UP:
+            <span class="kwd">case</span> HIBERNATING:
+                <span class="fn">printf</span>(<span class="str">"待機或熱機 Machine is HIBERNATING\n"</span>);
+                <span class="kwd">break</span>;
+            <span class="kwd">case</span> <span class="num">10</span>: <span class="cmt">// Enter 鍵忽略</span>
+                <span class="kwd">break</span>;
+            <span class="kwd">default</span>:
+                <span class="fn">printf</span>(<span class="str">"Unknown command!\n"</span>);
+                <span class="kwd">return</span> <span class="num">0</span>;
+        }
+        <span class="fn">system</span>(<span class="str">"pause"</span>);
+    }
+    <span class="kwd">return</span> <span class="num">0</span>;
+}</div>
+      </div>
+    </article>
+
+    <!-- Example 2: STRUCT & BMI -->
+    <article class="example-card">
+      <div class="example-header">
+        <h2 class="example-title">
+          <span>範例二：結構體 (struct) 陣列與 BMI 指數計算</span>
+        </h2>
+        <span class="example-tag">bmi_struct.c</span>
+      </div>
+      <p class="example-desc">
+        示範宣告自訂結構體 <code style="color:var(--accent-blue)">struct student</code>，建立學生資料陣列，動態輸入身高體重、計算 BMI 指數與全班平均。
+      </p>
+
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="code-filename">bmi_struct.c</span>
+        </div>
+        <div class="code-body"><span class="cmt">/* 
+ * 110學年度 C語言範例：計算 BMI (struct 結構體應用)
+ */</span>
+
+<span class="kwd">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="kwd">#include</span> <span class="str">&lt;stdlib.h&gt;</span>
+
+<span class="kwd">#define</span> NUM <span class="num">2</span> <span class="cmt">// 定義學生人數陣列大小</span>
+
+<span class="cmt">// 宣告學生結構體</span>
+<span class="kwd">struct</span> student {
+    <span class="kwd">char</span>  name[<span class="num">8</span>];
+    <span class="kwd">float</span> Height; <span class="cmt">// 公尺</span>
+    <span class="kwd">int</span>   weight; <span class="cmt">// 公斤</span>
+    <span class="kwd">float</span> BMI;
+};
+
+<span class="kwd">int</span> <span class="fn">main</span>() {
+    <span class="kwd">struct</span> student C_Class[NUM];
+    <span class="kwd">int</span> Member;
+    <span class="kwd">float</span> total = <span class="num">0.0f</span>;
+    <span class="kwd">float</span> Average;
+
+    <span class="fn">printf</span>(<span class="str">"Input personal data...\n\n"</span>);
+    <span class="kwd">for</span> (Member = <span class="num">0</span>; Member &lt; NUM; Member++) {
+        <span class="fn">printf</span>(<span class="str">"Number #%d :\n"</span>, Member + <span class="num">1</span>);
+        <span class="fn">printf</span>(<span class="str">"    Name ? "</span>);
+        <span class="fn">scanf</span>(<span class="str">"%s"</span>, C_Class[Member].name);
+        
+        <span class="fn">printf</span>(<span class="str">"    Height (m) ? "</span>);
+        <span class="fn">scanf</span>(<span class="str">"%f"</span>, &amp;C_Class[Member].Height);
+        
+        <span class="fn">printf</span>(<span class="str">"    Weight (kg) ? "</span>);
+        <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;C_Class[Member].weight);
+        <span class="fn">printf</span>(<span class="str">"\n"</span>);
+    }
+
+    <span class="fn">printf</span>(<span class="str">"\nDATA LISTING ...\n\n"</span>);
+    <span class="fn">printf</span>(<span class="str">"  NUMBER      NAME        HEIGHT    WEIGHT     BMI\n\n"</span>);
+
+    <span class="kwd">for</span> (Member = <span class="num">0</span>; Member &lt; NUM; Member++) {
+        C_Class[Member].BMI = C_Class[Member].weight / (C_Class[Member].Height * C_Class[Member].Height);
+        <span class="fn">printf</span>(<span class="str">"   #%d     %8s    %8.2f   %6d    %6.2f\n"</span>, 
+               Member + <span class="num">1</span>, 
+               C_Class[Member].name, 
+               C_Class[Member].Height, 
+               C_Class[Member].weight, 
+               C_Class[Member].BMI);
+        total += C_Class[Member].BMI;
+    }
+
+    Average = total / NUM;
+    <span class="fn">printf</span>(<span class="str">"\n    Average BMI : %.2f\n\n"</span>, Average);
+
+    <span class="fn">system</span>(<span class="str">"PAUSE"</span>);
+    <span class="kwd">return</span> <span class="num">0</span>;
+}</div>
+      </div>
+    </article>
+
+    <!-- Example 3: TRIANGLE ALGORITHM -->
+    <article class="example-card">
+      <div class="example-header">
+        <h2 class="example-title">
+          <span>範例三：多重迴圈圖形繪製 — 三角形演算法</span>
+        </h2>
+        <span class="example-tag">draw_triangles.c</span>
+      </div>
+      <p class="example-desc">
+        示範利用韓立瑋同學發想的多重 <code style="color:var(--accent-blue)">for</code> 迴圈與函式選單，動態繪製正三角形、倒右直角三角形與左直角三角形。
+      </p>
+
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="code-filename">draw_triangles.c</span>
+        </div>
+        <div class="code-body"><span class="cmt">/* 
+ * 110學年度 C語言學生實作：繪製各類圖形
+ * 發想/學生：韓立瑋 (A100E116)
+ */</span>
+
+<span class="kwd">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+
+<span class="kwd">#define</span> MAX_LENGTH <span class="num">100</span>
+<span class="kwd">#define</span> NUM_STRINGS <span class="num">7</span>
+
+<span class="kwd">void</span> <span class="fn">Inverted_Left</span>();
+<span class="kwd">void</span> <span class="fn">Inverted_Right_Triangle</span>();
+<span class="kwd">void</span> <span class="fn">Right_Triangle</span>();
+<span class="kwd">void</span> <span class="fn">Equilateral</span>();
+
+<span class="kwd">char</span> menu[NUM_STRINGS][MAX_LENGTH] = {
+    <span class="str">"請問您要哪一種形狀？\n"</span>,
+    <span class="str">"1. 倒左直角三角形\n"</span>,
+    <span class="str">"2. 倒右直角三角形\n"</span>,
+    <span class="str">"3. 右直角三角形\n"</span>,
+    <span class="str">"4. 正三角形\n"</span>,
+    <span class="str">"0. 離開\n"</span>
+};
+
+<span class="kwd">int</span> <span class="fn">main</span>() {
+    <span class="kwd">int</span> choice = <span class="num">0</span>;
+    <span class="kwd">while</span>(<span class="num">1</span>) {
+        <span class="kwd">for</span> (<span class="kwd">int</span> i = <span class="num">0</span>; i &lt; NUM_STRINGS - <span class="num">1</span>; ++i) {
+            <span class="fn">printf</span>(<span class="str">"%s"</span>, menu[i]);
+        }
+        <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;choice);
+
+        <span class="kwd">if</span> (choice == <span class="num">0</span>) {
+            <span class="fn">printf</span>(<span class="str">"已離開！\n"</span>);
+            <span class="kwd">break</span>;
+        }
+
+        <span class="kwd">switch</span>(choice) {
+            <span class="kwd">case</span> <span class="num">1</span>: <span class="fn">Inverted_Left</span>(); <span class="kwd">break</span>;
+            <span class="kwd">case</span> <span class="num">2</span>: <span class="fn">Inverted_Right_Triangle</span>(); <span class="kwd">break</span>;
+            <span class="kwd">case</span> <span class="num">3</span>: <span class="fn">Right_Triangle</span>(); <span class="kwd">break</span>;
+            <span class="kwd">case</span> <span class="num">4</span>: <span class="fn">Equilateral</span>(); <span class="kwd">break</span>;
+            <span class="kwd">default</span>: <span class="fn">printf</span>(<span class="str">"輸入錯誤！\n"</span>); <span class="kwd">break</span>;
+        }
+    }
+    <span class="kwd">return</span> <span class="num">0</span>;
+}
+
+<span class="kwd">void</span> <span class="fn">Equilateral</span>() { <span class="cmt">// 正三角形</span>
+    <span class="kwd">int</span> cnt1, cnt2;
+    <span class="kwd">int</span> Max_White = <span class="num">7</span>;
+    <span class="kwd">for</span>(cnt1 = Max_White; cnt1 &gt; <span class="num">0</span>; cnt1--) {
+        <span class="kwd">for</span>(cnt2 = <span class="num">0</span>; cnt2 &lt; cnt1; cnt2++) <span class="fn">printf</span>(<span class="str">" "</span>);
+        <span class="kwd">for</span>(cnt2 = (Max_White - cnt1) * <span class="num">2</span> - <span class="num">1</span>; cnt2 &gt; <span class="num">0</span>; cnt2--) <span class="fn">printf</span>(<span class="str">"*"</span>);
+        <span class="fn">printf</span>(<span class="str">"\n"</span>);
+    }
+}</div>
+      </div>
+    </article>
+
+    <!-- Example 4: MONTHLY SAVINGS -->
+    <article class="example-card">
+      <div class="example-header">
+        <h2 class="example-title">
+          <span>範例四：個人月儲蓄與收支試算系統</span>
+        </h2>
+        <span class="example-tag">monthly_savings.c</span>
+      </div>
+      <p class="example-desc">
+        簡沛筑同學作品。定義包含薪資、房租、餐費與水電費之結構體，計算個人每月淨儲蓄與全組平均額度。
+      </p>
+
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="code-filename">monthly_savings.c</span>
+        </div>
+        <div class="code-body"><span class="cmt">/* 
+ * 110學年度 C語言學生實作：月儲蓄試算系統
+ * 作者/學生：簡沛筑 (A100D103)
+ */</span>
+
+<span class="kwd">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+<span class="kwd">#include</span> <span class="str">&lt;stdlib.h&gt;</span>
+
+<span class="kwd">#define</span> NUM <span class="num">4</span>
+
+<span class="kwd">struct</span> monthlysavings {
+    <span class="kwd">char</span> name[<span class="num">8</span>];
+    <span class="kwd">int</span>  monthlysalary;
+    <span class="kwd">int</span>  rent;
+    <span class="kwd">int</span>  mealcost;
+    <span class="kwd">int</span>  utilitybill;
+    <span class="kwd">int</span>  monthlysavings;
+};
+
+<span class="kwd">int</span> <span class="fn">main</span>() {
+    <span class="kwd">struct</span> monthlysavings who[NUM];
+    <span class="kwd">int</span> i, total = <span class="num">0</span>;
+    <span class="kwd">float</span> Average;
+
+    <span class="fn">printf</span>(<span class="str">"Input personal data...\n\n"</span>);
+    <span class="kwd">for</span> (i = <span class="num">0</span>; i &lt; NUM; i++) {
+        <span class="fn">printf</span>(<span class="str">"Number #%d :\n"</span>, i + <span class="num">1</span>);
+        <span class="fn">printf</span>(<span class="str">"  Who ? "</span>); <span class="fn">scanf</span>(<span class="str">"%s"</span>, who[i].name);
+        <span class="fn">printf</span>(<span class="str">"  Monthly Salary ? "</span>); <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;who[i].monthlysalary);
+        <span class="fn">printf</span>(<span class="str">"  Rent ? "</span>); <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;who[i].rent);
+        <span class="fn">printf</span>(<span class="str">"  Meal Cost ? "</span>); <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;who[i].mealcost);
+        <span class="fn">printf</span>(<span class="str">"  Utility Bill ? "</span>); <span class="fn">scanf</span>(<span class="str">"%d"</span>, &amp;who[i].utilitybill);
+    }
+
+    <span class="fn">printf</span>(<span class="str">"\nDATA LISTING ...\n\n"</span>);
+    <span class="kwd">for</span> (i = <span class="num">0</span>; i &lt; NUM; i++) {
+        who[i].monthlysavings = who[i].monthlysalary - (who[i].rent + who[i].mealcost + who[i].utilitybill);
+        <span class="fn">printf</span>(<span class="str">"#%d  %s: Net Savings = %d\n"</span>, i + <span class="num">1</span>, who[i].name, who[i].monthlysavings);
+        total += who[i].monthlysavings;
+    }
+
+    Average = (<span class="kwd">float</span>)total / NUM;
+    <span class="fn">printf</span>(<span class="str">"\nAverage Monthly Savings : %.2f\n"</span>, Average);
+
+    <span class="fn">system</span>(<span class="str">"PAUSE"</span>);
+    <span class="kwd">return</span> <span class="num">0</span>;
+}</div>
+      </div>
+    </article>
+
+    <!-- Example 5: NESTED LOOPS CALENDAR -->
+    <article class="example-card">
+      <div class="example-header">
+        <h2 class="example-title">
+          <span>範例五：嵌套雙重迴圈與月曆日期繪製</span>
+        </h2>
+        <span class="example-tag">calendar_loops.c</span>
+      </div>
+      <p class="example-desc">
+        陳冠良同學作品。運用三層嵌套 <code style="color:var(--accent-blue)">for</code> 迴圈走訪年份、月份與日期，並配合條件判斷式輸出日曆格式。
+      </p>
+
+      <div class="code-window">
+        <div class="code-header">
+          <div class="code-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="code-filename">calendar_loops.c</span>
+        </div>
+        <div class="code-body"><span class="cmt">/* 
+ * 110學年度 C語言學生實作：嵌套迴圈日曆列印
+ * 作者/學生：陳冠良 (A100E106)
+ */</span>
+
+<span class="kwd">#include</span> <span class="str">&lt;stdio.h&gt;</span>
+
+<span class="kwd">int</span> <span class="fn">main</span>() {
+    <span class="kwd">int</span> YearMain = <span class="num">2021</span>;
+    <span class="kwd">int</span> UaryMain = <span class="num">12</span>;
+    <span class="kwd">int</span> DayMain  = <span class="num">30</span>;
+
+    <span class="kwd">for</span>(<span class="kwd">int</span> Year = <span class="num">2015</span>; Year &lt;= YearMain; Year++) {
+        <span class="fn">printf</span>(<span class="str">"\n--------------------------"</span>);
+        <span class="fn">printf</span>(<span class="str">"\n%d 年"</span>, Year);
+
+        <span class="kwd">for</span>(<span class="kwd">int</span> Uary = <span class="num">1</span>; Uary &lt;= UaryMain; Uary++) {
+            <span class="kwd">if</span>(Uary == <span class="num">2</span>) {
+                DayMain = <span class="num">28</span>;
+            } <span class="kwd">else if</span>(Uary == <span class="num">4</span> || Uary == <span class="num">6</span> || Uary == <span class="num">9</span> || Uary == <span class="num">11</span>) {
+                DayMain = <span class="num">30</span>;
+            } <span class="kwd">else</span> {
+                DayMain = <span class="num">31</span>;
+            }
+
+            <span class="fn">printf</span>(<span class="str">"\n--------------------------\n  %d 月\n--------------------------\n"</span>, Uary);
+
+            <span class="kwd">for</span>(<span class="kwd">int</span> Day = <span class="num">1</span>; Day &lt;= DayMain; Day++) {
+                <span class="kwd">if</span>(Day % <span class="num">7</span> == <span class="num">1</span> &amp;&amp; Day &gt; <span class="num">1</span>) {
+                    <span class="fn">printf</span>(<span class="str">"\n"</span>);
+                }
+                <span class="fn">printf</span>(<span class="str">"%2d "</span>, Day);
+            }
+            <span class="fn">printf</span>(<span class="str">"\n"</span>);
+        }
+    }
+    <span class="kwd">return</span> <span class="num">0</span>;
+}</div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">110學年度 C 語言教學成果彙整專頁</p>
+    </div>
+  </footer>
+
+</body>
+</html>

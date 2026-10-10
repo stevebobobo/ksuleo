@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好站推薦區 (優質網站資源) | Leo Tang</title>
+  <meta name="description" content="好站推薦區：免費資源網路社群、Standard Resume 線上履歷與 GitHub 開源社群指南。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-indigo: #1b1915;
+  --accent-indigo-hover: #1b1915;
+  --accent-indigo-light: #ebe6da;
+  --accent-blue: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
+  
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.brand-avatar-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.brand-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-back-btn:hover {
+  border-color: var(--accent-indigo);
+  color: var(--accent-indigo);
+  background: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  margin-top: 60px;
+}
+
+    
+    .web-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .web-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      transition: all 0.2s ease;
+    }
+    .web-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-strong);
+    }
+    .web-info {
+      max-width: 680px;
+    }
+    .web-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .web-url {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .web-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .visit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      background: var(--accent-blue);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .visit-btn:hover {
+      background: var(--accent-blue-hover);
+      transform: translateY(-1px);
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="../uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Avatar">
+        </div>
+        <span>Leo Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-emerald-light); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2);">
+        Web Directory
+      </div>
+      <h1 class="hero-title">好站推薦區 (優質網站)</h1>
+      <p class="hero-desc">
+        收錄開發者必備的免費素材資源、專業網頁履歷表設計與全球最大 GitHub 開源程式碼社群。
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="web-grid">
+
+      <!-- 1 -->
+      <div class="web-card">
+        <div class="web-info">
+          <h2 class="web-title">免費資源網路社群</h2>
+          <span class="web-url">https://free.com.tw/</span>
+          <p class="web-desc">
+            台灣最知名的免費軟體、網路服務、圖庫與開發工具資訊網。更新頻率高，適合尋找最新實用網路資源。
+          </p>
+        </div>
+        <a href="https://free.com.tw/" target="_blank" rel="noopener noreferrer" class="visit-btn">
+          前往網站 ↗
+        </a>
+      </div>
+
+      <!-- 2 -->
+      <div class="web-card">
+        <div class="web-info">
+          <h2 class="web-title">Standard Resume 線上履歷設計</h2>
+          <span class="web-url">https://standardresume.co/</span>
+          <p class="web-desc">
+            專為軟體工程師設計的極簡高品質履歷表產生器，輕鬆製作超吸睛的個人專業履歷網頁與 PDF。
+          </p>
+        </div>
+        <a href="https://standardresume.co/" target="_blank" rel="noopener noreferrer" class="visit-btn">
+          前往網站 ↗
+        </a>
+      </div>
+
+      <!-- 3 -->
+      <div class="web-card">
+        <div class="web-info">
+          <h2 class="web-title">GitHub 開源社群與版本控制</h2>
+          <span class="web-url">https://github.com/</span>
+          <p class="web-desc">
+            世界最大的程式碼存放網站與開源社群。透過 Git 進行版本控制與原始碼代管，支援協同開發、Issue 追蹤與 GitHub Pages 網站託管。
+          </p>
+        </div>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="visit-btn">
+          前往網站 ↗
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>激勵語錄小品 (人生與職場心法) | Leo Tang</title>
+  <meta name="description" content="包容的力量、自我投資、職場判斷思考、團隊默契與初心隨筆。">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    
+:root {
+  --bg-page: #ffffff;
+  --bg-surface: #f5f2ea;
+  --bg-surface-hover: #ebe6da;
+  --border-light: #cfc8b8;
+  --border-strong: #cfc8b8;
+  --text-primary: #1b1915;
+  --text-secondary: #4a463e;
+  --text-muted: #857f72;
+  --accent-blue: #1b1915;
+  --accent-blue-hover: #1b1915;
+  --accent-blue-light: #ebe6da;
+  --accent-emerald: #a3341c;
+  --accent-emerald-light: #ebe6da;
+  --accent-amber: #a3341c;
+  --accent-amber-light: #ebe6da;
+  --accent-purple: #a3341c;
+  --accent-purple-light: #ebe6da;
+  --accent-rose: #a3341c;
+  --accent-rose-light: #ebe6da;
+  
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --shadow-hover: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header Nav */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.brand-avatar-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.brand-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-back-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 48px 0 36px;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-page) 100%);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background: var(--bg-surface);
+  margin-top: 60px;
+}
+
+    
+    .quote-hero-card {
+      background: linear-gradient(135deg, #1b1915 0%, #1b1915 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin: 32px 0 40px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-hero-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #60a5fa;
+      margin-bottom: 12px;
+    }
+    .quote-hero-body {
+      font-size: 1.1rem;
+      color: #857f72;
+      line-height: 1.8;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .box-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .box-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .box-list {
+      list-style: none;
+    }
+    .box-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border-light);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .box-list li:last-child {
+      border-bottom: none;
+    }
+
+    .section-title-bar {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 48px 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .essay-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .essay-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .essay-text {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+  </style>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-avatar-wrap">
+          <img src="../uploads/8/0/3/9/80395834/published/20180303-4453-2.jpg" alt="Leo Tang Avatar">
+        </div>
+        <span>Leo Tang</span>
+      </a>
+      <a href="index.html#resources" class="nav-back-btn">
+        ← 返回首頁資源庫
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge" style="background: var(--accent-emerald-light); color: var(--accent-emerald); border: 1px solid rgba(5, 150, 105, 0.2);">
+        Wisdom & Inspiration
+      </div>
+      <h1 class="hero-title">激勵語錄小品</h1>
+      <p class="hero-desc">
+        關於自我投資、職場人際、判斷思考、團隊默契與工程初衷的微小體悟與絮語。
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <div class="quote-hero-card">
+      <div class="quote-hero-title">「包容」是這個世界上最偉大的力量</div>
+      <div class="quote-hero-body">
+        競爭力源自於永不停止的學習與吸收知識。知識能帶來勇氣，而體諒則是能得到智慧的方法——換位思考，就是真心為別人著想。
+      </div>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="box-card">
+        <div class="box-title" style="color: #1b1915;">關於投資</div>
+        <ul class="box-list">
+          <li>1. 最安全實用的投資就是投資自我。</li>
+          <li>2. 既然投資了就要拿出來用，用多了就能煉鐵成鋼。</li>
+          <li>3. 找對工作會比做好工作更容易賺錢；調整自我，讓自己更容易與別人磨合。</li>
+          <li>4. 寄人籬下的工作也是一種學習，同樣是自我投資。</li>
+          <li>5. 追隨主流雖不能發大財，卻也能積少成多。</li>
+        </ul>
+      </div>
+
+      <div class="box-card">
+        <div class="box-title" style="color: #a3341c;">關於理財</div>
+        <ul class="box-list">
+          <li>1. 先考慮可動資金再考慮優惠價格，才能決定是否真的划算。</li>
+          <li>2. 先提出消費目標，執行存錢計畫，並以百分比顯示進度。</li>
+          <li>3. 記帳是面對自我與認清自我的方法之一（你會發現真的跟自己不熟）。</li>
+        </ul>
+      </div>
+
+      <div class="box-card">
+        <div class="box-title" style="color: #a3341c;">自我學習 & 人際</div>
+        <ul class="box-list">
+          <li>1. 得到認同最實際的做法，就是解決別人的困難。</li>
+          <li>2. 當我們開始鼓勵他人時，我們的價值就跟著上升。</li>
+          <li>3. 讓別人了解自己，才有機會被別人體諒。</li>
+          <li>4. 跳舞的人會美麗一輩子；高歌的人會活得比較快樂！</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <h2 class="section-title-bar">職場碎碎念與思維模型</h2>
+
+    <div class="essay-card">
+      <h3 class="essay-title">直覺式思考 (Intuitive Thinking)</h3>
+      <p class="essay-text">
+        直覺是一味甜蜜的毒藥。對業務繁重、疲於解析的人來說，直覺反應被吹捧成快速、不用學就會的方法。它增加了同感降低了罪惡感，但若用在大型決策，往往隱藏巨大陷阱！
+      </p>
+    </div>
+
+    <div class="essay-card">
+      <h3 class="essay-title">訊息的思考與判斷 (Determine the Message)</h3>
+      <p class="essay-text">
+        <strong>信任式思考：</strong>適合面對誠實來源，直接收斂判斷。<br>
+        <strong>不信任式思考：</strong>適合面對不誠實來源防止被騙，但容易被濫用導致資源浪費。<br>
+        <strong>同步思考：</strong>當風險過大時切忌快速決策。專業顧問與適時外部通報能有效控管幾千萬工程背後的風險。
+      </p>
+    </div>
+
+    <div class="essay-card">
+      <h3 class="essay-title">即興創作 (Improvise)</h3>
+      <p class="essay-text">
+        當本質學能與自信累積到一定程度時，就能做即興。但不能長期沉淪於叫賣——必須將即興的動機與創意收斂修整，如鬥嘴編排成相聲、即興演奏收斂成專輯，作品才有深度。
+      </p>
+    </div>
+
+    <div class="essay-card">
+      <h3 class="essay-title">團隊默契 (Team Chemistry)</h3>
+      <p class="essay-text">
+        默契是熟悉彼此的連續反應，建立在高度信任度之上。信任不足時默契起不來，吵架正是破壞默契的關鍵。這就是為什麼樂團一起吃喝看電影，默契反而比別人好的原因。
+      </p>
+    </div>
+
+    <div class="essay-card">
+      <h3 class="essay-title">目的與初衷 (What's Your Target)</h3>
+      <p class="essay-text">
+        遇到問題時，確認「原始目的」最重要。有時討論手法時為了爭贏對手而迷失了初衷。直接針對原本的需求處理，就能少走許多彎路。
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Leo Tang (stevebobobo). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #857f72;">Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>
